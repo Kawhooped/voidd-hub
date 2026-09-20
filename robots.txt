@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kawhooped.github.io/voidd-hub/sitemap.xml

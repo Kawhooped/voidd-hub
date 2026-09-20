@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VOIDD Hub</title>
+  <meta name="description" content="Index of VOIDD browser games, tools, and the public shop." />
+  <link rel="canonical" href="https://kawhooped.github.io/voidd-hub/" />
+  <style>
+    :root { --bg:#03040a; --card:#0b0f18; --gold:#c4a2ff; --cyan:#43def5; --text:#f7f6ff; --sub:#8b90a5; --line:#1a1e2d; }
+    body { background:var(--bg); color:var(--text); font-family:Georgia,serif; padding:24px; margin:0 auto; max-width:900px; }
+    header { display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line); padding-bottom:16px; margin-bottom:24px; gap:12px; flex-wrap:wrap; }
+    h1 { color:var(--gold); margin:0; font-size:28px; }
+    nav a { color:var(--cyan); text-decoration:none; margin-left:16px; font-size:13px; letter-spacing:.08em; text-transform:uppercase; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:16px; }
+    .card { background:var(--card); border:1px solid var(--line); padding:16px; border-radius:14px; display:flex; flex-direction:column; }
+    .card .k { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); }
+    .card h3 { margin:6px 0 8px; }
+    .card p { font-size:14px; color:var(--sub); margin:0 0 16px; flex:1; }
+    .card a.btn { display:block; text-align:center; background:#a06cff; color:#fff; text-decoration:none; padding:10px; border-radius:999px; font-size:13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>VOIDD</h1>
+      <small style="color:var(--sub)">Hub · live experiments</small>
+    </div>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="api/feed.json">API</a>
+      <a href="https://kawhooped.github.io/voidd-sales/">Shop site</a>
+    </nav>
+  </header>
+  <main id="appGrid" class="grid"></main>
+  <script>
+    fetch('api/feed.json', { cache: 'no-store' })
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('appGrid').innerHTML = (data.projects || []).map(p => `
+          <article class="card">
+            <div class="k">${p.type || 'app'}</div>
+            <h3>${p.title}</h3>
+            <p>${p.description || ''}</p>
+            <a class="btn" href="${p.url}">Open</a>
+          </article>`).join('');
+      })
+      .catch(() => {
+        document.getElementById('appGrid').innerHTML = '<p>Feed failed to load.</p>';
+      });
+  </script>
+</body>
+</html>

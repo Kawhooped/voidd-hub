@@ -1,0 +1,56 @@
+{
+  "hub": "VOIDD Web Applications",
+  "author": "Danny Aguiar",
+  "home": "https://kawhooped.github.io/voidd-hub/",
+  "updated_at": "2026-09-20",
+  "projects": [
+    {
+      "id": "voidd-sales",
+      "title": "VOIDD Labs",
+      "type": "site",
+      "tags": ["shop", "portfolio", "pages"],
+      "url": "https://kawhooped.github.io/voidd-sales/",
+      "description": "Public shop, blog, database shelf, and tools. Gumroad cashier."
+    },
+    {
+      "id": "ghost-turk",
+      "title": "Ghost Turk",
+      "type": "game",
+      "tags": ["grid", "arcade"],
+      "url": "https://kawhooped.github.io/voidd-sales/play/ghost-turk.html",
+      "description": "Move one. Purps multiply. Ghosts never die."
+    },
+    {
+      "id": "dignity-sweep",
+      "title": "Dignity Sweep",
+      "type": "game",
+      "tags": ["arcade"],
+      "url": "https://kawhooped.github.io/voidd-sales/play/dignity-sweep.html",
+      "description": "Hold to vacuum coins. Robbers clip the lane."
+    },
+    {
+      "id": "gemini-forge",
+      "title": "GeminiForge",
+      "type": "tool",
+      "tags": ["gemini", "html"],
+      "url": "https://kawhooped.github.io/voidd-sales/tools/gemini-forge.html",
+      "description": "Single-file Gemini chat, grounding, JSON, image, TTS."
+    },
+    {
+      "id": "gemini-forge-studio",
+      "title": "GeminiForge Studio",
+      "type": "tool",
+      "tags": ["gemini", "sandbox"],
+      "url": "https://kawhooped.github.io/voidd-sales/tools/gemini-forge-studio.html",
+      "description": "Live HTML builder with iframe preview."
+    },
+    {
+      "id": "shop",
+      "title": "Shop",
+      "type": "store",
+      "tags": ["gumroad"],
+      "url": "https://kawhooped.github.io/voidd-sales/store.html",
+      "description": "Live cashier. Ten HTML packs on Gumroad."
+    }
+  ]
+}
