@@ -1,17 +1,60 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080914"><meta name="description" content="VOIDD: independent tools, games, research and experiments."><title>VOIDD | Open Experiments</title><style>
-:root{color-scheme:dark;--bg:#080914;--panel:#121629;--line:#2b304c;--ink:#f4f2ff;--muted:#a5a6bd;--violet:#b7a1ff;--cyan:#6ce4ed}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#29234b,transparent 42%),var(--bg);color:var(--ink);font:15px/1.55 system-ui,sans-serif}.wrap{max-width:1100px;margin:auto;padding:22px 18px 60px}
-.top{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:8px 0 20px;border-bottom:1px solid var(--line)}.brand{font-weight:900;letter-spacing:.25em;color:var(--violet)}nav{display:flex;gap:18px;flex-wrap:wrap}a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}
-.hero{padding:52px 0 26px}.eyebrow,.kind{color:var(--cyan);font-size:11px;text-transform:uppercase;letter-spacing:.18em}.hero h1{font-size:clamp(38px,7vw,68px);line-height:1;letter-spacing:-.06em;margin:12px 0}.hero h1 span{color:var(--violet)}.hero p{color:var(--muted);max-width:650px;font-size:17px}
-.links,.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:13px;margin:22px 0}.card{display:block;background:linear-gradient(145deg,#171a31,#101322);border:1px solid var(--line);border-radius:15px;padding:18px;color:var(--ink);min-height:150px}.card:hover{border-color:var(--violet);text-decoration:none;transform:translateY(-2px)}.card h2{font-size:19px;margin:8px 0}.card p{font-size:13px;color:var(--muted);margin:0}.button{display:inline-block;background:var(--violet);color:#151126;padding:10px 15px;border-radius:9px;font-weight:750;margin:8px 8px 0 0}
-input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);font:inherit}.foot{border-top:1px solid var(--line);margin-top:38px;padding-top:16px;color:var(--muted);font-size:12px}
-@media(max-width:600px){.top{align-items:flex-start;flex-direction:column}.hero{padding-top:36px}}
-</style></head><body><div class="wrap"><header class="top"><a class="brand" href="./">VOIDD</a><nav><a href="./">Home</a><a href="explore.html">Explore</a><a href="research.html">Research</a><a href="create.html">Create</a><a href="about.html">About</a></nav></header>
-<section class="hero"><div class="eyebrow">Independent tools · games · research</div><h1>Ideas become<br><span>things you can use.</span></h1><p>VOIDD is an open workshop for useful tools, interactive worlds, experiments and research. Move through it one page at a time.</p><a class="button" href="explore.html">Explore the collection ↗</a><a class="button" href="create.html">Open Creation Console ↗</a></section>
-<h2>Choose a direction</h2><section class="links">
-<a class="card" href="explore.html"><div class="kind">01 / Directory</div><h2>Explore</h2><p>Browse tools, games, experiments and projects from across the workshop.</p></a>
-<a class="card" href="research.html"><div class="kind">02 / Intelligence</div><h2>Research</h2><p>Read investigations, working models and questions worth testing.</p></a>
-<a class="card" href="create.html"><div class="kind">03 / Production</div><h2>Creation Console</h2><p>Build a standalone web page, preview it and publish it into the hub.</p></a>
-<a class="card" href="about.html"><div class="kind">04 / Orientation</div><h2>About VOIDD</h2><p>What this place is, how it is organized and how to contribute an experiment.</p></a>
-</section><h2>Recently available</h2><section class="grid" id="recent"><p>Loading projects…</p></section><footer class="foot">VOIDD · A living workshop. <a href="api/feed.json">Public project feed</a> · <a href="https://github.com/Kawhooped/voidd-hub">Source repository</a></footer></div>
-<script>fetch('api/feed.json').then(r=>r.json()).then(d=>{const root=document.getElementById('recent');root.replaceChildren();d.projects.slice(0,4).forEach(p=>{const a=document.createElement('a');a.className='card';a.href=p.url;a.innerHTML='<div class="kind"></div><h2></h2><p></p>';a.querySelector('.kind').textContent=p.type;a.querySelector('h2').textContent=p.title;a.querySelector('p').textContent=p.description;root.append(a)})}).catch(()=>document.getElementById('recent').textContent='Project feed unavailable.');</script></body></html>
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080914">
+<meta name="description" content="A quiet place to make something beautiful. Create a website or a page with VOIDD.">
+<title>VOIDD · Make Something</title>
+<style>
+:root{color-scheme:dark;--ink:#f5f1ff;--muted:#aaa8c2;--violet:#bba4ff;--cyan:#83e9f1}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#080914;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}
+body{min-height:100svh;overflow:hidden;position:relative;background:radial-gradient(ellipse at 50% 42%,#211b3c 0%,#111327 34%,#080914 75%)}
+a{color:inherit;text-decoration:none}
+.scene{position:fixed;inset:0;overflow:hidden;pointer-events:none;isolation:isolate}
+.aurora{position:absolute;width:72vw;height:72vw;max-width:900px;max-height:900px;left:50%;top:43%;transform:translate(-50%,-50%);border-radius:50%;background:conic-gradient(from 20deg,transparent 0 15%,#a58aff0b 24%,#5ee6f20c 38%,transparent 52%,#9874ff12 70%,transparent 88%);filter:blur(28px);animation:turn 48s linear infinite}
+.orbit{position:absolute;left:50%;top:43%;width:min(76vw,850px);aspect-ratio:1;border:1px solid #c7b7ff12;border-radius:50%;transform:translate(-50%,-50%) rotate(-22deg);box-shadow:0 0 100px #a78bfa08,inset 0 0 80px #a78bfa06;animation:breathe 9s ease-in-out infinite}
+.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid #7be6f116;border-radius:50%;inset:12%;transform:rotate(58deg) scaleX(.62)}
+.orbit:after{inset:27%;transform:rotate(-38deg) scaleX(.72);border-color:#c4a5ff20}
+.glow{position:absolute;width:34vw;height:34vw;left:50%;top:43%;transform:translate(-50%,-50%);border-radius:50%;background:#9c80ff15;filter:blur(90px);animation:pulse 8s ease-in-out infinite}
+.stars{position:absolute;inset:0}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#e6e0ff;box-shadow:0 0 9px 2px #bba4ff80;opacity:.5;animation:twinkle var(--t) ease-in-out infinite alternate}
+.sweep{position:absolute;left:50%;top:43%;width:min(90vw,1000px);height:1px;background:linear-gradient(90deg,transparent,#bba4ff22,#83e9f122,transparent);transform:rotate(-24deg);filter:blur(1px)}
+.content{position:relative;z-index:2;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:34px 22px 42px;text-align:center}
+.wordmark{position:absolute;top:34px;left:0;right:0;font-size:12px;letter-spacing:.42em;font-weight:750;color:#d7ccffb8}
+.kicker{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:#a7dfe7;margin-bottom:25px;opacity:.8}
+h1{font-weight:400;font-size:clamp(42px,7.2vw,82px);line-height:.98;letter-spacing:-.065em;margin:0 0 18px;text-shadow:0 0 50px #bba4ff20}
+h1 span{display:block;font-family:Georgia,serif;font-style:italic;font-weight:400;color:var(--violet);letter-spacing:-.055em}
+.subtitle{color:var(--muted);font-size:14px;letter-spacing:.025em;margin:0 0 45px}
+.choices{display:flex;gap:14px;justify-content:center;width:min(100%,590px)}
+.choice{position:relative;flex:1;min-height:88px;display:flex;align-items:center;justify-content:center;gap:13px;padding:18px 20px;border:1px solid #c5b5ff26;border-radius:16px;background:linear-gradient(135deg,#ffffff0b,#9e8bff08);backdrop-filter:blur(14px);transition:transform .35s,border-color .35s,background .35s,box-shadow .35s;overflow:hidden}
+.choice:before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 15%,#ffffff0b 48%,transparent 78%);transform:translateX(-110%);transition:transform .8s}
+.choice:hover{transform:translateY(-4px);border-color:#bba4ff8c;background:linear-gradient(135deg,#a78bfa20,#83e9f10d);box-shadow:0 16px 55px #8e75e51a,0 0 35px #a78bfa13}
+.choice:hover:before{transform:translateX(110%)}
+.choice .symbol{font-size:21px;color:var(--cyan);font-weight:300}
+.choice .label{font-size:14px;letter-spacing:.015em}
+.choice .arrow{font-size:15px;color:#bba4ff88;transition:transform .3s}
+.choice:hover .arrow{transform:translate(3px,-3px);color:var(--violet)}
+.foot{position:absolute;bottom:25px;color:#85839f;font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.65}
+.foot a{transition:color .2s}.foot a:hover{color:var(--cyan)}
+@keyframes turn{to{transform:translate(-50%,-50%) rotate(380deg)}}
+@keyframes breathe{0%,100%{opacity:.55;transform:translate(-50%,-50%) rotate(-22deg) scale(.98)}50%{opacity:1;transform:translate(-50%,-50%) rotate(-16deg) scale(1.025)}}
+@keyframes pulse{0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(.85)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}}
+@keyframes twinkle{from{opacity:.15;transform:scale(.7)}to{opacity:.85;transform:scale(1.5)}}
+@media(max-width:560px){.content{padding-top:70px}.choices{flex-direction:column;max-width:340px;gap:10px}.choice{min-height:72px}.subtitle{margin-bottom:32px}.orbit{width:115vw}.wordmark{top:25px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style></head><body>
+<div class="scene" aria-hidden="true"><div class="aurora"></div><div class="orbit"></div><div class="glow"></div><div class="sweep"></div><div class="stars" id="stars"></div></div>
+<main class="content">
+<div class="wordmark">V O I D D</div>
+<div class="kicker">A little space to create</div>
+<h1>What would you like<br><span>to make?</span></h1>
+<p class="subtitle">No rush. Just begin wherever you like.</p>
+<div class="choices">
+<a class="choice" href="new-website.html"><span class="symbol">✳</span><span class="label">A new website</span><span class="arrow">↗</span></a>
+<a class="choice" href="new-page.html"><span class="symbol">◇</span><span class="label">A new page</span><span class="arrow">↗</span></a>
+</div>
+<div class="foot"><a href="about.html">A quiet corner of the internet · About VOIDD</a></div>
+</main>
+<script>
+(()=>{const root=document.getElementById('stars');if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;let seed=17;const rand=()=>{seed=(seed*9301+49297)%233280;return seed/233280};for(let i=0;i<72;i++){const s=document.createElement('i');s.className='star';s.style.left=(rand()*100)+'%';s.style.top=(rand()*100)+'%';s.style.setProperty('--t',(3+rand()*7)+'s');s.style.animationDelay=(-rand()*8)+'s';if(i%5===0){s.style.width='3px';s.style.height='3px'}root.append(s)}})();
+</script></body></html>
