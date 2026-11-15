@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#10131b">
+<meta name="description" content="A pocket workshop for creating, previewing, organizing and exporting HTML projects.">
+<title>VOID HTML Workshop</title>
+<style>
+:root{color-scheme:dark;--bg:#0c0f16;--panel:#151a25;--panel2:#1c2331;--line:#2b3548;--text:#eef2fb;--muted:#9ba8bd;--accent:#9a8cff;--good:#69d6ae}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#1a2030 0,#0c0f16 55%);color:var(--text);font:15px system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+header{padding:20px 16px 12px;max-width:1100px;margin:auto}h1{font-size:23px;margin:0 0 5px;letter-spacing:.04em}header p{margin:0;color:var(--muted);font-size:13px}
+main{max-width:1100px;margin:auto;padding:8px 14px 40px;display:grid;gap:14px}
+.panel{background:rgba(21,26,37,.96);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:0 12px 35px #0003}
+.panel h2{font-size:15px;margin:0 0 12px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input,textarea,button{font:inherit}
+input[type=text],input[type=search],textarea{background:#0c111a;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px;width:100%;outline:none}
+input:focus,textarea:focus{border-color:var(--accent)}
+textarea{min-height:250px;resize:vertical;font:12px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;tab-size:2}
+button,.filelabel{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px 13px;cursor:pointer}
+button.primary{background:#7868e8;border-color:#7868e8;color:white;font-weight:650}
+button.good{border-color:#397c69;color:#a8f0d4}
+button.danger{color:#ffb6bf}
+button:active{transform:translateY(1px)}
+label.small{display:block;color:var(--muted);font-size:12px;margin:0 0 6px}
+.field{flex:1;min-width:180px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.status{color:var(--muted);font-size:12px;margin-top:9px;min-height:18px}
+.previewWrap{background:white;border-radius:10px;overflow:hidden;height:420px}
+iframe{width:100%;height:100%;border:0;background:white}
+.library{display:grid;gap:8px}
+.item{border:1px solid var(--line);border-radius:11px;padding:10px;background:#101621;display:grid;gap:7px}
+.itemtop{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.itemname{font-weight:650;overflow-wrap:anywhere}
+.meta{font-size:11px;color:var(--muted)}
+.itemactions{display:flex;gap:6px;flex-wrap:wrap}
+.itemactions button{font-size:12px;padding:7px 9px}
+.empty{color:var(--muted);font-size:13px;padding:12px 2px}
+.note{font-size:12px;line-height:1.5;color:var(--muted)}
+.badge{font-size:10px;color:#c8c0ff;border:1px solid #554c8e;border-radius:20px;padding:3px 7px;white-space:nowrap}
+footer{max-width:1100px;margin:0 auto;padding:0 16px 28px;color:var(--muted);font-size:11px}
+@media(min-width:850px){main{grid-template-columns:1.1fr .9fr}.editor{grid-column:1}.preview{grid-column:2;grid-row:1 / span 2}.libraryPanel{grid-column:1 / -1}.previewWrap{height:650px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>VOID <span style="color:#a99cff">HTML WORKSHOP</span></h1>
+  <p>A pocket workbench for code, experiments and little worlds.</p>
+</header>
+<main>
+<section class="panel editor">
+  <h2>01 / Code editor</h2>
+  <div class="field"><label class="small" for="projectName">Project name</label><input id="projectName" type="text" placeholder="Detected from HTML title when possible"></div>
+  <div style="height:10px"></div>
+  <label class="small" for="code">Paste or edit HTML</label>
+  <textarea id="code" spellcheck="false" placeholder="Paste a complete HTML document here..."></textarea>
+  <div class="toolbar">
+    <button class="primary" id="previewBtn">▶ Preview</button>
+    <button class="good" id="saveBtn">Save to library</button>
+    <button id="exportBtn">↓ Export HTML</button>
+    <button id="clearBtn">Clear editor</button>
+  </div>
+  <div class="toolbar">
+    <label class="filelabel" for="importFiles">＋ Import HTML files</label>
+    <input id="importFiles" type="file" accept=".html,.htm,text/html" multiple hidden>
+  </div>
+  <div class="status" id="editorStatus" role="status"></div>
+  <p class="note">Preview runs your code in an isolated frame. Only open code you trust: imported HTML can contain scripts and external links.</p>
+</section>
+
+<section class="panel preview">
+  <h2>02 / Live preview <span class="badge">SANDBOXED FRAME</span></h2>
+  <div class="previewWrap"><iframe id="preview" title="HTML preview" sandbox="allow-scripts allow-forms allow-modals allow-popups"></iframe></div>
+  <div class="status">Preview is local to this page. External network features depend on the code and browser connection.</div>
+</section>
+
+<section class="panel libraryPanel">
+  <h2>03 / My HTML library</h2>
+  <div class="row" style="margin-bottom:10px">
+    <div class="field"><input id="search" type="search" placeholder="Search project names..."></div>
+    <button id="exportBackup">Export library backup</button>
+  </div>
+  <div class="note" style="margin-bottom:10px">This library remembers projects saved or imported here on this browser and device. Browser storage can be cleared by Android or Chrome, so export backups of important work.</div>
+  <div class="library" id="library"><div class="empty">Your workshop is ready. Save or import an HTML project to begin.</div></div>
+</section>
+</main>
+<footer>VOID Workshop • Local-first prototype • Your code stays in this browser unless you export or load external resources.</footer>
+
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const KEY='void-html-workshop-v1';
+let projects=[];
+try{projects=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(projects))projects=[]}catch(e){projects=[]}
+const slug=s=>(s||'untitled').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,70)||'untitled';
+function titleFrom(code){
+ const doc=new DOMParser().parseFromString(code,'text/html');
+ return (doc.querySelector('title')?.textContent||doc.querySelector('h1')?.textContent||'').trim();
+}
+function currentName(){
+ return $('projectName').value.trim()||titleFrom($('code').value)||'Untitled Project';
+}
+function setStatus(msg){$('editorStatus').textContent=msg}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(projects));return true}catch(e){setStatus('Storage is full. Export a backup and remove older projects.');return false}}
+function render(){
+ const q=$('search').value.toLowerCase();
+ const list=$('library');list.innerHTML='';
+ const filtered=projects.filter(p=>p.name.toLowerCase().includes(q)).sort((a,b)=>b.updated-a.updated);
+ if(!filtered.length){list.innerHTML='<div class="empty">No matching projects yet.</div>';return}
+ filtered.forEach(p=>{
+  const el=document.createElement('div');el.className='item';
+  const top=document.createElement('div');top.className='itemtop';
+  const name=document.createElement('div');name.className='itemname';name.textContent=p.name;
+  const badge=document.createElement('span');badge.className='badge';badge.textContent=p.source||'SAVED';
+  top.append(name,badge);
+  const meta=document.createElement('div');meta.className='meta';meta.textContent=new Date(p.updated).toLocaleString()+' • '+(p.code.length.toLocaleString()+' characters');
+  const actions=document.createElement('div');actions.className='itemactions';
+  const add=(label,fn,cls='')=>{const b=document.createElement('button');b.textContent=label;b.className=cls;b.addEventListener('click',fn);actions.append(b)};
+  add('Open',()=>{ $('projectName').value=p.name;$('code').value=p.code;doPreview();setStatus('Loaded "'+p.name+'".')});
+  add('Export',()=>download(p.code,p.name));
+  add('Duplicate',()=>{projects.push({...p,id:crypto.randomUUID?.()||String(Date.now()),name:p.name+' Copy',updated:Date.now()});persist();render()});
+  add('Delete',()=>{if(confirm('Delete "'+p.name+'" from this workshop?')){projects=projects.filter(x=>x.id!==p.id);persist();render()}},'danger');
+  el.append(top,meta,actions);list.append(el);
+ });
+}
+function download(code,name){
+ const blob=new Blob([code],{type:'text/html;charset=utf-8'});
+ const url=URL.createObjectURL(blob);const a=document.createElement('a');
+ a.href=url;a.download=slug(name)+'.html';document.body.append(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1500);
+ setStatus('Export started: '+slug(name)+'.html. Check your Downloads folder.');
+}
+function doPreview(){
+ const code=$('code').value;
+ if(!code.trim()){setStatus('Paste some HTML first.');return}
+ const detected=titleFrom(code);
+ if(!$('projectName').value.trim()&&detected)$('projectName').value=detected;
+ $('preview').srcdoc=code;setStatus('Preview updated.');
+}
+$('previewBtn').addEventListener('click',doPreview);
+$('exportBtn').addEventListener('click',()=>{if(!$('code').value.trim()){setStatus('Paste some HTML first.');return}download($('code').value,currentName())});
+$('saveBtn').addEventListener('click',()=>{
+ const code=$('code').value;if(!code.trim()){setStatus('Paste some HTML first.');return}
+ const name=currentName();const existing=projects.find(p=>p.name===name);
+ if(existing){existing.code=code;existing.updated=Date.now();existing.source='SAVED'}
+ else projects.push({id:crypto.randomUUID?.()||String(Date.now()),name,code,updated:Date.now(),source:'SAVED'});
+ if(persist()){render();setStatus('Saved "'+name+'" to your workshop library.')}
+});
+$('clearBtn').addEventListener('click',()=>{if($('code').value&&!confirm('Clear the editor? Save or export first if needed.'))return;$('code').value='';$('projectName').value='';$('preview').srcdoc='';setStatus('Editor cleared.')});
+$('search').addEventListener('input',render);
+$('importFiles').addEventListener('change',async e=>{
+ const files=Array.from(e.target.files||[]);let count=0;
+ for(const f of files){
+  if(!/\.html?$/i.test(f.name)&&f.type!=='text/html')continue;
+  try{const code=await f.text();const name=titleFrom(code)||f.name.replace(/\.html?$/i,'');
+   projects.push({id:crypto.randomUUID?.()||String(Date.now()+count),name,code,updated:Date.now(),source:'IMPORTED'});count++;
+  }catch(err){}
+ }
+ if(persist()){render();setStatus('Imported '+count+' HTML file(s).');}
+ e.target.value='';
+});
+$('exportBackup').addEventListener('click',()=>{
+ const blob=new Blob([JSON.stringify({format:'VOID HTML Workshop backup',version:1,projects},null,2)],{type:'application/json'});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='void-html-library-backup.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
+ setStatus('Library backup exported.');
+});
+render();
+})();
+</script>
+</body>
+</html>
