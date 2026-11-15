@@ -17,7 +17,7 @@ h1{font-size:clamp(25px,4vw,40px);letter-spacing:-.04em;margin:25px 0 5px}.lead{
 .library{margin-top:14px}.saved{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line)}.saved small{display:block;color:var(--muted)}.pill{font-size:10px;color:var(--cyan);border:1px solid #36505e;border-radius:30px;padding:3px 7px}
 @media(max-width:800px){.layout{grid-template-columns:1fr}.preview{height:420px}.wrap{padding:12px} .top{align-items:flex-start;flex-direction:column}textarea{min-height:330px}}
 </style></head><body><div class="wrap">
-<header class="top"><a class="brand" href="./">VOIDD / CREATION CONSOLE</a><nav><a href="./">Home</a><a href="explore.html">Explore</a><a href="research.html">Research</a><a href="about.html">About</a><a href="api/feed.json">Catalog feed</a><a href="https://github.com/Kawhooped/voidd-hub">Repository</a></nav></header>
+<header class="top"><a class="brand" href="./">V O I D D</a><nav><a href="./">Home</a><a href="explore.html">Explore</a></nav></header>
 <h1>Make a thing. <span style="color:var(--accent)">Put it on the internet.</span></h1>
 <p class="lead">Create a standalone web page, preview it, save a local draft, then publish it into the VOIDD hub. Published pages get their own URL and catalog entry.</p>
 <div class="layout">
@@ -82,6 +82,6 @@ $('publishBtn').onclick=async()=>{
   setStatus('editorStatus','Live URL: https://kawhooped.github.io/voidd-hub/apps/'+m.slug+'/','good');
  }catch(err){setStatus('publishStatus','Publish error: '+err.message,'bad')}finally{btn.disabled=false}
 };
-$('code').value=starter();$('frame').srcdoc=starter();syncSlug();renderDrafts();
+const mode=new URLSearchParams(location.search).get('mode');if(mode==='website'){$('title').value='My New Website';$('description').value='A new website made with VOIDD.';$('code').value=starter().replace('My First VOID Experiment','My New Website').replace('A small idea, made real.','A new place begins here.')}else{$('code').value=starter()}$('frame').srcdoc=$('code').value;syncSlug();renderDrafts();
 })();
 </script></body></html>
