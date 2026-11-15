@@ -1,65 +1,17 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#080914">
-<meta name="description" content="VOIDD is an evolving collection of browser tools, experiments, games and research. Open something interesting.">
-<link rel="canonical" href="https://kawhooped.github.io/voidd-hub/">
-<title>VOIDD · Open Experiments</title>
-<style>
-:root{color-scheme:dark;--bg:#080914;--panel:#111426;--line:#292d48;--ink:#f5f4ff;--muted:#a2a5bc;--violet:#b7a1ff;--cyan:#66e5ef}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#25204b 0,transparent 40%),var(--bg);color:var(--ink);font:15px/1.5 system-ui,sans-serif}
-.wrap{max-width:1120px;margin:auto;padding:24px 18px 64px}
-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0 22px;border-bottom:1px solid var(--line)}
-.brand{font-size:14px;letter-spacing:.25em;color:var(--violet);font-weight:800}nav{display:flex;gap:18px;flex-wrap:wrap}a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}
-.hero{padding:54px 0 30px}.eyebrow{color:var(--cyan);font-size:11px;letter-spacing:.2em;text-transform:uppercase}.hero h1{font-size:clamp(38px,7vw,72px);letter-spacing:-.06em;line-height:.98;margin:12px 0}.hero h1 span{color:var(--violet)}.hero p{max-width:600px;color:var(--muted);font-size:17px}
-.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.stat{border:1px solid var(--line);background:#111426aa;border-radius:12px;padding:9px 13px;color:var(--muted);font-size:12px}.stat strong{color:var(--ink);font-size:16px;margin-right:5px}
-.controls{display:grid;grid-template-columns:1fr auto;gap:10px;margin:22px 0 12px}input{width:100%;background:#111426;border:1px solid var(--line);border-radius:12px;padding:13px 15px;color:var(--ink);font:inherit;outline:none}input:focus{border-color:var(--violet)}
-.filters{display:flex;gap:7px;overflow:auto;padding:5px 0 18px}.filter{white-space:nowrap;background:#111426;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:7px 12px;font:inherit;font-size:12px;cursor:pointer}.filter[aria-pressed=true]{background:#302753;border-color:var(--violet);color:white}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:13px}.card{min-height:190px;background:linear-gradient(145deg,#15182d,#0e1120);border:1px solid var(--line);border-radius:16px;padding:17px;display:flex;flex-direction:column;transition:transform .16s,border-color .16s}.card:hover{transform:translateY(-3px);border-color:#7564b8}.kind{color:var(--cyan);font-size:10px;text-transform:uppercase;letter-spacing:.16em}.card h2{font-size:19px;margin:8px 0}.card p{color:var(--muted);font-size:13px;margin:0 0 18px;flex:1}.tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}.tag{color:#bcb5dc;background:#ffffff09;border-radius:99px;padding:3px 7px;font-size:10px}.open{display:inline-flex;align-items:center;justify-content:center;background:#a58bff;color:#100d20;font-weight:750;border-radius:9px;padding:9px 12px;font-size:12px}.empty{grid-column:1/-1;color:var(--muted);padding:30px;text-align:center;border:1px dashed var(--line);border-radius:14px}
-footer{border-top:1px solid var(--line);margin-top:36px;padding-top:18px;color:var(--muted);font-size:12px}
-@media(max-width:560px){header{align-items:flex-start;flex-direction:column}.hero{padding-top:38px}.controls{grid-template-columns:1fr}}
-</style>
-</head>
-<body><div class="wrap">
-<header><a class="brand" href="./">VOIDD / OPEN EXPERIMENTS</a><nav><a href="https://kawhooped.github.io/voidd-hub/create.html">Create / Publish</a><a href="api/feed.json">Project feed</a><a href="https://github.com/Kawhooped/voidd-hub">Source</a><a href="https://kawhooped.github.io/voidd-sales/">VOIDD Labs</a></nav></header>
-<section class="hero"><div class="eyebrow">Independent tools · games · research</div><h1>Ideas become<br><span>things you can use.</span></h1><p>A growing collection of small tools, strange experiments, interactive worlds and useful research. Pick a door and explore.</p><div class="stats"><div class="stat"><strong id="count">0</strong> live destinations</div><div class="stat"><strong id="types">0</strong> categories</div><div class="stat">Updated <strong id="updated">—</strong></div></div></section>
-<div class="controls"><input id="search" type="search" placeholder="Search tools, games, ideas…" aria-label="Search projects"></div>
-<div id="filters" class="filters" aria-label="Filter projects"></div>
-<main id="grid" class="grid" aria-live="polite"><div class="empty">Loading experiments…</div></main>
-<footer>VOIDD is a living workshop. Projects may evolve, move or multiply. <span id="feedStatus">Loading catalog…</span></footer>
-</div>
-<script>
-(async()=>{
- const grid=document.getElementById('grid'),search=document.getElementById('search'),filters=document.getElementById('filters');
- let projects=[],active='all';
- const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n};
- function render(){
-  const q=search.value.trim().toLowerCase();
-  const list=projects.filter(p=>(active==='all'||p.type===active)&&[p.title,p.description,p.type,...(p.tags||[])].join(' ').toLowerCase().includes(q));
-  grid.replaceChildren();
-  if(!list.length){grid.append(el('div','empty','Nothing here yet. Try another search or category.'));return}
-  for(const p of list){
-   const card=el('article','card'),kind=el('div','kind',p.type||'project'),title=el('h2','',p.title||'Untitled'),desc=el('p','',p.description||'An experiment from VOIDD.');
-   const tags=el('div','tags');(p.tags||[]).slice(0,4).forEach(t=>tags.append(el('span','tag',t)));
-   const link=el('a','open','Open experiment ↗');link.href=p.url;link.target='_blank';link.rel='noopener noreferrer';
-   card.append(kind,title,desc,tags,link);grid.append(card);
-  }
- }
- function buildFilters(){
-  const types=['all',...new Set(projects.map(p=>p.type||'project'))];filters.replaceChildren();
-  for(const type of types){const b=el('button','filter',type==='all'?'All':type);b.type='button';b.setAttribute('aria-pressed',String(type===active));b.addEventListener('click',()=>{active=type;buildFilters();render()});filters.append(b)}
- }
- try{
-  const response=await fetch('api/feed.json',{cache:'no-store'});if(!response.ok)throw new Error('Feed unavailable');
-  const data=await response.json();projects=Array.isArray(data.projects)?data.projects:[];
-  document.getElementById('count').textContent=projects.length;
-  document.getElementById('types').textContent=new Set(projects.map(p=>p.type)).size;
-  document.getElementById('updated').textContent=data.updated_at||'recently';
-  document.getElementById('feedStatus').textContent='Catalog loaded.';
-  buildFilters();render();
- }catch(error){grid.replaceChildren(el('div','empty','The project catalog could not load. Please try again later.'));document.getElementById('feedStatus').textContent='Catalog unavailable.'}
- search.addEventListener('input',render);
-})();
-</script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080914"><meta name="description" content="VOIDD: independent tools, games, research and experiments."><title>VOIDD | Open Experiments</title><style>
+:root{color-scheme:dark;--bg:#080914;--panel:#121629;--line:#2b304c;--ink:#f4f2ff;--muted:#a5a6bd;--violet:#b7a1ff;--cyan:#6ce4ed}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#29234b,transparent 42%),var(--bg);color:var(--ink);font:15px/1.55 system-ui,sans-serif}.wrap{max-width:1100px;margin:auto;padding:22px 18px 60px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:8px 0 20px;border-bottom:1px solid var(--line)}.brand{font-weight:900;letter-spacing:.25em;color:var(--violet)}nav{display:flex;gap:18px;flex-wrap:wrap}a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}
+.hero{padding:52px 0 26px}.eyebrow,.kind{color:var(--cyan);font-size:11px;text-transform:uppercase;letter-spacing:.18em}.hero h1{font-size:clamp(38px,7vw,68px);line-height:1;letter-spacing:-.06em;margin:12px 0}.hero h1 span{color:var(--violet)}.hero p{color:var(--muted);max-width:650px;font-size:17px}
+.links,.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:13px;margin:22px 0}.card{display:block;background:linear-gradient(145deg,#171a31,#101322);border:1px solid var(--line);border-radius:15px;padding:18px;color:var(--ink);min-height:150px}.card:hover{border-color:var(--violet);text-decoration:none;transform:translateY(-2px)}.card h2{font-size:19px;margin:8px 0}.card p{font-size:13px;color:var(--muted);margin:0}.button{display:inline-block;background:var(--violet);color:#151126;padding:10px 15px;border-radius:9px;font-weight:750;margin:8px 8px 0 0}
+input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);font:inherit}.foot{border-top:1px solid var(--line);margin-top:38px;padding-top:16px;color:var(--muted);font-size:12px}
+@media(max-width:600px){.top{align-items:flex-start;flex-direction:column}.hero{padding-top:36px}}
+</style></head><body><div class="wrap"><header class="top"><a class="brand" href="./">VOIDD</a><nav><a href="./">Home</a><a href="explore.html">Explore</a><a href="research.html">Research</a><a href="create.html">Create</a><a href="about.html">About</a></nav></header>
+<section class="hero"><div class="eyebrow">Independent tools · games · research</div><h1>Ideas become<br><span>things you can use.</span></h1><p>VOIDD is an open workshop for useful tools, interactive worlds, experiments and research. Move through it one page at a time.</p><a class="button" href="explore.html">Explore the collection ↗</a><a class="button" href="create.html">Open Creation Console ↗</a></section>
+<h2>Choose a direction</h2><section class="links">
+<a class="card" href="explore.html"><div class="kind">01 / Directory</div><h2>Explore</h2><p>Browse tools, games, experiments and projects from across the workshop.</p></a>
+<a class="card" href="research.html"><div class="kind">02 / Intelligence</div><h2>Research</h2><p>Read investigations, working models and questions worth testing.</p></a>
+<a class="card" href="create.html"><div class="kind">03 / Production</div><h2>Creation Console</h2><p>Build a standalone web page, preview it and publish it into the hub.</p></a>
+<a class="card" href="about.html"><div class="kind">04 / Orientation</div><h2>About VOIDD</h2><p>What this place is, how it is organized and how to contribute an experiment.</p></a>
+</section><h2>Recently available</h2><section class="grid" id="recent"><p>Loading projects…</p></section><footer class="foot">VOIDD · A living workshop. <a href="api/feed.json">Public project feed</a> · <a href="https://github.com/Kawhooped/voidd-hub">Source repository</a></footer></div>
+<script>fetch('api/feed.json').then(r=>r.json()).then(d=>{const root=document.getElementById('recent');root.replaceChildren();d.projects.slice(0,4).forEach(p=>{const a=document.createElement('a');a.className='card';a.href=p.url;a.innerHTML='<div class="kind"></div><h2></h2><p></p>';a.querySelector('.kind').textContent=p.type;a.querySelector('h2').textContent=p.title;a.querySelector('p').textContent=p.description;root.append(a)})}).catch(()=>document.getElementById('recent').textContent='Project feed unavailable.');</script></body></html>
