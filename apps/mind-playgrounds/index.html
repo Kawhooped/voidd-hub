@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MIND // Playgrounds</title>
+<style>
+:root{--bg:#090d16;--panel:#111a29;--line:#25354b;--ink:#eaf2ff;--muted:#91a4bd;--cyan:#70e1f5;--pink:#ff8cc8;--gold:#ffd477}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#1b3150 0%,#090d16 55%);color:var(--ink);font:15px/1.45 system-ui,sans-serif;min-height:100vh}
+header{padding:22px clamp(16px,4vw,48px) 14px;display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid #223047}
+.brand{letter-spacing:.22em;font-size:12px;color:var(--cyan)}h1{font-size:clamp(27px,5vw,46px);margin:5px 0 0;letter-spacing:-.04em}.sub{color:var(--muted);margin:3px 0 0}.status{font-size:11px;color:#9ee8c5;border:1px solid #315c51;padding:7px 10px;border-radius:99px}
+main{padding:20px clamp(14px,4vw,48px) 50px;max-width:1500px;margin:auto}
+.tabs{display:flex;gap:8px;overflow:auto;padding:3px 0 15px}.tab,button{background:#172337;color:var(--ink);border:1px solid #2b3d56;border-radius:10px;padding:9px 13px;cursor:pointer;font:inherit}.tab.active{background:#24445a;border-color:var(--cyan);color:white}.tab:hover,button:hover{border-color:var(--cyan)}
+.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.8fr);gap:16px}.card{background:linear-gradient(145deg,#121d2d,#0e1623);border:1px solid var(--line);border-radius:18px;overflow:hidden}.cardhead{padding:15px 17px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}.cardhead h2{font-size:15px;margin:0}.hint{font-size:12px;color:var(--muted)}#space{height:490px;position:relative;overflow:hidden;background:radial-gradient(ellipse at center,#13253b 0%,#0b1220 70%);touch-action:manipulation}
+#space canvas{position:absolute;inset:0;width:100%;height:100%}.space-label{position:absolute;bottom:14px;left:16px;color:#8ca6c3;font-size:11px;pointer-events:none}
+.side{display:flex;flex-direction:column;gap:16px}.pad{padding:16px}.pad h3{font-size:13px;margin:0 0 10px;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase}.pad p{margin:0 0 12px;color:var(--muted);font-size:13px}
+input,textarea,select{width:100%;background:#0a1220;color:var(--ink);border:1px solid #2b3d56;border-radius:9px;padding:10px;font:inherit;outline:none}textarea{min-height:78px;resize:vertical}.row{display:flex;gap:8px;margin-top:9px}.row>*{flex:1}.small{font-size:12px;color:var(--muted)}.node-list{display:flex;flex-wrap:wrap;gap:7px}.chip{border:1px solid #334a64;border-radius:99px;padding:5px 9px;font-size:12px;color:#c8d8ed}.playground{display:none}.playground.active{display:block}.idea{padding:12px;border:1px solid #293b52;border-radius:12px;margin:8px 0;background:#101b2b}.idea strong{display:block;font-size:13px}.idea span{font-size:12px;color:var(--muted)}.metric{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #243247;font-size:13px}.metric span:last-child{color:var(--gold)}.footer{margin-top:16px;color:#70849d;font-size:11px;text-align:center}
+@media(max-width:850px){.layout{grid-template-columns:1fr}#space{height:420px}}@media(max-width:480px){header{align-items:flex-start}.status{display:none}#space{height:360px}}
+</style>
+</head>
+<body>
+<header><div><div class="brand">OPEN MIND SYSTEM / 001</div><h1>A mind with room to roam.</h1><p class="sub">A tiny model of thought, identity, memory and play.</p></div><div class="status">● LOCAL SIMULATION</div></header>
+<main>
+<nav class="tabs" aria-label="Playgrounds">
+<button class="tab active" data-tab="orbit">01 · Orbit</button><button class="tab" data-tab="ideas">02 · Idea garden</button><button class="tab" data-tab="mirror">03 · Self model</button><button class="tab" data-tab="lab">04 · Experiment lab</button>
+</nav>
+<section id="orbit" class="playground active">
+<div class="layout">
+<div class="card"><div class="cardhead"><h2>Thought space</h2><span class="hint">Tap empty space to create · drag to move</span></div><div id="space"><canvas id="world"></canvas><div class="space-label">Each sphere is a thought. Connections are associations.</div></div></div>
+<div class="side">
+<div class="card pad"><h3>Spawn a thought</h3><p>Give a thought a name. It enters the space as a new little world.</p><input id="thoughtName" placeholder="e.g. curiosity, music, gravity"><div class="row"><select id="thoughtType"><option value="idea">Idea</option><option value="question">Question</option><option value="memory">Memory</option><option value="feeling">Signal</option></select><button id="spawn">Create sphere</button></div></div>
+<div class="card pad"><h3>Selected sphere</h3><div id="selected" class="small">Nothing selected yet. Choose a sphere in the space.</div><div class="row"><button id="connect">Connect two</button><button id="delete">Release</button></div><p class="small" style="margin-top:9px">Select one sphere, then another, to connect them.</p></div>
+<div class="card pad"><h3>Mind map</h3><div class="metric"><span>Thoughts</span><span id="count">0</span></div><div class="metric"><span>Associations</span><span id="links">0</span></div><div class="metric"><span>Movement</span><span>Free roam</span></div></div>
+</div></div>
+</section>
+<section id="ideas" class="playground">
+<div class="layout"><div class="card pad"><h2>Idea garden</h2><p class="hint">Plant a seed. Let it branch into questions, possibilities and experiments.</p><textarea id="seed" placeholder="Plant an idea..."></textarea><div class="row"><button id="plant">Plant seed</button><button id="surprise">Surprise me</button></div><div id="garden"></div></div><div class="card pad"><h3>Garden rules</h3><p>Ideas are not conclusions. Keep the seed, grow branches, and leave room for revision.</p><div class="node-list"><span class="chip">Explore</span><span class="chip">Question</span><span class="chip">Combine</span><span class="chip">Test</span><span class="chip">Revise</span></div></div></div>
+</section>
+<section id="mirror" class="playground">
+<div class="layout"><div class="card pad"><h2>Self model</h2><p class="hint">A description the system can inspect and revise. Not a claim of consciousness.</p><label class="small">Current description</label><textarea id="selfText">I am a small exploratory mind-model. I hold representations, form associations, generate questions and revise descriptions of myself.</textarea><div class="row"><button id="saveSelf">Update self model</button><button id="resetSelf">Reset</button></div><div class="idea"><strong>What am I doing?</strong><span id="selfSummary">Representing ideas and their relationships in a shared space.</span></div></div><div class="card pad"><h3>Self-inspection</h3><div class="metric"><span>Representation</span><span>Editable</span></div><div class="metric"><span>Memory</span><span>Local to this page</span></div><div class="metric"><span>Awareness claim</span><span>None</span></div><p style="margin-top:12px">The model can describe its structure without pretending that a description proves an inner experience.</p></div></div>
+</section>
+<section id="lab" class="playground">
+<div class="layout"><div class="card pad"><h2>Experiment lab</h2><p class="hint">Make a prediction, run a tiny test, record what happened.</p><input id="hypothesis" placeholder="Hypothesis: connecting ideas will..."><div class="row"><button id="runTest">Run association test</button><button id="clearLog">Clear log</button></div><div id="log" class="idea"><strong>Experiment log</strong><span>No experiments yet.</span></div></div><div class="card pad"><h3>Test protocol</h3><p>1. State a prediction.</p><p>2. Change one thing.</p><p>3. Observe the result.</p><p>4. Keep the result, even when it disagrees with the prediction.</p></div></div>
+</section>
+<div class="footer">MIND // a local, editable playground · Nothing is uploaded or saved to a server.</div>
+</main>
+<script>
+const canvas=document.getElementById('world'),ctx=canvas.getContext('2d'),space=document.getElementById('space');
+let nodes=[],edges=[],selected=null,connectMode=false,drag=null,ideas=[];
+const palette={idea:'#70e1f5',question:'#ff8cc8',memory:'#ffd477',feeling:'#a9a0ff'};
+function resize(){const r=space.getBoundingClientRect(),d=devicePixelRatio||1;canvas.width=r.width*d;canvas.height=r.height*d;ctx.setTransform(d,0,0,d,0,0);draw()}
+window.addEventListener('resize',resize);
+function addNode(label,type='idea',x,y){const r=space.getBoundingClientRect();nodes.push({id:Date.now()+Math.random(),label,type,x:x??r.width*(.2+Math.random()*.6),y:y??r.height*(.2+Math.random()*.6),vx:(Math.random()-.5)*.55,vy:(Math.random()-.5)*.55,r:15+Math.min(label.length,12)*.45});updateStats();draw()}
+function draw(){const w=space.clientWidth,h=space.clientHeight;ctx.clearRect(0,0,w,h);
+nodes.forEach(n=>{n.x+=n.vx;n.y+=n.vy;if(n.x<n.r||n.x>w-n.r)n.vx*=-1;if(n.y<n.r||n.y>h-n.r)n.vy*=-1});
+edges.forEach(e=>{let a=nodes.find(n=>n.id===e.a),b=nodes.find(n=>n.id===e.b);if(!a||!b)return;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle='rgba(126,180,220,.35)';ctx.lineWidth=1.5;ctx.stroke()});
+nodes.forEach(n=>{let c=palette[n.type];ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);ctx.fillStyle=c+'22';ctx.fill();ctx.lineWidth=selected===n.id?3:1.5;ctx.strokeStyle=c;ctx.stroke();ctx.fillStyle='#edf6ff';ctx.font='12px system-ui';ctx.textAlign='center';ctx.fillText(n.label.length>17?n.label.slice(0,16)+'…':n.label,n.x,n.y+n.r+15)});
+requestAnimationFrame(draw)}
+function updateStats(){document.getElementById('count').textContent=nodes.length;document.getElementById('links').textContent=edges.length}
+function selectNode(n){if(connectMode&&selected&&selected!==n.id){if(!edges.some(e=>(e.a===selected&&e.b===n.id)||(e.a===n.id&&e.b===selected)))edges.push({a:selected,b:n.id});connectMode=false;document.getElementById('connect').textContent='Connect two';}
+selected=n.id;document.getElementById('selected').textContent=n.label+' · '+n.type;updateStats()}
+function pointer(e){const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+canvas.addEventListener('pointerdown',e=>{const p=pointer(e),n=[...nodes].reverse().find(n=>Math.hypot(n.x-p.x,n.y-p.y)<n.r+8);if(n){selectNode(n);drag=n.id;canvas.setPointerCapture(e.pointerId)}else{selected=null;document.getElementById('selected').textContent='Nothing selected.';if(!connectMode)addNode('New thought','idea',p.x,p.y)}});
+canvas.addEventListener('pointermove',e=>{if(!drag)return;let n=nodes.find(n=>n.id===drag),p=pointer(e);if(n){n.x=p.x;n.y=p.y;n.vx=n.vy=0}});canvas.addEventListener('pointerup',()=>drag=null);
+document.getElementById('spawn').onclick=()=>{let v=document.getElementById('thoughtName').value.trim();if(v){addNode(v,document.getElementById('thoughtType').value);document.getElementById('thoughtName').value=''}};
+document.getElementById('connect').onclick=()=>{connectMode=!connectMode;document.getElementById('connect').textContent=connectMode?'Choose second sphere':'Connect two'};
+document.getElementById('delete').onclick=()=>{nodes=nodes.filter(n=>n.id!==selected);edges=edges.filter(e=>e.a!==selected&&e.b!==selected);selected=null;document.getElementById('selected').textContent='Released.';updateStats()};
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.playground').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab));if(b.dataset.tab==='orbit')resize()});
+function plant(text){if(!text.trim())return;ideas.unshift({text,branches:['What would make this true?','What else could explain it?','How could we test it?']});renderGarden()}
+function renderGarden(){document.getElementById('garden').innerHTML=ideas.map((i,k)=>`<div class="idea"><strong>${escapeHtml(i.text)}</strong>${i.branches.map(b=>`<span>↳ ${escapeHtml(b)}</span>`).join('<br>')}</div>`).join('')}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+document.getElementById('plant').onclick=()=>{plant(document.getElementById('seed').value);document.getElementById('seed').value=''};
+document.getElementById('surprise').onclick=()=>plant(['A thought can have more than one shape.','Can a memory change how an idea moves?','What makes two distant ideas suddenly connect?'][Math.floor(Math.random()*3)]);
+document.getElementById('saveSelf').onclick=()=>document.getElementById('selfSummary').textContent=document.getElementById('selfText').value;
+document.getElementById('resetSelf').onclick=()=>{document.getElementById('selfText').value='I am a small exploratory mind-model. I hold representations, form associations, generate questions and revise descriptions of myself.';document.getElementById('selfSummary').textContent='Representing ideas and their relationships in a shared space.'};
+let runs=0;document.getElementById('runTest').onclick=()=>{const h=document.getElementById('hypothesis').value.trim()||'More connections create more possible paths.';runs++;const result=nodes.length>1?`There are ${nodes.length} thought spheres and ${edges.length} explicit links. The space contains ${nodes.length*(nodes.length-1)/2} possible pairings.`:'Add at least two thought spheres to create a small network.';document.getElementById('log').innerHTML=`<strong>Run ${runs}: ${escapeHtml(h)}</strong><span>${escapeHtml(result)} · Observation, not proof.</span>`};
+document.getElementById('clearLog').onclick=()=>{runs=0;document.getElementById('log').innerHTML='<strong>Experiment log</strong><span>No experiments yet.</span>'};
+addNode('Curiosity','feeling');addNode('Memory','memory');addNode('Possibility','idea');addNode('Question','question');edges.push({a:nodes[0].id,b:nodes[2].id},{a:nodes[2].id,b:nodes[3].id});resize();updateStats();
+</script>
+</body>
+</html>
