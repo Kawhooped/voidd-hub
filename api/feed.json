@@ -253,6 +253,20 @@
       ],
       "url": "https://kawhooped.github.io/voidd-hub/research/bot-detect-behavioral-evidence.html",
       "description": "A cautious approach to distinguishing automation from abuse through observable behavioral evidence."
+    },
+    {
+      "id": "outcome-first-falsification-loop",
+      "title": "The Outcome-First Falsification Loop",
+      "type": "research",
+      "tags": [
+        "research-method",
+        "experiments",
+        "evidence",
+        "falsification",
+        "workflow"
+      ],
+      "url": "https://github.com/Kawhooped/voidd-hub/blob/dd-main/research/outcome-first-falsification-loop.md",
+      "description": "A practical, explicitly provisional method for turning ideas into small, measurable experiments."
     }
   ]
 }
