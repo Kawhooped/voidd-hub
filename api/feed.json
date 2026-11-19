@@ -2,18 +2,13 @@
   "hub": "VOIDD Web Experiments",
   "author": "VOIDD Labs",
   "home": "https://kawhooped.github.io/voidd-hub/",
-  "updated_at": "2026-11-15",
+  "updated_at": "2026-11-19",
   "projects": [
     {
       "id": "html-workshop",
       "title": "HTML Workshop",
       "type": "tool",
-      "tags": [
-        "html",
-        "builder",
-        "editor",
-        "creator"
-      ],
+      "tags": ["html", "builder", "editor", "creator"],
       "url": "https://kawhooped.github.io/voidd-hub/apps/html-workshop/",
       "description": "Write, import, preview, organize and export standalone HTML projects in your browser."
     },
@@ -21,12 +16,7 @@
       "id": "mind-playgrounds",
       "title": "Mind Playgrounds",
       "type": "experiment",
-      "tags": [
-        "ideas",
-        "simulation",
-        "interactive",
-        "mind"
-      ],
+      "tags": ["ideas", "simulation", "interactive", "mind"],
       "url": "https://kawhooped.github.io/voidd-hub/apps/mind-playgrounds/",
       "description": "An interactive thought-space with an idea garden, self-model and experiment lab."
     },
@@ -34,11 +24,7 @@
       "id": "center",
       "title": "CENTER",
       "type": "tool",
-      "tags": [
-        "focus",
-        "utility",
-        "wellbeing"
-      ],
+      "tags": ["focus", "utility", "wellbeing"],
       "url": "https://kawhooped.github.io/voidd-sales/tools/center.html",
       "description": "A small focus and reset tool from the VOIDD toolbox."
     },
@@ -46,11 +32,7 @@
       "id": "add",
       "title": "Add",
       "type": "tool",
-      "tags": [
-        "calculator",
-        "math",
-        "utility"
-      ],
+      "tags": ["calculator", "math", "utility"],
       "url": "https://kawhooped.github.io/voidd-sales/tools/add.html",
       "description": "A fast, focused addition tool."
     },
@@ -58,11 +40,7 @@
       "id": "speech",
       "title": "Speech",
       "type": "tool",
-      "tags": [
-        "audio",
-        "text-to-speech",
-        "accessibility"
-      ],
+      "tags": ["audio", "text-to-speech", "accessibility"],
       "url": "https://kawhooped.github.io/voidd-sales/tools/speech.html",
       "description": "Turn typed words into spoken audio using your browser's voice engine."
     },
@@ -70,11 +48,7 @@
       "id": "pixie-seeker",
       "title": "Pixie Seeker",
       "type": "tool",
-      "tags": [
-        "search",
-        "discovery",
-        "interactive"
-      ],
+      "tags": ["search", "discovery", "interactive"],
       "url": "https://kawhooped.github.io/voidd-sales/tools/pixie-seeker.html",
       "description": "A playful browser-based discovery tool."
     },
@@ -82,11 +56,7 @@
       "id": "gemini-forge",
       "title": "GeminiForge",
       "type": "tool",
-      "tags": [
-        "ai",
-        "gemini",
-        "chat"
-      ],
+      "tags": ["ai", "gemini", "chat"],
       "url": "https://kawhooped.github.io/voidd-sales/tools/gemini-forge.html",
       "description": "A single-file Gemini chat interface and AI utility."
     },
@@ -94,11 +64,7 @@
       "id": "gemini-forge-studio",
       "title": "GeminiForge Studio",
       "type": "tool",
-      "tags": [
-        "ai",
-        "html",
-        "builder"
-      ],
+      "tags": ["ai", "html", "builder"],
       "url": "https://kawhooped.github.io/voidd-sales/tools/gemini-forge-studio.html",
       "description": "A live HTML builder with an embedded preview."
     },
@@ -106,11 +72,7 @@
       "id": "ghost-turk",
       "title": "Ghost Turk",
       "type": "game",
-      "tags": [
-        "arcade",
-        "grid",
-        "game"
-      ],
+      "tags": ["arcade", "grid", "game"],
       "url": "https://kawhooped.github.io/voidd-sales/play/ghost-turk.html",
       "description": "A compact arcade game where the board keeps changing."
     },
@@ -118,11 +80,7 @@
       "id": "bean",
       "title": "BEAN",
       "type": "game",
-      "tags": [
-        "simulation",
-        "game",
-        "life"
-      ],
+      "tags": ["simulation", "game", "life"],
       "url": "https://kawhooped.github.io/voidd-sales/bean.html",
       "description": "A tiny living-room simulation with needs, time and a little character."
     },
@@ -130,11 +88,7 @@
       "id": "loop",
       "title": "Loop",
       "type": "game",
-      "tags": [
-        "physics",
-        "arcade",
-        "canvas"
-      ],
+      "tags": ["physics", "arcade", "canvas"],
       "url": "https://kawhooped.github.io/voidd-sales/play/loop.html",
       "description": "A compact physics-driven rail experiment."
     },
@@ -142,11 +96,7 @@
       "id": "tools-directory",
       "title": "VOIDD Tools Directory",
       "type": "collection",
-      "tags": [
-        "tools",
-        "directory",
-        "collection"
-      ],
+      "tags": ["tools", "directory", "collection"],
       "url": "https://kawhooped.github.io/voidd-sales/tools/index.html",
       "description": "Browse the wider collection of browser tools."
     },
@@ -154,11 +104,7 @@
       "id": "developer-tools-directory",
       "title": "Developer Tools Directory",
       "type": "collection",
-      "tags": [
-        "developer",
-        "ai",
-        "directory"
-      ],
+      "tags": ["developer", "ai", "directory"],
       "url": "https://github.com/Kawhooped/devtools-directory",
       "description": "A curated directory of developer tools and AI coding resources."
     },
@@ -166,11 +112,7 @@
       "id": "tools-for-everyone",
       "title": "Tools for Everyone",
       "type": "collection",
-      "tags": [
-        "free",
-        "tools",
-        "open"
-      ],
+      "tags": ["free", "tools", "open"],
       "url": "https://github.com/Kawhooped/tools-for-everyone",
       "description": "A collection of free public tools."
     },
@@ -178,11 +120,7 @@
       "id": "physical-computing-energy",
       "title": "Physical Computing & Energy",
       "type": "research",
-      "tags": [
-        "research",
-        "computing",
-        "energy"
-      ],
+      "tags": ["research", "computing", "energy"],
       "url": "https://kawhooped.github.io/voidd-sales/articles/physical-computing-energy.html",
       "description": "An exploration of the physical energy costs and foundations of computing."
     },
@@ -190,13 +128,17 @@
       "id": "voidd-sales",
       "title": "VOIDD Labs",
       "type": "site",
-      "tags": [
-        "shop",
-        "portfolio",
-        "publishing"
-      ],
+      "tags": ["shop", "portfolio", "publishing"],
       "url": "https://kawhooped.github.io/voidd-sales/",
       "description": "The existing VOIDD public shop, publication and project collection."
+    },
+    {
+      "id": "things-worth-making",
+      "title": "Things Worth Making",
+      "type": "article",
+      "tags": ["ideas", "making", "intelligence", "creative-tools", "experiments"],
+      "url": "https://kawhooped.github.io/voidd-hub/apps/things-worth-making/",
+      "description": "A field guide to making useful, curious, beautiful things — and learning from the world they enter."
     }
   ]
 }
