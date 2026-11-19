@@ -8,6 +8,8 @@ A small public research shelf: questions, evidence, working models, and experime
 2. [Context Is Not Memory](https://github.com/Kawhooped/voidd-hub/blob/dd-main/research/context-is-not-memory.md) — separating stored history from structured representations of the current situation.
 3. [Bot Detect: Behavior Before Labels](https://github.com/Kawhooped/voidd-hub/blob/dd-main/research/bot-detect-behavioral-evidence.md) — distinguishing automation from abuse through observable behavioral evidence.
 
+4. [The Outcome-First Falsification Loop](https://github.com/Kawhooped/voidd-hub/blob/dd-main/research/outcome-first-falsification-loop.md) — a compact method for turning ideas into measurable experiments.
+
 ## Editorial standard
 
 - Separate published evidence from proposals and hypotheses.
