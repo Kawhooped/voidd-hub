@@ -267,6 +267,58 @@
       ],
       "url": "https://github.com/Kawhooped/voidd-hub/blob/dd-main/research/outcome-first-falsification-loop.md",
       "description": "A practical method for turning a broad idea into one small experiment with an observable result. The loop emphasizes choosing a concrete outcome, testing assumptions against evidence, and changing course when reality disagrees."
+    },
+    {
+      "id": "palette-lab",
+      "title": "Palette Lab",
+      "type": "tool",
+      "tags": [
+        "color",
+        "design",
+        "generator",
+        "creative"
+      ],
+      "url": "https://kawhooped.github.io/voidd-hub/experiments/palette-lab.html",
+      "description": "A quick color playground for generating five-color palettes, locking the shades you like, and copying the result. It is a small design utility and an experiment in making useful creative tools that open instantly in a browser."
+    },
+    {
+      "id": "life-grid",
+      "title": "Life Grid",
+      "type": "experiment",
+      "tags": [
+        "cellular-automata",
+        "simulation",
+        "emergence",
+        "interactive"
+      ],
+      "url": "https://kawhooped.github.io/voidd-hub/experiments/life-grid.html",
+      "description": "A playable cellular automaton inspired by Conway's Game of Life. Draw cells, run the simulation, step through generations, and watch simple local rules produce patterns that can look surprisingly alive."
+    },
+    {
+      "id": "price-sandbox",
+      "title": "Price Sandbox",
+      "type": "tool",
+      "tags": [
+        "business",
+        "pricing",
+        "calculator",
+        "revenue"
+      ],
+      "url": "https://kawhooped.github.io/voidd-hub/experiments/price-sandbox.html",
+      "description": "A lightweight pricing calculator for testing the basic economics of a small offer. Change price, direct cost, sales volume, and fixed costs to see the estimated monthly remainder and break-even sales volume."
+    },
+    {
+      "id": "decision-dice",
+      "title": "Decision Dice",
+      "type": "tool",
+      "tags": [
+        "randomness",
+        "decision",
+        "play",
+        "utility"
+      ],
+      "url": "https://kawhooped.github.io/voidd-hub/experiments/decision-dice.html",
+      "description": "A tiny random choice tool: enter a list of possibilities and roll to select one. Use it to break a tie, pick a creative constraint, or let chance introduce a direction you might not have chosen yourself."
     }
   ]
 }
