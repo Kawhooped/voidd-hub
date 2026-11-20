@@ -2,7 +2,7 @@
   "hub": "VOIDD Web Experiments",
   "author": "VOIDD Labs",
   "home": "https://kawhooped.github.io/voidd-hub/",
-  "updated_at": "2026-11-19",
+  "updated_at": "2026-11-20",
   "projects": [
     {
       "id": "html-workshop",
@@ -15,7 +15,7 @@
         "creator"
       ],
       "url": "https://kawhooped.github.io/voidd-hub/apps/html-workshop/",
-      "description": "Write, import, preview, organize and export standalone HTML projects in your browser."
+      "description": "A browser-based workspace for making small websites without setting up a development environment. Write or import HTML, preview it as you work, save drafts, and export a standalone page when it is ready to share."
     },
     {
       "id": "mind-playgrounds",
@@ -28,7 +28,7 @@
         "mind"
       ],
       "url": "https://kawhooped.github.io/voidd-hub/apps/mind-playgrounds/",
-      "description": "An interactive thought-space with an idea garden, self-model and experiment lab."
+      "description": "An interactive sandbox for exploring how thoughts, associations, ideas, and simple models might behave. Move through a thought-space, grow an idea garden, inspect a small self-model, and try experiments directly in the browser."
     },
     {
       "id": "center",
@@ -40,7 +40,7 @@
         "wellbeing"
       ],
       "url": "https://kawhooped.github.io/voidd-sales/tools/center.html",
-      "description": "A small focus and reset tool from the VOIDD toolbox."
+      "description": "A compact tool for pausing, regaining focus, and choosing a next step when attention feels scattered. Open it for a quick reset rather than another complicated productivity system."
     },
     {
       "id": "add",
@@ -52,7 +52,7 @@
         "utility"
       ],
       "url": "https://kawhooped.github.io/voidd-sales/tools/add.html",
-      "description": "A fast, focused addition tool."
+      "description": "A deliberately simple addition tool for quick arithmetic. No setup or extra features to get in the way: enter the numbers and get the result."
     },
     {
       "id": "speech",
@@ -64,7 +64,7 @@
         "accessibility"
       ],
       "url": "https://kawhooped.github.io/voidd-sales/tools/speech.html",
-      "description": "Turn typed words into spoken audio using your browser's voice engine."
+      "description": "A lightweight text-to-speech tool that uses the voices available in your browser. Type or paste text and listen to it aloud, useful for proofreading, accessibility, or hearing how words sound."
     },
     {
       "id": "pixie-seeker",
@@ -76,7 +76,7 @@
         "interactive"
       ],
       "url": "https://kawhooped.github.io/voidd-sales/tools/pixie-seeker.html",
-      "description": "A playful browser-based discovery tool."
+      "description": "A playful little discovery interface for following curiosity and finding something unexpected to explore. It is an experiment in making search feel more like wandering than filling out a form."
     },
     {
       "id": "gemini-forge",
@@ -88,7 +88,7 @@
         "chat"
       ],
       "url": "https://kawhooped.github.io/voidd-sales/tools/gemini-forge.html",
-      "description": "A single-file Gemini chat interface and AI utility."
+      "description": "A browser-based interface for experimenting with Google's Gemini AI models. It provides a focused place to send prompts and work with model responses without building a chat application from scratch."
     },
     {
       "id": "gemini-forge-studio",
@@ -100,7 +100,7 @@
         "builder"
       ],
       "url": "https://kawhooped.github.io/voidd-sales/tools/gemini-forge-studio.html",
-      "description": "A live HTML builder with an embedded preview."
+      "description": "A visual workspace for creating HTML and seeing the result beside the code. It brings editing and preview together so small interface ideas can be tested quickly."
     },
     {
       "id": "ghost-turk",
@@ -112,7 +112,7 @@
         "game"
       ],
       "url": "https://kawhooped.github.io/voidd-sales/play/ghost-turk.html",
-      "description": "A compact arcade game where the board keeps changing."
+      "description": "A small arcade game built around a board that refuses to stay still. Play a quick round, watch the grid change, and see how well you adapt as the puzzle shifts."
     },
     {
       "id": "bean",
@@ -124,7 +124,7 @@
         "life"
       ],
       "url": "https://kawhooped.github.io/voidd-sales/bean.html",
-      "description": "A tiny living-room simulation with needs, time and a little character."
+      "description": "A tiny life simulation centered on a character living through everyday needs and the passage of time. Watch a simple world evolve and explore how small decisions shape its behavior."
     },
     {
       "id": "loop",
@@ -136,7 +136,7 @@
         "canvas"
       ],
       "url": "https://kawhooped.github.io/voidd-sales/play/loop.html",
-      "description": "A compact physics-driven rail experiment."
+      "description": "A compact physics experiment built around motion along a rail. It is a small interactive playground for seeing how movement, momentum, and the shape of a track combine."
     },
     {
       "id": "tools-directory",
@@ -148,7 +148,7 @@
         "collection"
       ],
       "url": "https://kawhooped.github.io/voidd-sales/tools/index.html",
-      "description": "Browse the wider collection of browser tools."
+      "description": "A central index of browser-based utilities collected across the VOIDD projects. Browse the available tools by purpose and jump directly into the ones that solve a practical task."
     },
     {
       "id": "developer-tools-directory",
@@ -160,7 +160,7 @@
         "directory"
       ],
       "url": "https://github.com/Kawhooped/devtools-directory",
-      "description": "A curated directory of developer tools and AI coding resources."
+      "description": "A curated starting point for developers looking for useful software, AI coding assistants, and technical resources. The directory is intended to reduce discovery time and make promising tools easier to compare."
     },
     {
       "id": "tools-for-everyone",
@@ -172,7 +172,7 @@
         "open"
       ],
       "url": "https://github.com/Kawhooped/tools-for-everyone",
-      "description": "A collection of free public tools."
+      "description": "A public collection of free tools intended to be useful without a complicated setup or purchase. Explore the available utilities and use the ones that fit the task at hand."
     },
     {
       "id": "physical-computing-energy",
@@ -184,7 +184,7 @@
         "energy"
       ],
       "url": "https://kawhooped.github.io/voidd-sales/articles/physical-computing-energy.html",
-      "description": "An exploration of the physical energy costs and foundations of computing."
+      "description": "An exploration of the physical foundations behind computation, including the energy required to store, move, and process information. It connects abstract ideas about computing to the material systems and power demands that make it possible."
     },
     {
       "id": "voidd-sales",
@@ -196,7 +196,7 @@
         "publishing"
       ],
       "url": "https://kawhooped.github.io/voidd-sales/",
-      "description": "The existing VOIDD public shop, publication and project collection."
+      "description": "The broader VOIDD Labs site: a public home for tools, publications, experiments, and other projects. Visit it to browse the wider collection beyond the experiments hosted in this hub."
     },
     {
       "id": "things-worth-making",
@@ -210,7 +210,7 @@
         "experiments"
       ],
       "url": "https://kawhooped.github.io/voidd-hub/apps/things-worth-making/",
-      "description": "A field guide to making useful, curious, beautiful things — and learning from the world they enter."
+      "description": "A field guide to turning curiosity into things that exist outside the imagination. It explores practical making, creative tools, intelligence, experiments, and the value of learning from real use rather than treating an idea as finished when it sounds convincing."
     },
     {
       "id": "intelligence-beyond-models",
@@ -224,7 +224,7 @@
         "evaluation"
       ],
       "url": "https://kawhooped.github.io/voidd-hub/research/intelligence-beyond-models.html",
-      "description": "A practical research lens: evaluate AI by what it learns and accomplishes under real feedback, not fluency alone."
+      "description": "This working paper asks how intelligence should be evaluated when a system has to act, receive feedback, and adapt. It looks beyond fluent answers toward observable learning, recovery from mistakes, and reliable results in an environment."
     },
     {
       "id": "context-is-not-memory",
@@ -238,7 +238,7 @@
         "knowledge"
       ],
       "url": "https://kawhooped.github.io/voidd-hub/research/context-is-not-memory.html",
-      "description": "A proposed distinction between stored history and structured representations of the current situation."
+      "description": "This paper distinguishes remembering past information from representing the situation that matters now. It explores how entities, relationships, conditions, evidence, and uncertainty can help a system understand what is happening instead of merely retrieving facts."
     },
     {
       "id": "bot-detect-behavioral-evidence",
@@ -252,7 +252,7 @@
         "evidence"
       ],
       "url": "https://kawhooped.github.io/voidd-hub/research/bot-detect-behavioral-evidence.html",
-      "description": "A cautious approach to distinguishing automation from abuse through observable behavioral evidence."
+      "description": "This paper examines how to distinguish automated activity from harmful behavior without treating every bot as a threat. It focuses on observable signals, evidence quality, uncertainty, and proportionate responses that reduce false positives."
     },
     {
       "id": "outcome-first-falsification-loop",
@@ -266,7 +266,7 @@
         "workflow"
       ],
       "url": "https://github.com/Kawhooped/voidd-hub/blob/dd-main/research/outcome-first-falsification-loop.md",
-      "description": "A practical, explicitly provisional method for turning ideas into small, measurable experiments."
+      "description": "A practical method for turning a broad idea into one small experiment with an observable result. The loop emphasizes choosing a concrete outcome, testing assumptions against evidence, and changing course when reality disagrees."
     }
   ]
 }
