@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Decision Dice — VOIDD</title>
+<style>
+*{box-sizing:border-box}body{margin:0;padding:32px;max-width:760px;margin:auto;background:#101114;color:#f2f0e9;font:16px/1.5 system-ui}a{color:#b8c5ff}.muted{color:#9b9da7}button{border:0;border-radius:999px;padding:13px 20px;background:#e9e5da;color:#171717;font-weight:800;cursor:pointer}.dice{font-size:clamp(90px,24vw,180px);line-height:1.2;text-align:center;margin:30px 0}.card{background:#1b1d23;border-radius:16px;padding:22px;text-align:center;min-height:140px}.choice{font-size:24px;font-weight:750}
+</style><body><a href="../">← VOIDD experiments</a><p class="muted">EXPERIMENT 004 / CHOICE & RANDOMNESS</p><h1>Decision Dice</h1><p class="muted">Give the dice a list of options. It will pick one at random. Not a substitute for judgment—just a way to break a tie or introduce an unexpected direction.</p><textarea id="options" rows="7" style="width:100%;padding:14px;border-radius:12px;background:#1b1d23;color:#f2f0e9;border:1px solid #393b43;font:inherit">Make something tiny
+Talk to a potential customer
+Publish an unfinished experiment
+Learn one new tool
+Take a different route
+Do the simplest version</textarea><div style="margin:14px 0"><button id="roll">Roll the dice</button></div><div class="card"><div class="dice" id="die">⚄</div><div class="choice" id="choice">Waiting for a roll…</div><p class="muted" id="count"></p></div><script>
+const faces=['⚀','⚁','⚂','⚃','⚄','⚅'];document.querySelector('#roll').onclick=()=>{let a=document.querySelector('#options').value.split('\n').map(s=>s.trim()).filter(Boolean);if(!a.length){document.querySelector('#choice').textContent='Add at least one option.';return}let i=Math.floor(Math.random()*a.length);document.querySelector('#die').textContent=faces[Math.floor(Math.random()*6)];document.querySelector('#choice').textContent=a[i];document.querySelector('#count').textContent='Selected from '+a.length+' options · every option has equal probability'};
+</script></body></html>
