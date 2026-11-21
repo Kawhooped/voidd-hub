@@ -319,6 +319,45 @@
       ],
       "url": "https://kawhooped.github.io/voidd-hub/experiments/decision-dice.html",
       "description": "A tiny random choice tool: enter a list of possibilities and roll to select one. Use it to break a tie, pick a creative constraint, or let chance introduce a direction you might not have chosen yourself."
+    },
+    {
+      "id": "skill-science",
+      "title": "Toward a Science of Skill Creation",
+      "type": "research",
+      "tags": [
+        "ai",
+        "skills",
+        "research-method",
+        "capability-engineering"
+      ],
+      "url": "https://kawhooped.github.io/voidd-hub/research/toward-a-science-of-skill-creation.html",
+      "description": "A proposal for treating AI skill creation as a systematic discipline of capability design, construction, testing, and improvement."
+    },
+    {
+      "id": "anatomy-of-an-ai-skill",
+      "title": "The Anatomy of an AI Skill",
+      "type": "research",
+      "tags": [
+        "ai",
+        "skills",
+        "capability-model",
+        "agents"
+      ],
+      "url": "https://kawhooped.github.io/voidd-hub/research/anatomy-of-an-ai-skill.html",
+      "description": "An eight-part conceptual model of reusable AI skills, covering identity, activation, knowledge, method, resources, execution, verification, and evolution."
+    },
+    {
+      "id": "evaluating-ai-skills",
+      "title": "How Do We Know an AI Skill Actually Works?",
+      "type": "research",
+      "tags": [
+        "ai",
+        "skills",
+        "evaluation",
+        "experiments"
+      ],
+      "url": "https://kawhooped.github.io/voidd-hub/research/evaluating-ai-skills.html",
+      "description": "A practical evaluation protocol for comparing baseline model performance with skill-assisted performance across repeatable tasks."
     }
   ]
 }
