@@ -5,6 +5,20 @@
   "updated_at": "2026-11-23",
   "projects": [
     {
+      "id": "void-command-center",
+      "title": "VOID Command Center",
+      "type": "tool",
+      "tags": [
+        "dashboard",
+        "project-network",
+        "control-center",
+        "registry",
+        "operations"
+      ],
+      "url": "https://kawhooped.github.io/voidd-hub/apps/command-center/",
+      "description": "A live dashboard for the VOID network: search registered projects, see project counts, open tools, and inspect their source repositories."
+    },
+    {
       "id": "void-model-browser",
       "title": "VOID Model Browser",
       "type": "tool",
