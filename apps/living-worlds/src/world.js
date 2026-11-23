@@ -55,7 +55,7 @@ const nextScenes = [
   { title: "A quiet negotiation", description: "Two merchants compare notes while the bazaar's little mechanisms click and turn overhead." },
   { title: "The Echo Garden calls", description: "A soft chime drifts in from the garden. The path there seems a little longer than it did yesterday." }
 ];
-export function takeTurn(world, characterId, actionId) {
+export function takeTurn(world, characterId, actionId, dialogueOverride = "") {
   const character = world.characters.find((c) => c.id === characterId);
   if (!character) return { ok: false, error: "That resident is not part of this world." };
   const action = getAvailableActions(world, character).find((a) => a.id === actionId);
@@ -63,6 +63,9 @@ export function takeTurn(world, characterId, actionId) {
   const options = outcomes[character.id]?.[actionId];
   if (!options) return { ok: false, error: "No local behavior is configured for that action." };
   const text = options[world.turn % options.length];
+  const spoken = typeof dialogueOverride === "string" && dialogueOverride.trim()
+    ? dialogueOverride.trim().slice(0, 180)
+    : text;
   const next = structuredClone(world);
   const nextCharacter = next.characters.find((c) => c.id === characterId);
   next.turn += 1;
@@ -76,7 +79,7 @@ export function takeTurn(world, characterId, actionId) {
   nextCharacter.memories.push("Turn " + next.turn + ": " + text);
   nextCharacter.mood = ["intrigued", "thoughtful", "restless", "pleased"][(next.turn + next.characters.indexOf(nextCharacter)) % 4];
   next.events.push({ turn: next.turn, text: nextCharacter.name + " — " + action.label + "." });
-  next.dialogue.push({ speaker: nextCharacter.name, text });
+  next.dialogue.push({ speaker: nextCharacter.name, text: spoken });
   next.scene = nextScenes[(next.turn - 1) % nextScenes.length];
   return { ok: true, world: next, message: character.name + " completed: " + action.label + "." };
 }
