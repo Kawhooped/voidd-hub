@@ -2,8 +2,22 @@
   "hub": "VOIDD Web Experiments",
   "author": "VOIDD Labs",
   "home": "https://kawhooped.github.io/voidd-hub/",
-  "updated_at": "2026-11-20",
+  "updated_at": "2026-11-22",
   "projects": [
+    {
+      "id": "midjourney-chat-studio",
+      "title": "Midjourney Chat Studio",
+      "type": "tool",
+      "tags": [
+        "midjourney",
+        "discord",
+        "image-generation",
+        "prompt-builder",
+        "creative"
+      ],
+      "url": "https://kawhooped.github.io/voidd-hub/apps/midjourney-chat-studio/",
+      "description": "A visual prompt workstation for Midjourney in Discord. Compose image prompts, choose styles and generation parameters, copy /imagine commands, and revisit recent prompts."
+    },
     {
       "id": "html-workshop",
       "title": "HTML Workshop",
