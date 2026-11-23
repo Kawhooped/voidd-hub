@@ -5,6 +5,20 @@
   "updated_at": "2026-11-23",
   "projects": [
     {
+      "id": "void-living-worlds",
+      "title": "Living Worlds",
+      "type": "experiment",
+      "tags": [
+        "simulation",
+        "ai-agents",
+        "characters",
+        "world-engine",
+        "memory"
+      ],
+      "url": "https://kawhooped.github.io/voidd-hub/apps/living-worlds/",
+      "description": "A turn-based marketplace simulation with four residents, local behavior, character memories, and persistent world state."
+    },
+    {
       "id": "void-foundry",
       "title": "VOID Foundry",
       "type": "tool",
