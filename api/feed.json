@@ -5,6 +5,20 @@
   "updated_at": "2026-11-23",
   "projects": [
     {
+      "id": "void-foundry",
+      "title": "VOID Foundry",
+      "type": "tool",
+      "tags": [
+        "templates",
+        "website-builder",
+        "ai-worlds",
+        "reusable-systems",
+        "development"
+      ],
+      "url": "https://kawhooped.github.io/voidd-hub/foundry/",
+      "description": "A reusable construction kit for VOID projects, with starter blueprints for websites, AI simulation worlds, and interactive browser applications."
+    },
+    {
       "id": "midjourney-chat-studio",
       "title": "Midjourney Chat Studio",
       "type": "tool",
