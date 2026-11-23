@@ -5,6 +5,20 @@
   "updated_at": "2026-11-23",
   "projects": [
     {
+      "id": "void-model-browser",
+      "title": "VOID Model Browser",
+      "type": "tool",
+      "tags": [
+        "models",
+        "huggingface",
+        "downloads",
+        "ai",
+        "discovery"
+      ],
+      "url": "https://kawhooped.github.io/voidd-hub/apps/model-browser/",
+      "description": "Search public Hugging Face models, inspect repository files and formats, compare file sizes, and download selected model files directly in the browser."
+    },
+    {
       "id": "void-living-worlds",
       "title": "Living Worlds",
       "type": "experiment",
