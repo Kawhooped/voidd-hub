@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090b12">
+<title>VOID · GitHub Test Lab</title>
+<style>
+:root{color-scheme:dark;--bg:#090b12;--panel:#111622;--line:#263044;--text:#edf2ff;--muted:#8e9bb3;--cyan:#76e4df;--green:#8ce6ad;--amber:#f4c978;--red:#ff8f9a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#18243b 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+main{width:min(1050px,92vw);margin:0 auto;padding:44px 0 70px}
+header{display:flex;justify-content:space-between;gap:20px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:24px}
+.brand{letter-spacing:.22em;font-size:12px;color:var(--cyan);font-weight:800}.tag{color:var(--muted);font-size:12px}
+h1{font-size:clamp(34px,7vw,66px);line-height:1.02;letter-spacing:-.055em;margin:36px 0 14px}
+h1 span{color:var(--cyan)}.intro{max-width:650px;color:var(--muted);font-size:17px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 30px}
+button,a.button{border:1px solid var(--line);background:#182235;color:var(--text);padding:10px 15px;border-radius:9px;text-decoration:none;font:inherit;cursor:pointer}
+button.primary{background:var(--cyan);color:#071113;border-color:var(--cyan);font-weight:750}
+button:hover,a.button:hover{border-color:var(--cyan)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{background:linear-gradient(145deg,#131b2a,#0e1420);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0}
+.card h2{font-size:15px;margin:0 0 12px;display:flex;justify-content:space-between;gap:12px}
+.status{font-size:11px;letter-spacing:.08em;color:var(--amber);text-transform:uppercase}
+.status.pass{color:var(--green)}.status.fail{color:var(--red)}
+.detail{color:var(--muted);font-size:13px;overflow-wrap:anywhere}
+.big{font-size:27px;font-weight:750;letter-spacing:-.04em;margin:6px 0}
+code{color:var(--cyan);overflow-wrap:anywhere}
+.full{grid-column:1/-1}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.metric{background:#0a101b;border:1px solid var(--line);border-radius:10px;padding:12px}
+.metric b{display:block;font-size:19px}.metric span{font-size:11px;color:var(--muted)}
+#report{white-space:pre-wrap;word-break:break-word;background:#080d16;border:1px solid var(--line);border-radius:10px;padding:14px;color:#c8d4e9;font:12px/1.6 ui-monospace,monospace;min-height:90px}
+footer{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+@media(max-width:680px){main{padding-top:25px}.grid{grid-template-columns:1fr}.full{grid-column:auto}.metrics{grid-template-columns:1fr 1fr}header{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="brand">◎ VOID / FIELD SYSTEMS</div>
+  <div class="tag">SINGLE-FILE EXPERIMENT · 001</div>
+</header>
+<h1>GitHub<br><span>Test Lab.</span></h1>
+<p class="intro">One HTML file. No framework. No build step. This page checks what happens when a self-contained website is uploaded to a GitHub repository and opened in a browser.</p>
+<div class="actions">
+  <button class="primary" id="run">Run tests again</button>
+  <button id="copy">Copy test report</button>
+  <a class="button" href="https://github.com/Kawhooped/voidd-hub" target="_blank" rel="noopener">Open repository ↗</a>
+</div>
+<section class="grid" aria-live="polite">
+  <article class="card"><h2>01 · Page rendering <span class="status pass" id="s-render">PASS</span></h2><div class="big">HTML + CSS</div><div class="detail">The document and its embedded stylesheet rendered without external assets.</div></article>
+  <article class="card"><h2>02 · JavaScript <span class="status" id="s-js">RUNNING</span></h2><div class="big" id="js-result">Waiting…</div><div class="detail">Interactive controls and browser-side diagnostics are active.</div></article>
+  <article class="card"><h2>03 · Local storage <span class="status" id="s-storage">CHECKING</span></h2><div class="big" id="storage-result">—</div><div class="detail">Attempts to save and read a harmless test value in this browser.</div></article>
+  <article class="card"><h2>04 · GitHub API <span class="status" id="s-api">CHECKING</span></h2><div class="big" id="api-result">Connecting…</div><div class="detail" id="api-detail">Requests public repository metadata. No token or login is used.</div></article>
+  <article class="card full"><h2>05 · Publication context <span class="status pass">LIVE PAGE DATA</span></h2><div class="detail">The browser can report the address it opened. GitHub commit details are checked separately in the repository.</div><div class="metrics"><div class="metric"><b id="host">—</b><span>HOST</span></div><div class="metric"><b id="protocol">—</b><span>PROTOCOL</span></div><div class="metric"><b id="width">—</b><span>VIEWPORT WIDTH</span></div></div><p class="detail">Current URL: <code id="url">—</code></p></article>
+  <article class="card"><h2>06 · File independence <span class="status pass">PASS</span></h2><div class="big">1 file</div><div class="detail">All styles and scripts are inside this HTML document. No image, CSS, JavaScript, font, or package downloads are required.</div></article>
+  <article class="card"><h2>07 · Browser capabilities <span class="status" id="s-browser">CHECKING</span></h2><div class="big" id="browser-result">—</div><div class="detail" id="browser-detail">Checks available browser features without requesting permissions.</div></article>
+</section>
+<section class="card full" style="margin-top:14px"><h2>Diagnostic report <span class="status" id="overall">IN PROGRESS</span></h2><div id="report">Initializing…</div></section>
+<footer>VOID TEST LAB · Built as a single static HTML file · No account credentials collected · No data sent except the public GitHub repository metadata request.</footer>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const results = {};
+function mark(id, state, label) { const el = $(id); el.textContent = label; el.className = 'status ' + (state === 'pass' ? 'pass' : state === 'fail' ? 'fail' : ''); }
+function record(name, state, detail) { results[name] = {state, detail}; }
+function renderReport() {
+  const lines = ['VOID GITHUB TEST LAB','Time: ' + new Date().toISOString(),'URL: ' + location.href,'User agent: ' + navigator.userAgent,'Viewport: ' + innerWidth + ' × ' + innerHeight,''];
+  for (const [name, item] of Object.entries(results)) lines.push(`${item.state.toUpperCase()} · ${name}: ${item.detail}`);
+  const passed = Object.values(results).filter(x => x.state === 'pass').length;
+  const failed = Object.values(results).filter(x => x.state === 'fail').length;
+  lines.push('', `RESULT: ${passed} passed · ${failed} failed`);
+  $('report').textContent = lines.join('\n');
+  mark('overall', failed ? 'fail' : 'pass', failed ? 'CHECK FAILURES' : 'TESTS COMPLETE');
+}
+async function runTests() {
+  $('js-result').textContent = 'JavaScript active'; mark('s-js','pass','PASS'); record('JavaScript execution','pass','Interactive test runner executed.');
+  try {
+    const key = 'void-github-test-lab'; localStorage.setItem(key, 'storage-ok');
+    const ok = localStorage.getItem(key) === 'storage-ok';
+    mark('s-storage',ok?'pass':'fail',ok?'PASS':'FAIL'); $('storage-result').textContent = ok ? 'Read / write OK' : 'Read-back failed';
+    record('Local storage',ok?'pass':'fail',ok?'Browser saved and retrieved a test value.':'Browser storage did not return the test value.'); localStorage.removeItem(key);
+  } catch(e) { mark('s-storage','fail','BLOCKED'); $('storage-result').textContent = 'Unavailable'; record('Local storage','fail',e.message); }
+  $('host').textContent = location.hostname || 'LOCAL FILE'; $('protocol').textContent = location.protocol.replace(':','').toUpperCase(); $('width').textContent = innerWidth + ' px'; $('url').textContent = location.href;
+  const features = ['fetch','localStorage','querySelector','addEventListener'].filter(k => k in window);
+  $('browser-result').textContent = features.length + ' / 4 available'; $('browser-detail').textContent = features.join(' · ');
+  mark('s-browser',features.length===4?'pass':'fail',features.length===4?'PASS':'PARTIAL'); record('Browser features',features.length===4?'pass':'fail',features.join(', '));
+  try {
+    const response = await fetch('https://api.github.com/repos/Kawhooped/voidd-hub', {headers:{'Accept':'application/vnd.github+json'}});
+    if (!response.ok) throw new Error('GitHub API returned HTTP ' + response.status);
+    const repo = await response.json(); $('api-result').textContent = repo.full_name || 'Repository found';
+    $('api-detail').textContent = `Public repository · default branch: ${repo.default_branch} · visibility: ${repo.visibility || 'public'}`;
+    mark('s-api','pass','PASS'); record('GitHub public API','pass',`${repo.full_name}; default branch ${repo.default_branch}; HTTP ${response.status}.`);
+  } catch(e) { $('api-result').textContent = 'Unavailable'; $('api-detail').textContent = e.message + ' (Could be network or browser restrictions.)'; mark('s-api','fail','FAIL'); record('GitHub public API','fail',e.message); }
+  renderReport();
+}
+$('run').addEventListener('click',runTests);
+$('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('report').textContent);$('copy').textContent='Copied ✓';setTimeout(()=>$('copy').textContent='Copy test report',1600);}catch(e){$('copy').textContent='Clipboard unavailable';}});
+addEventListener('resize',()=>{$('width').textContent=innerWidth+' px';});
+runTests();
+</script>
+</body>
+</html>
