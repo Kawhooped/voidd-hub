@@ -64,6 +64,7 @@ export function takeTurn(world, characterId, actionId) {
   if (!options) return { ok: false, error: "No local behavior is configured for that action." };
   const text = options[world.turn % options.length];
   const next = structuredClone(world);
+  const nextCharacter = next.characters.find((c) => c.id === characterId);
   next.turn += 1;
   if (actionId === "trade") next.credits = Math.max(0, next.credits + (character.id === "takk" ? 2 : 1));
   if (actionId === "discover" || actionId === "travel") {
@@ -72,10 +73,10 @@ export function takeTurn(world, characterId, actionId) {
   if (actionId === "travel") next.location = "The Echo Garden · Outer Arcade";
   if (actionId === "inspect") next.location = "The Glass Arcade · Artifact Gallery";
   if (actionId === "discover" || actionId === "trade") next.location = "The Glass Arcade · Bazaar District";
-  character.memories.push("Turn " + next.turn + ": " + text);
-  character.mood = ["intrigued", "thoughtful", "restless", "pleased"][(next.turn + next.characters.indexOf(character)) % 4];
-  next.events.push({ turn: next.turn, text: character.name + " — " + action.label + "." });
-  next.dialogue.push({ speaker: character.name, text });
+  nextCharacter.memories.push("Turn " + next.turn + ": " + text);
+  nextCharacter.mood = ["intrigued", "thoughtful", "restless", "pleased"][(next.turn + next.characters.indexOf(nextCharacter)) % 4];
+  next.events.push({ turn: next.turn, text: nextCharacter.name + " — " + action.label + "." });
+  next.dialogue.push({ speaker: nextCharacter.name, text });
   next.scene = nextScenes[(next.turn - 1) % nextScenes.length];
   return { ok: true, world: next, message: character.name + " completed: " + action.label + "." };
 }
