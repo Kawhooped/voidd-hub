@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090a12">
+<meta name="description" content="The control room for the VOID project network.">
+<title>Command Center — VOID.LIFE</title>
+<style>
+:root{color-scheme:dark;--bg:#090a12;--panel:#14182a;--line:#303650;--ink:#f4f1ff;--muted:#aaa9bf;--violet:#bba5ff;--cyan:#83e5eb;--gold:#f0d28c}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#292044,transparent 38%),var(--bg);color:var(--ink);font:14px/1.55 system-ui,sans-serif}
+a{color:inherit;text-decoration:none}a:hover{color:var(--cyan)}button,input,select{font:inherit}.wrap{width:min(1160px,calc(100% - 30px));margin:auto}
+header{height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff18}.brand{font-size:12px;font-weight:900;letter-spacing:.28em;color:#ded4ff}nav{display:flex;gap:18px;color:#c8c5d9;font-size:12px}
+.hero{padding:42px 0 25px}.eyebrow,.tag{font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:var(--cyan)}h1{font-size:clamp(38px,6vw,64px);line-height:1;letter-spacing:-.065em;margin:10px 0}.hero p{color:var(--muted);max-width:680px}
+.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}.toolbar input,.toolbar select{padding:11px 13px;border:1px solid var(--line);border-radius:9px;background:#111525;color:var(--ink)}.toolbar input{flex:1;min-width:190px}
+.button{display:inline-flex;align-items:center;padding:10px 13px;border-radius:9px;background:var(--violet);color:#171222;font-weight:750;font-size:12px}.button.secondary{background:#ffffff09;border:1px solid var(--line);color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.stat{padding:15px;border:1px solid var(--line);border-radius:11px;background:#ffffff05}.stat b{display:block;font-size:24px;letter-spacing:-.05em}.stat span{color:var(--muted);font-size:11px}
+.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:26px 0 12px}.sectionhead h2{font-size:17px;margin:0}.muted{color:var(--muted);font-size:11px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.card{min-width:0;padding:16px;border:1px solid var(--line);border-radius:13px;background:linear-gradient(145deg,#191d31,#101421);display:flex;flex-direction:column;min-height:190px}.card h3{font-size:16px;margin:7px 0 5px;overflow-wrap:anywhere}.card p{font-size:12px;color:var(--muted);margin:0 0 12px}.pills{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}.pill{font-size:9px;padding:3px 6px;border:1px solid var(--line);border-radius:6px;color:#d3d0e4}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto}.actions a{font-size:11px;color:var(--cyan)}
+.notice{padding:15px;border:1px solid var(--line);border-radius:12px;background:#ffffff05;margin:18px 0 30px;color:var(--muted);font-size:12px}.notice strong{color:var(--ink)}.empty{grid-column:1/-1;padding:25px;border:1px dashed var(--line);border-radius:12px;color:var(--muted)}
+footer{border-top:1px solid #ffffff18;padding:18px 0 28px;color:var(--muted);font-size:11px}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,1fr)}header{height:auto;padding:15px 0;gap:10px}nav{gap:10px;flex-wrap:wrap;justify-content:flex-end}}
+@media(max-width:500px){.grid{grid-template-columns:1fr}.sectionhead{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body><div class="wrap">
+<header><a class="brand" href="../../">V O I D . L I F E</a><nav><a href="../../">Home</a><a href="../../foundry/">Foundry</a><a href="../model-browser/">Models</a><a href="../living-worlds/">Worlds</a></nav></header>
+<main>
+<section class="hero"><div class="eyebrow">VOID / NETWORK OPERATIONS</div><h1>Command <span style="font-family:Georgia,serif;color:var(--violet);font-weight:400">Center</span></h1><p>One live index for the tools, experiments, and systems in our network. Find a project, open it, inspect its source, and keep the catalog organized.</p></section>
+<div class="stats"><div class="stat"><b id="total">—</b><span>Registered projects</span></div><div class="stat"><b id="tools">—</b><span>Tools</span></div><div class="stat"><b id="experiments">—</b><span>Experiments</span></div><div class="stat"><b id="games">—</b><span>Games</span></div></div>
+<div class="toolbar"><input id="search" type="search" placeholder="Search projects, tags, descriptions…"><select id="type"><option value="">All project types</option><option value="tool">Tools</option><option value="experiment">Experiments</option><option value="game">Games</option><option value="research">Research</option></select><a class="button secondary" href="https://github.com/Kawhooped/voidd-hub/edit/dd-main/api/feed.json" target="_blank" rel="noopener">Edit project registry ↗</a><a class="button secondary" href="https://github.com/Kawhooped/voidd-hub" target="_blank" rel="noopener">Open repository ↗</a></div>
+<div class="sectionhead"><h2>Project network</h2><span class="muted" id="count">Loading registry…</span></div>
+<section class="grid" id="projects"><div class="empty">Loading the VOID project registry…</div></section>
+<div class="notice"><strong>Control boundary:</strong> this page reads the shared project registry and links to each project's live page and source. It does not yet write files, change deployments, or execute remote actions. Those operations need an authenticated control service; never put a GitHub token in this public page.</div>
+</main>
+<footer><a href="../../">← VOID.LIFE</a> · Command Center · Registry: <a href="../../api/feed.json">api/feed.json</a></footer>
+</div>
+<script>
+const $=id=>document.getElementById(id);let projects=[];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function sourceUrl(url){try{const u=new URL(url);const prefix="/voidd-hub/";if(u.hostname==="kawhooped.github.io"&&u.pathname.startsWith(prefix)){const path=u.pathname.slice(prefix.length).replace(/\/$/,"");return "https://github.com/Kawhooped/voidd-hub/tree/dd-main/"+path}return ""}catch(_){return ""}}
+function render(){const q=$("search").value.toLowerCase().trim(),type=$("type").value;const rows=projects.filter(p=>(!type||p.type===type)&&(!q||[p.title,p.description,p.type,...(p.tags||[])].join(" ").toLowerCase().includes(q)));$("count").textContent=rows.length+" of "+projects.length+" projects";$("projects").innerHTML=rows.length?rows.map(p=>{const source=sourceUrl(p.url);return '<article class="card"><div class="tag">'+esc(p.type||"project")+'</div><h3>'+esc(p.title)+'</h3><p>'+esc(p.description)+'</p><div class="pills">'+(p.tags||[]).slice(0,5).map(t=>'<span class="pill">'+esc(t)+'</span>').join("")+'</div><div class="actions"><a href="'+esc(p.url)+'" target="_blank" rel="noopener">Open project ↗</a>'+(source?'<a href="'+esc(source)+'" target="_blank" rel="noopener">Inspect source ↗</a>':'')+'</div></article>'}).join(""):'<div class="empty">No projects match that search.</div>'}
+async function init(){try{const res=await fetch("../../api/feed.json",{cache:"no-store"});if(!res.ok)throw new Error("Registry returned "+res.status);const data=await res.json();projects=Array.isArray(data.projects)?data.projects:[];$("total").textContent=projects.length;$("tools").textContent=projects.filter(p=>p.type==="tool").length;$("experiments").textContent=projects.filter(p=>p.type==="experiment").length;$("games").textContent=projects.filter(p=>p.type==="game").length;render()}catch(e){$("count").textContent="Registry unavailable";$("projects").innerHTML='<div class="empty">Could not load api/feed.json. '+esc(e.message)+'</div>'}}
+$("search").addEventListener("input",render);$("type").addEventListener("change",render);init();
+</script>
+</body></html>
