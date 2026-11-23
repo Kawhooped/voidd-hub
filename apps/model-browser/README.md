@@ -8,6 +8,7 @@ A static browser-based discovery and download interface for public Hugging Face 
 - Inspect repository metadata and individual files.
 - Identify common weight formats (GGUF, ONNX, Safetensors, PyTorch, TFLite).
 - Filter file lists and download selected files directly from Hugging Face.
+- Queue multiple files for sequential downloads with per-file progress where supported.
 - Display file sizes when supplied by Hub metadata.
 
 ## Run
