@@ -5,6 +5,20 @@
   "updated_at": "2026-11-23",
   "projects": [
     {
+      "id": "void-publish-console",
+      "title": "VOID Publish",
+      "type": "tool",
+      "tags": [
+        "html",
+        "upload",
+        "publisher",
+        "github-pages",
+        "deployment"
+      ],
+      "url": "https://kawhooped.github.io/voidd-hub/create.html",
+      "description": "Import a standalone HTML file, preview it, publish it directly to the VOID Hub repository, and automatically register the new page in the public catalog."
+    },
+    {
       "id": "void-command-center",
       "title": "VOID Command Center",
       "type": "tool",
