@@ -14,13 +14,13 @@ A static browser-based discovery and download interface for public Hugging Face 
 Deploy this folder as a static site. No backend, API key, or account is required for public model discovery.
 
 ## Download behavior
-Downloads are initiated through the original Hugging Face `resolve/main/<file>` URLs. The browser controls the destination and download behavior. The app deliberately downloads individual files rather than attempting to fetch an entire repository into browser memory.
+Downloads use the original Hugging Face `resolve/main/<file>` URLs. Where supported, the app streams response chunks into a user-selected file handle instead of buffering a multi-gigabyte model in memory. Unsupported browsers use ordinary browser downloads. The app deliberately downloads individual files rather than attempting to fetch an entire repository into browser memory.
 
 Public model metadata is discoverable without authentication. Gated/private repositories may require the user to sign in to Hugging Face and accept access terms. This static page does not collect or store Hugging Face access tokens.
 
 ## Limitations
-- Browser downloads may not provide a reliable aggregate progress bar for large files.
-- Multi-file repositories are downloaded one file at a time.
+- Streaming progress and direct-to-file saving require browser support for the File System Access API; otherwise the app falls back to normal browser downloads, which may not expose progress.
+- Queue items run sequentially. The queue is currently held in the page session and is not persisted after closing the tab.
 - Model size filters are approximate and depend on size metadata returned by the Hub.
 - Repository licenses and hardware compatibility must be checked on the model card before use.
 - Search depends on Hugging Face availability and browser connectivity.
