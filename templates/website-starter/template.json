@@ -1,0 +1,40 @@
+{
+  "id": "website-starter",
+  "name": "Website Starter",
+  "version": "1.0.0",
+  "type": "static-website",
+  "description": "A lightweight, responsive, accessible static website foundation for VOID projects.",
+  "stack": [
+    "HTML",
+    "CSS",
+    "Vanilla JavaScript"
+  ],
+  "structure": [
+    "index.html",
+    "assets/",
+    "README.md"
+  ],
+  "features": [
+    "responsive layout",
+    "accessible navigation",
+    "design tokens",
+    "metadata and SEO basics",
+    "reduced-motion support"
+  ],
+  "configuration": {
+    "siteName": "New VOID Project",
+    "tagline": "A short description",
+    "theme": "void-dark",
+    "navigation": [
+      "Home",
+      "Explore",
+      "About"
+    ]
+  },
+  "verification": [
+    "Open at mobile and desktop widths",
+    "Check all navigation links",
+    "Check keyboard navigation",
+    "Check browser console"
+  ]
+}
