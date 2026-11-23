@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#090a12">
-<meta name="description" content="Explore a tiny persistent AI simulation world inside VOID.LIFE.">
+<meta name="description" content="Explore a persistent AI simulation world inside VOID.LIFE.">
 <title>Living Worlds — VOID.LIFE</title>
 <style>
 :root{color-scheme:dark;--bg:#090a12;--panel:#14182a;--panel2:#1b2035;--line:#303650;--ink:#f4f1ff;--muted:#aaa9bf;--violet:#bba5ff;--cyan:#83e5eb;--gold:#f0d28c}
@@ -15,8 +15,8 @@ header{height:66px;display:flex;align-items:center;justify-content:space-between
 h1{font-size:clamp(36px,6vw,60px);line-height:1;letter-spacing:-.065em;margin:10px 0}.hero p{color:var(--muted);max-width:650px;margin:10px 0}
 .toolbar{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:22px 0}
 button,select{font:inherit;border:1px solid var(--line);border-radius:9px;padding:10px 13px;background:#ffffff09;color:var(--ink)}
-button{cursor:pointer}button.primary{background:var(--violet);border-color:var(--violet);color:#171222;font-weight:750}button:hover{border-color:var(--cyan)}
-.layout{display:grid;grid-template-columns: minmax(0,1.55fr) minmax(270px,.85fr);gap:15px;margin-bottom:34px}
+button{cursor:pointer}button.primary{background:var(--violet);border-color:var(--violet);color:#171222;font-weight:750}button:hover{border-color:var(--cyan)}button:disabled{opacity:.55;cursor:wait}
+.layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(270px,.85fr);gap:15px;margin-bottom:34px}
 .panel{background:linear-gradient(145deg,#191d31,#101421);border:1px solid var(--line);border-radius:15px;padding:17px;min-width:0}
 .panel h2{font-size:16px;margin:0 0 13px;letter-spacing:-.025em}
 .scene{min-height:180px;padding:19px;border:1px solid #ffffff12;border-radius:12px;background:radial-gradient(ellipse at 80% 10%,#41335b88,transparent 45%),#0d1120}
@@ -24,8 +24,7 @@ button{cursor:pointer}button.primary{background:var(--violet);border-color:var(-
 .characters{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
 .character{padding:13px;border:1px solid var(--line);border-radius:11px;background:#ffffff05;cursor:pointer;text-align:left;width:100%}
 .character.selected{border-color:var(--violet);background:#bba5ff12}.character strong{display:block;font-size:14px}.character small{display:block;color:var(--muted);margin-top:3px}
-.portrait{font-size:21px;margin-bottom:5px}
-.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.actions button{font-size:12px}
+.portrait{font-size:21px;margin-bottom:5px}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.actions button{font-size:12px}
 .dialogue{display:flex;flex-direction:column;gap:9px;max-height:380px;overflow:auto}
 .entry{padding:11px 12px;border-radius:10px;background:#ffffff07;border:1px solid #ffffff0c}.entry strong{color:var(--violet)}.entry p{margin:4px 0 0;color:#d5d2e2}
 .side{display:flex;flex-direction:column;gap:14px}.memory{color:var(--muted);font-size:12px;white-space:pre-wrap;max-height:180px;overflow:auto}
@@ -41,13 +40,13 @@ footer{border-top:1px solid #ffffff18;padding:18px 0 28px;color:var(--muted);fon
 <header><a class="brand" href="../../">V O I D . L I F E</a><nav><a href="../../">Home</a><a href="../../foundry/">Foundry</a><a href="../../explore.html">Explore</a></nav></header>
 <main>
 <section class="hero"><div class="eyebrow">VOID / SIMULATION 001</div><h1>Living <span style="color:var(--violet);font-family:Georgia,serif;font-weight:400">Worlds</span></h1><p>A small marketplace that keeps moving. Meet four residents, give them a turn, or let the simulation run. Their world state and memories persist in this browser.</p></section>
-<div class="toolbar"><button class="primary" id="nextTurn">Run next turn</button><button id="runFive">Run 5 turns</button><button id="autoRun">Start auto</button><button id="reset">Reset world</button><span class="stat">Turn <b id="turnNumber">0</b></span><span class="stat">Model <b id="modelStatus">Local fallback</b></span></div>
+<div class="toolbar"><button class="primary" id="nextTurn">Run next turn</button><button id="runFive">Run 5 turns</button><button id="autoRun">Start auto</button><button id="reset">Reset world</button><button id="loadModel">Load Qwen 0.8B</button><span class="stat">Turn <b id="turnNumber">0</b></span><span class="stat">Model <b id="modelStatus">Scripted fallback</b></span></div>
 <div class="layout">
 <section class="panel">
 <h2>Current scene</h2><div class="scene"><div class="place" id="location">The Glass Arcade · Bazaar District</div><h3 id="sceneTitle">A quiet hour between trades</h3><p id="sceneText">Lanterns drift beneath the vaulted ceiling. Four merchants consider what the day might bring.</p></div>
 <h2 style="margin-top:17px">Residents</h2><div class="characters" id="characters"></div>
 <h2 style="margin-top:18px">Available actions</h2><div class="actions" id="actions"></div>
-<div class="status" id="status" role="status" aria-live="polite">Choose a resident, then choose an action or run the simulation.</div>
+<div class="status" id="status" role="status" aria-live="polite">Load Qwen to give Vexa a real local model brain. The scripted simulation works without it.</div>
 </section>
 <aside class="side">
 <section class="panel"><h2>Marketplace exchange</h2><div class="dialogue" id="dialogue" aria-live="polite"></div></section>
@@ -56,5 +55,5 @@ footer{border-top:1px solid #ffffff18;padding:18px 0 28px;color:var(--muted);fon
 </aside>
 </div>
 </main>
-<footer><a href="../../foundry/">← VOID Foundry</a> · Prototype 0.1 · Local simulation; no external AI calls are made.</footer>
+<footer><a href="../../foundry/">← VOID Foundry</a> · Prototype 0.2 · Qwen runs locally in a compatible browser; model weights are downloaded from Hugging Face and cached by the browser.</footer>
 </div><script type="module" src="./src/app.js"></script></body></html>
