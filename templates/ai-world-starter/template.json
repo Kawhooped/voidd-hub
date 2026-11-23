@@ -11,14 +11,9 @@
     "pluggable model adapter"
   ],
   "structure": [
-    "index.html",
-    "src/world-state.js",
-    "src/simulation.js",
-    "src/agents.js",
-    "src/memory.js",
-    "src/knowledge.js",
-    "src/validators.js",
-    "config/world.json"
+    "template.json",
+    "README.md",
+    "src/world-engine.js"
   ],
   "features": [
     "separate world state from model output",
@@ -28,7 +23,11 @@
     "knowledge retrieval boundary",
     "deterministic rule checks",
     "model adapter interface",
-    "fallback for invalid or unavailable model responses"
+    "fallback for invalid or unavailable model responses",
+    "reusable simulation core",
+    "agent context builder",
+    "action proposal validation",
+    "rule-mediated world state changes"
   ],
   "configuration": {
     "worldName": "Interdimensional Bazaar",
