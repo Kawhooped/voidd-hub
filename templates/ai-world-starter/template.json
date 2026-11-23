@@ -1,0 +1,116 @@
+{
+  "id": "ai-world-starter",
+  "name": "AI World Starter",
+  "version": "1.0.0",
+  "type": "agent-simulation",
+  "description": "A model-independent blueprint for characters acting inside a persistent simulated world.",
+  "stack": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "pluggable model adapter"
+  ],
+  "structure": [
+    "index.html",
+    "src/world-state.js",
+    "src/simulation.js",
+    "src/agents.js",
+    "src/memory.js",
+    "src/knowledge.js",
+    "src/validators.js",
+    "config/world.json"
+  ],
+  "features": [
+    "separate world state from model output",
+    "character profiles and goals",
+    "discrete action choices",
+    "event log and memory summaries",
+    "knowledge retrieval boundary",
+    "deterministic rule checks",
+    "model adapter interface",
+    "fallback for invalid or unavailable model responses"
+  ],
+  "configuration": {
+    "worldName": "Interdimensional Bazaar",
+    "turnMode": "manual",
+    "characters": [
+      {
+        "id": "vexa",
+        "name": "Vexa",
+        "role": "merchant",
+        "goal": "discover and trade rare concepts",
+        "traits": [
+          "curious",
+          "opportunistic"
+        ]
+      },
+      {
+        "id": "orun",
+        "name": "Orun",
+        "role": "knowledge-keeper",
+        "goal": "collect and verify useful knowledge",
+        "traits": [
+          "careful",
+          "analytical"
+        ]
+      },
+      {
+        "id": "miri",
+        "name": "Miri",
+        "role": "explorer",
+        "goal": "discover new locations",
+        "traits": [
+          "playful",
+          "adventurous"
+        ]
+      },
+      {
+        "id": "takk",
+        "name": "Takk",
+        "role": "trader",
+        "goal": "build a valuable collection",
+        "traits": [
+          "competitive",
+          "persuasive"
+        ]
+      }
+    ],
+    "model": {
+      "provider": "none",
+      "modelId": "configure-later",
+      "execution": "browser-or-server"
+    },
+    "safety": {
+      "validateActionsAgainstWorldRules": true,
+      "treatRetrievedKnowledgeAsUntrusted": true,
+      "requireHumanApprovalForExternalActions": true
+    }
+  },
+  "actionProtocol": {
+    "input": [
+      "character",
+      "location",
+      "observations",
+      "goals",
+      "availableActions",
+      "relevantMemories"
+    ],
+    "output": {
+      "action": "one allowed action ID",
+      "say": "short optional dialogue",
+      "memoryCandidate": "optional event summary"
+    }
+  },
+  "verification": [
+    "Invalid action IDs are rejected",
+    "World state changes only through simulation rules",
+    "Characters cannot read other characters' private memories",
+    "Unknown facts trigger retrieval or clarification",
+    "Run 20 turns and inspect event log"
+  ],
+  "notes": [
+    "The model proposes actions; deterministic simulation code decides what actually happens.",
+    "Memory, relationships, inventory, and world state live outside the language model.",
+    "Do not expose provider API keys in browser code."
+  ]
+}
