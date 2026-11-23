@@ -1,9 +1,11 @@
 import { createWorld, takeTurn, resetWorld, getAvailableActions } from "./world.js";
+import { qwenAdapter } from "./qwen-adapter.js";
 
 const STORAGE_KEY = "void-living-worlds-v1";
 let world = loadWorld();
 let selectedId = world.characters[0].id;
 let autoTimer = null;
+let turnBusy = false;
 
 const $ = (id) => document.getElementById(id);
 function loadWorld() {
@@ -26,6 +28,7 @@ function render() {
   $("credits").textContent = world.credits;
   $("artifacts").textContent = world.artifacts.length;
   $("discoveries").textContent = world.discoveries.length;
+  $("modelStatus").textContent = qwenAdapter.ready ? "Qwen 0.8B · Vexa" : "Scripted fallback";
   $("characters").innerHTML = world.characters.map((c) =>
     '<button class="character ' + (c.id === selectedId ? "selected" : "") + '" data-character="' + c.id + '">' +
     '<div class="portrait">' + c.emoji + '</div><strong>' + escapeHtml(c.name) + '</strong><small>' +
@@ -52,21 +55,16 @@ function render() {
   ).join("");
   save();
 }
-function performTurn(characterId, actionId) {
-  const result = takeTurn(world, characterId, actionId);
-  if (!result.ok) { $("status").textContent = result.error; return; }
+function performTurn(characterId, actionId, dialogue = "") {
+  const result = takeTurn(world, characterId, actionId, dialogue);
+  if (!result.ok) { $("status").textContent = result.error; return false; }
   world = result.world;
   selectedId = characterId;
   $("status").textContent = result.message;
   render();
+  return true;
 }
-function runNext() {
-  const c = world.characters[world.turn % world.characters.length];
-  const actions = getAvailableActions(world, c);
-  const choice = chooseLocalAction(world, c, actions);
-  performTurn(c.id, choice.id);
-}
-function chooseLocalAction(state, character, actions) {
+function localChoice(state, character, actions) {
   const preferences = {
     vexa: ["discover", "trade", "inspect", "travel"],
     orun: ["inspect", "discover", "trade", "travel"],
@@ -78,26 +76,63 @@ function chooseLocalAction(state, character, actions) {
   const offset = (state.turn + character.memories.length) % Math.min(2, ordered.length);
   return ordered[offset] || actions[0];
 }
+async function runNext() {
+  if (turnBusy) return;
+  turnBusy = true;
+  try {
+    const c = world.characters[world.turn % world.characters.length];
+    const actions = getAvailableActions(world, c);
+    let proposal = null;
+    if (c.id === "vexa" && qwenAdapter.ready) {
+      $("status").textContent = "Qwen is considering Vexa's next move…";
+      try {
+        proposal = await qwenAdapter.chooseAction({
+          character: { name: c.name, role: c.role, personality: c.personality, goal: c.goal, mood: c.mood, memories: c.memories.slice(-5) },
+          scene: world.scene,
+          location: world.location,
+          turn: world.turn,
+          allowedActions: actions.map(({ id, label }) => ({ id, label })),
+          discoveries: world.discoveries.slice(-3)
+        });
+      } catch (error) {
+        $("status").textContent = "Qwen failed; using scripted fallback. " + error.message;
+      }
+    }
+    const valid = proposal && actions.some((a) => a.id === proposal.actionId);
+    const choice = valid ? actions.find((a) => a.id === proposal.actionId) : localChoice(world, c, actions);
+    const dialogue = valid ? proposal.dialogue : "";
+    if (qwenAdapter.ready && c.id === "vexa" && !valid) $("status").textContent = "Qwen proposal was invalid; scripted fallback used.";
+    performTurn(c.id, choice.id, dialogue);
+  } finally {
+    turnBusy = false;
+  }
+}
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
 }
 $("nextTurn").addEventListener("click", runNext);
-$("runFive").addEventListener("click", () => { for (let i = 0; i < 5; i++) runNext(); });
+$("runFive").addEventListener("click", async () => {
+  if (turnBusy) return;
+  for (let i = 0; i < 5; i++) await runNext();
+});
 $("autoRun").addEventListener("click", () => {
   if (autoTimer) { clearInterval(autoTimer); autoTimer = null; $("autoRun").textContent = "Start auto"; $("status").textContent = "Simulation paused."; }
-  else { autoTimer = setInterval(runNext, 1800); $("autoRun").textContent = "Pause auto"; $("status").textContent = "Simulation running. Watch the event ledger."; }
+  else { autoTimer = setInterval(() => { runNext(); }, 1800); $("autoRun").textContent = "Pause auto"; $("status").textContent = "Simulation running. Vexa uses Qwen when it is her turn."; }
+});
+$("loadModel").addEventListener("click", async () => {
+  $("loadModel").disabled = true;
+  try {
+    await qwenAdapter.load((message) => { $("status").textContent = message; });
+    $("loadModel").textContent = "Qwen connected ✓";
+    $("status").textContent = "Qwen 0.8B is ready. Vexa will use it on her next automatic turn.";
+    render();
+  } catch (error) {
+    $("status").textContent = "Could not connect Qwen: " + error.message + " Scripted simulation remains available.";
+    $("loadModel").disabled = false;
+  }
 });
 $("reset").addEventListener("click", () => {
   if (autoTimer) { clearInterval(autoTimer); autoTimer = null; $("autoRun").textContent = "Start auto"; }
   world = resetWorld(); selectedId = world.characters[0].id; $("status").textContent = "The marketplace has been reset."; render();
 });
 render();
-
-// Future model adapter contract: send only the current character's relevant context and
-// allowed action IDs. Validate the returned action against getAvailableActions before use.
-// Never let model-generated text directly mutate world state or perform external actions.
-export const modelAdapter = {
-  async chooseAction(_context) {
-    return null; // null means use the deterministic local fallback above
-  }
-};
