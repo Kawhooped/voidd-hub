@@ -1,0 +1,41 @@
+{
+  "id": "interactive-app-starter",
+  "name": "Interactive App Starter",
+  "version": "1.0.0",
+  "type": "browser-application",
+  "description": "A reusable browser-app foundation for tools, games, experiments, and visual interfaces.",
+  "stack": [
+    "HTML",
+    "CSS",
+    "Vanilla JavaScript"
+  ],
+  "structure": [
+    "index.html",
+    "src/app.js",
+    "src/state.js",
+    "src/storage.js",
+    "assets/",
+    "README.md"
+  ],
+  "features": [
+    "clear application state",
+    "separated UI and logic",
+    "local persistence adapter",
+    "empty, loading, and error states",
+    "responsive controls",
+    "export-friendly static deployment"
+  ],
+  "configuration": {
+    "appName": "New VOID Experiment",
+    "primaryAction": "Start",
+    "persistence": "localStorage",
+    "dataSchemaVersion": 1
+  },
+  "verification": [
+    "Test the primary user flow",
+    "Reload and verify persistence",
+    "Test empty and invalid inputs",
+    "Test keyboard and touch interaction",
+    "Check console for errors"
+  ]
+}
