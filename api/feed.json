@@ -2,7 +2,7 @@
   "hub": "VOIDD Web Experiments",
   "author": "VOIDD Labs",
   "home": "https://kawhooped.github.io/voidd-hub/",
-  "updated_at": "2026-11-22",
+  "updated_at": "2026-11-23",
   "projects": [
     {
       "id": "midjourney-chat-studio",
@@ -372,6 +372,21 @@
       ],
       "url": "https://kawhooped.github.io/voidd-hub/research/evaluating-ai-skills.html",
       "description": "A practical evaluation protocol for comparing baseline model performance with skill-assisted performance across repeatable tasks."
+    },
+    {
+      "id": "duo-sound-dos",
+      "title": "Dúo Sound Dos",
+      "type": "artist",
+      "tags": [
+        "music",
+        "Cuba",
+        "Miami",
+        "duo",
+        "concerts",
+        "booking"
+      ],
+      "url": "https://kawhooped.github.io/voidd-hub/artists/duo-sound-dos/",
+      "description": "Cuban musical duo Rubén Aguiar and Bárbara Milián, based in Miami. Artist profile, music links, and concert booking inquiries."
     }
   ]
 }
