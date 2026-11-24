@@ -134,6 +134,13 @@
       "subject": "Recovered backlog",
       "result": "Classified all 34 recovered backlog entries plus 8 historical Replit cleanup tasks as fallback projects/tasks. Added selection rules so one suitable item can be advanced when no new user-directed task is available. Paused automations remain paused.",
       "evidence": "Existing ops-ledger backlog and user instruction in current conversation"
+    },
+    {
+      "date": "2026-11-24",
+      "event": "fallback_shortlist_curated",
+      "subject": "Fallback task pool",
+      "result": "Selected six high-leverage fallback tracks aligned with the user's stated goals. All 42 entries remain preserved; the remaining items are parked, not deleted or active commitments.",
+      "evidence": "Current operations ledger priorities, backlog descriptions, and user instruction to select the most useful."
     }
   ],
   "unknowns": [
@@ -1117,7 +1124,55 @@
           "next_action": "Evaluate whether to develop, reuse, or archive."
         }
       ],
-      "automation_policy": "The eight paused automations remain paused. Their associated projects are available as fallback tasks, but scheduling is a separate action requiring user approval."
+      "automation_policy": "The eight paused automations remain paused. Their associated projects are available as fallback tasks, but scheduling is a separate action requiring user approval.",
+      "active_shortlist": [
+        {
+          "rank": 1,
+          "id": "B-001",
+          "title": "Public website network + traffic measurement",
+          "why": "Closest to the stated near-term outcome: five public sites and measurable traffic.",
+          "next": "Establish the verified site list, count distinct live sites, then add one lightweight analytics method to each."
+        },
+        {
+          "rank": 2,
+          "id": "B-003",
+          "title": "GitHub Garage / VOID Network Core",
+          "why": "Existing canonical platform can consolidate tools, projects, and operations instead of creating more disconnected apps.",
+          "next": "Apply the existing implementation handoff to the current Garage and verify the core features."
+        },
+        {
+          "rank": 3,
+          "id": "B-002",
+          "title": "Central Dashboard / VOID Network Command Center",
+          "why": "Directly advances the programmable digital environment and gives one place to see the network.",
+          "next": "Reuse Garage and the ledger as sources; replace seeded/local-only status with real project records."
+        },
+        {
+          "rank": 4,
+          "id": "B-011",
+          "title": "Research & Technology Studio",
+          "why": "Improves the research process and preserves reusable methods and artifacts across all projects.",
+          "next": "Make the artifact library searchable and versioned; choose one research question and deliver a tested result."
+        },
+        {
+          "rank": 5,
+          "id": "B-012",
+          "title": "Crash-safe agent execution",
+          "why": "A concrete, previously tested reliability capability that can underpin dependable automation.",
+          "next": "Recover the reference implementation and integrate one bounded agent workflow with restart/recovery tests."
+        },
+        {
+          "rank": 6,
+          "id": "B-029",
+          "title": "VOID prototype shelf: select one item to publish",
+          "why": "Turns existing work into public, testable outputs without starting another project.",
+          "next": "Choose one prototype with the smallest path to a working public release; archive or defer the rest."
+        }
+      ],
+      "parked_rule": "All other fallback entries remain preserved in the full backlog but are parked. Do not treat them as active commitments. Reconsider them only when they become relevant, unblock a priority, or outperform the current shortlist.",
+      "default_pick": "B-001",
+      "active_count": 6,
+      "total_preserved_count": 42
     }
   }
 }
