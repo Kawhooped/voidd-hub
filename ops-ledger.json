@@ -2,7 +2,7 @@
   "schema_version": 1,
   "database": "VOID Operations Ledger",
   "purpose": "Authoritative working record of projects, public addresses, repositories, infrastructure, deployments, and operational history.",
-  "updated_at": "2026-11-24T07:38:00-05:00",
+  "updated_at": "2026-11-24",
   "operating_rule": "Read this ledger before investigating. Trust recent verified records. Recheck only stale, missing, or explicitly questioned facts. Record every material change and verification here.",
   "projects": [
     {
@@ -127,6 +127,13 @@
       "subject": "Recovered unfinished and deferred work inventory",
       "result": "Reviewed accessible prior context, 442 Library entries, key project handoffs/research reports, and all 9 current automations. Added 34 backlog entries with status, evidence, artifact names, and next unfinished work. No paused automation was restarted.",
       "evidence": "Library inventory, project attachments, personal conversation context, Automations registry"
+    },
+    {
+      "date": "2026-11-24",
+      "event": "fallback_pool_created",
+      "subject": "Recovered backlog",
+      "result": "Classified all 34 recovered backlog entries plus 8 historical Replit cleanup tasks as fallback projects/tasks. Added selection rules so one suitable item can be advanced when no new user-directed task is available. Paused automations remain paused.",
+      "evidence": "Existing ops-ledger backlog and user instruction in current conversation"
     }
   ],
   "unknowns": [
@@ -346,7 +353,7 @@
   "backlog_review": {
     "reviewed_at": "2026-11-24",
     "scope": "Prior conversation context returned by personal-context search, persistent Library attachments, saved project handoffs/reports, and current task-automation registry. This is a recovered backlog, not proof that every item remains desired.",
-    "coverage_note": "442 Library entries were inventoried across five pages. The inventory contains many visual assets and prototypes; only items with evidence of a project, task, or potentially unfinished work are listed below. Current-conversation attachments: none. Earlier chats may contain material not retained in the Library or available summaries, so this is the fullest recoverable list from accessible sources, not a guarantee of every historical idea.",
+    "coverage_note": "442 Library entries were inventoried across five pages. The inventory contains many visual assets and prototypes; only items with evidence of a project, task, or potentially unfinished work are listed below. Current-conversation attachments: none. Earlier chats may contain material not retained in the Library or available summaries, so this is the fullest recoverable list from accessible sources, not a guarantee of every historical idea. All 34 recovered backlog entries and 8 additional historical Replit cleanup items are now explicitly classified as fallback work. None were activated or restarted.",
     "priority_candidates": [
       {
         "id": "B-001",
@@ -370,7 +377,9 @@
           "Current reachability of older sites.",
           "Which sites have analytics installed.",
           "Whether five distinct public sites are already achieved."
-        ]
+        ],
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-002",
@@ -388,7 +397,9 @@
           "Avoid localStorage-only or seeded/mock data being presented as live shared state.",
           "Connect the canonical Garage rather than create a competing dashboard."
         ],
-        "evidence": "Library prototype includes seeded tasks and localStorage persistence; its own UI labels GitHub data read-only and local workspace active."
+        "evidence": "Library prototype includes seeded tasks and localStorage persistence; its own UI labels GitHub data read-only and local workspace active.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-003",
@@ -409,7 +420,9 @@
           "Do not create a second Garage or duplicate identity/backend."
         ],
         "known_blocker": "Handoff records a prior GitHub write attempt returning 403 and says not to retry through that same blocked path; use an authorized writer path.",
-        "evidence": "VOID Network Core handoff explicitly says it is execution-ready but not applied."
+        "evidence": "VOID Network Core handoff explicitly says it is execution-ready but not applied.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-004",
@@ -421,7 +434,9 @@
           "Integrate existing project/task records rather than creating a parallel board.",
           "Later add approval-gated task updates, audit trail, and bounded automation."
         ],
-        "evidence": "Stage A-D rollout is specified in the Network Core 1.1 handoff."
+        "evidence": "Stage A-D rollout is specified in the Network Core 1.1 handoff.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-005",
@@ -434,7 +449,9 @@
           "Add budgets, rate limits, and kill switch if AI provider calls are introduced."
         ],
         "constraint": "User previously abandoned Supabase over cost concerns; do not assume it is acceptable or introduce a paid backend without a clear reason and approval.",
-        "evidence": "Network Core 1.0 handoff."
+        "evidence": "Network Core 1.0 handoff.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-006",
@@ -448,7 +465,9 @@
           "Only add opt-in bounded multi-agent Council after single-agent chat is stable.",
           "Cost estimates, usage limits, concurrency limits, kill switch, transparent failures."
         ],
-        "evidence": "Network Core 1.0 handoff; later expansion gated on Core 1.0."
+        "evidence": "Network Core 1.0 handoff; later expansion gated on Core 1.0.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-007",
@@ -459,7 +478,9 @@
           "Search and project filters with authorization enforcement.",
           "Link knowledge explicitly to projects and conversations; audit edits/visibility changes."
         ],
-        "evidence": "Network Core 1.0 handoff."
+        "evidence": "Network Core 1.0 handoff.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-008",
@@ -471,7 +492,9 @@
           "Deployment targets, provider-sourced build/deploy history, health checks, error reporting, usage/cost views.",
           "Require confirmation and audit for writes, publish, rollback, and production config changes."
         ],
-        "evidence": "Network Core 1.0 handoff."
+        "evidence": "Network Core 1.0 handoff.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-009",
@@ -481,7 +504,9 @@
           "Confirm whether the itch.io release is published and playable; prior board snapshot said publication awaited owner action.",
           "Keep this release isolated from Garage changes until owner changes priority."
         ],
-        "evidence": "Network Core handoff preserves Dignity Coin Rush as active plot; prior dashboard task says publishing status blocked pending public itch URL and browser playback."
+        "evidence": "Network Core handoff preserves Dignity Coin Rush as active plot; prior dashboard task says publishing status blocked pending public itch URL and browser playback.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-010",
@@ -493,7 +518,9 @@
           "Establish task evidence and completion checks.",
           "Define safe shared persistence and agent write permissions."
         ],
-        "evidence": "Seeded tasks in void-network-command-center.html: T-001, T-003, T-004, T-005."
+        "evidence": "Seeded tasks in void-network-command-center.html: T-001, T-003, T-004, T-005.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-011",
@@ -513,7 +540,9 @@
           "Build the research artifact library as versioned, searchable, testable assets.",
           "Implement benchmark/evaluation pipeline; research map explicitly recorded zero benchmarks implemented as of 2026-11-20.",
           "Promote only verified research into reviewed publications."
-        ]
+        ],
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-012",
@@ -534,7 +563,9 @@
           "Power-loss/filesystem resilience and multiprocess contention.",
           "Cost and fit on constrained environment."
         ],
-        "evidence": "AI_RnD_Conversation_Report.md and companion artifact ZIP."
+        "evidence": "AI_RnD_Conversation_Report.md and companion artifact ZIP.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-013",
@@ -549,7 +580,9 @@
           "Nov 16: 52/52 component tests and 30/30 synthetic scenarios reported.",
           "Nov 17: 69/69 tests and 130/130 scenarios reported."
         ],
-        "evidence": "AI_RnD_Conversation_Report.md; historical test claims were not independently rerun during this review."
+        "evidence": "AI_RnD_Conversation_Report.md; historical test claims were not independently rerun during this review.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-014",
@@ -564,7 +597,9 @@
           "Nov 18: v3 121/121 tests and 50 cross-adapter scenarios reported.",
           "Nov 19: v4 125/125 tests plus concurrency/replay tests reported."
         ],
-        "evidence": "AI_RnD_Conversation_Report.md; historical claims are not current production verification."
+        "evidence": "AI_RnD_Conversation_Report.md; historical claims are not current production verification.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-015",
@@ -576,7 +611,9 @@
           "Implement orchestrator/data contracts, artifact storage, experiment ledger/version archive, benchmark runner/regression detection, knowledge compiler/capability ledger, and recovery.",
           "Confirm actual development environment and dependencies before selecting stack."
         ],
-        "evidence": "Project context explicitly states no RCE v0.2 codebase/orchestrator/database/runner/artifact store/regression detector/knowledge compiler/capability ledger had been implemented or tested."
+        "evidence": "Project context explicitly states no RCE v0.2 codebase/orchestrator/database/runner/artifact store/regression detector/knowledge compiler/capability ledger had been implemented or tested.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-016",
@@ -587,7 +624,9 @@
           "Start with an RMI working simulation and compare against baselines.",
           "Review neural architecture gallery and neural net arcade prototypes; identify what is reusable."
         ],
-        "evidence": "Nov 6 conversation proposed RMI/Neural Memory/Adaptive Network; daily research automation is currently disabled."
+        "evidence": "Nov 6 conversation proposed RMI/Neural Memory/Adaptive Network; daily research automation is currently disabled.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-017",
@@ -604,7 +643,9 @@
           "Build React component library and/or working VOID.UI Studio with navigable shell, component gallery, live preview, theme controls, interactive components.",
           "Verify build, navigation, responsive behavior, and interactions before marking complete."
         ],
-        "evidence": "README describes four modules and interactions; two related automations currently disabled."
+        "evidence": "README describes four modules and interactions; two related automations currently disabled.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-018",
@@ -615,7 +656,9 @@
           "Maintain shared design language while allowing different app personalities.",
           "Keep backend out of first prototype."
         ],
-        "evidence": "Develop VOID.UI Studio automation is disabled; VOID UI artifacts exist in Library."
+        "evidence": "Develop VOID.UI Studio automation is disabled; VOID UI artifacts exist in Library.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-019",
@@ -643,7 +686,9 @@
           "Continue small-model experiments with simple words/emoji vocabulary only if still useful.",
           "Measure behavior against explicit baseline rather than infer capability from the visual demo."
         ],
-        "evidence": "Library contains dataset, vocabulary, world-state and training report files dated 2026-11-20; no verified completion state found."
+        "evidence": "Library contains dataset, vocabulary, world-state and training report files dated 2026-11-20; no verified completion state found.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-020",
@@ -662,7 +707,9 @@
           "Review continuous intelligence prototype/debug report; determine whether event/context extraction works reliably.",
           "Avoid adding multiple agents until one end-to-end loop is demonstrated."
         ],
-        "evidence": "Artifacts present in Library; no completion/production integration evidence found."
+        "evidence": "Artifacts present in Library; no completion/production integration evidence found.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-021",
@@ -674,7 +721,9 @@
           "Validate market dashboard, prices, transactions, production/consumption, inventory, routes, shipments, indices, settlements, and reconciliations.",
           "Keep simulated values distinct from real market data."
         ],
-        "evidence": "Monitor Babylon Observatory automation is disabled; no public URL recorded in its prompt."
+        "evidence": "Monitor Babylon Observatory automation is disabled; no public URL recorded in its prompt.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-022",
@@ -686,7 +735,9 @@
           "Distinguish necessary coordination/risk reduction from redundancy, excessive costs, scarcity, rent extraction, and avoidable dependency.",
           "Use primary sources, quantify impact where possible, include competing explanations and confidence."
         ],
-        "evidence": "Weekly research automation exists but is disabled."
+        "evidence": "Weekly research automation exists but is disabled.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-023",
@@ -697,7 +748,9 @@
           "Move one concrete task toward a tested public release.",
           "Track public links, traffic/sales evidence, blockers, and ways to make workflow faster, simpler, cheaper, and more reliable."
         ],
-        "evidence": "Weekly automation exists but is disabled."
+        "evidence": "Weekly automation exists but is disabled.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-024",
@@ -707,7 +760,9 @@
           "Daily concise market report comparing U.S. and global indices, Treasury yields/rates, dollar, gold, oil, crypto, day-over-day changes, drivers, and next watch items.",
           "Prior reports ran through Oct 18, 2026; automation is currently disabled."
         ],
-        "evidence": "Automation registry shows disabled; prior conversation summary records pause on Oct 18."
+        "evidence": "Automation registry shows disabled; prior conversation summary records pause on Oct 18.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-025",
@@ -717,7 +772,9 @@
           "Monitor for materially verified AI capability advances only; compare against prior reports; notify only for meaningful new capabilities, price/access changes, agent/computer-use, coding/reasoning, multimodal/scientific/robotics advances.",
           "Assess whether a new capability reopens previously blocked workflows."
         ],
-        "evidence": "Daily automation exists but is disabled."
+        "evidence": "Daily automation exists but is disabled.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-026",
@@ -733,7 +790,9 @@
           "React Artifact: heavy/complex.",
           "Weather chat and HTML Seed Factory: minimal prototypes needing a decision."
         ],
-        "evidence": "Nov 19 conversation summary reports 16 Replit projects assessed; these were flagged for attention. Do not revisit Replit unless useful, given user's cost preference."
+        "evidence": "Nov 19 conversation summary reports 16 Replit projects assessed; these were flagged for attention. Do not revisit Replit unless useful, given user's cost preference.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-027",
@@ -744,7 +803,9 @@
           "workshop-gateway was noted as next integration target; actual current status unknown.",
           "Connect Garage to the existing repository catalog without creating a second Garage."
         ],
-        "evidence": "Prior project context and Network Core handoff."
+        "evidence": "Prior project context and Network Core handoff.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-028",
@@ -758,7 +819,9 @@
           "Review routing rules and test whether it materially improves tool/project selection.",
           "Integrate only if it solves a demonstrated workflow bottleneck."
         ],
-        "evidence": "Prototype file and reusable Living Tool Architecture skill exist in Library."
+        "evidence": "Prototype file and reusable Living Tool Architecture skill exist in Library.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-029",
@@ -797,7 +860,9 @@
           "These are existing prototype artifacts, not assumed active projects.",
           "Classify each as keep/build/publish/archive; identify duplicates and shared components.",
           "Promote only selected experiments into public sites or reusable tools; do not publish the entire shelf indiscriminately."
-        ]
+        ],
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-030",
@@ -808,7 +873,9 @@
           "Earlier inspection found Afternic nameservers and Internal Error; no analytics or traffic evidence found.",
           "Avoid assuming domain is currently connected to a working site."
         ],
-        "evidence": "Prior conversation context and earlier domain scan."
+        "evidence": "Prior conversation context and earlier domain scan.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-031",
@@ -819,7 +886,9 @@
           "It should choose one highest-value objective, create temporary task instances, preserve evidence/decisions, and avoid separate recurring subtask automations.",
           "Check coordinator continuity state and ensure it is not generating reports without advancing a real deliverable."
         ],
-        "evidence": "Current automation registry shows Daily Intelligence Coordinator enabled; its last run was Nov 23."
+        "evidence": "Current automation registry shows Daily Intelligence Coordinator enabled; its last run was Nov 23.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-032",
@@ -830,7 +899,9 @@
           "Prompt Kitchen proposed to version and evaluate prompts against shared test cases.",
           "Do not present proposed tools as implemented."
         ],
-        "evidence": "void-tech-research.html labels Prompt Kitchen PROPOSED and experiment reports IN PREPARATION, datasets PENDING, tools ongoing."
+        "evidence": "void-tech-research.html labels Prompt Kitchen PROPOSED and experiment reports IN PREPARATION, datasets PENDING, tools ongoing.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-033",
@@ -860,7 +931,9 @@
           "For Frostwild, review Executive Summary recommendations: richer knowledge representation, smarter rule generation, robust evaluation, safe self-editing, scalability, human oversight; measure rule acceptance, multi-objective score trends, safety incidents.",
           "For Divine Templar AI, review project log/source inventory and decide whether character memory/training modules need integration or are complete artifacts."
         ],
-        "evidence": "Multiple Library prototypes, versioned ZIPs, module docs and project logs."
+        "evidence": "Multiple Library prototypes, versioned ZIPs, module docs and project logs.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       },
       {
         "id": "B-034",
@@ -871,7 +944,9 @@
           "Verify public/private access and HTTPS independently; do not confuse disabling SSO/password gates with disabling TLS.",
           "Add traffic analytics only after public site inventory and choose a simple, privacy-conscious measurement approach."
         ],
-        "evidence": "Prior infrastructure audit request and current project goals."
+        "evidence": "Prior infrastructure audit request and current project goals.",
+        "queue_type": "fallback",
+        "activation_rule": "Use when no higher-priority user-directed task or new idea is ready; reassess current status before execution."
       }
     ],
     "automation_snapshot": {
@@ -935,6 +1010,114 @@
         "Divine Templar AI character-memory/training modules"
       ],
       "note": "Image-only visual references and duplicate exports are not individually enumerated here unless attached to a concrete project."
+    },
+    "fallback_pool": {
+      "purpose": "A reserve pool of existing projects, unfinished tasks, prototypes, and research threads to draw from when the user has no new task or idea to pursue.",
+      "default_behavior": "Do not ask the user to invent work. When there is no active user-directed objective, select one suitable fallback item and make concrete progress.",
+      "selection_rules": [
+        "First respect any current explicit user priority.",
+        "Prefer items that can be completed, published, tested, or materially advanced in one focused session.",
+        "Prefer reuse of existing artifacts over rebuilding.",
+        "Check the item's evidence and last-known status before acting; verify only what is stale or necessary.",
+        "Avoid activating paused automations without explicit user approval.",
+        "Do not treat every item as simultaneously active; keep one primary fallback task at a time.",
+        "Update this ledger with progress, evidence, blockers, and status."
+      ],
+      "included_backlog_ids": [
+        "B-001",
+        "B-002",
+        "B-003",
+        "B-004",
+        "B-005",
+        "B-006",
+        "B-007",
+        "B-008",
+        "B-009",
+        "B-010",
+        "B-011",
+        "B-012",
+        "B-013",
+        "B-014",
+        "B-015",
+        "B-016",
+        "B-017",
+        "B-018",
+        "B-019",
+        "B-020",
+        "B-021",
+        "B-022",
+        "B-023",
+        "B-024",
+        "B-025",
+        "B-026",
+        "B-027",
+        "B-028",
+        "B-029",
+        "B-030",
+        "B-031",
+        "B-032",
+        "B-033",
+        "B-034"
+      ],
+      "additional_legacy_fallbacks": [
+        {
+          "id": "RF-001",
+          "title": "Online Character Database PIN setup",
+          "status": "historical_status_unknown",
+          "source": "Earlier Replit project review",
+          "next_action": "Inspect only if selected; do not assume the project is still hosted or desired."
+        },
+        {
+          "id": "RF-002",
+          "title": "Miami website automation placeholders",
+          "status": "historical_incomplete",
+          "source": "Earlier Replit project review",
+          "next_action": "Inspect only if selected; assess whether useful outside Replit."
+        },
+        {
+          "id": "RF-003",
+          "title": "profound-crumble broken page",
+          "status": "historical_page_not_found",
+          "source": "Earlier Replit project review",
+          "next_action": "Recover or archive if selected."
+        },
+        {
+          "id": "RF-004",
+          "title": "dainty-peony unpublished project",
+          "status": "historical_unpublished",
+          "source": "Earlier Replit project review",
+          "next_action": "Inspect and decide publish or archive if selected."
+        },
+        {
+          "id": "RF-005",
+          "title": "best-projects empty project",
+          "status": "historical_empty",
+          "source": "Earlier Replit project review",
+          "next_action": "Populate only if still useful; otherwise archive."
+        },
+        {
+          "id": "RF-006",
+          "title": "AI Lab v1 duplicate apps",
+          "status": "historical_duplicates",
+          "source": "Earlier Replit project review",
+          "next_action": "Compare and consolidate if selected."
+        },
+        {
+          "id": "RF-007",
+          "title": "React Artifact heavy implementation",
+          "status": "historical_complexity_issue",
+          "source": "Earlier Replit project review",
+          "next_action": "Simplify or replace only if selected."
+        },
+        {
+          "id": "RF-008",
+          "title": "Weather Chat and HTML Seed Factory",
+          "status": "minimal_prototypes_decision_pending",
+          "source": "Earlier Replit project review",
+          "next_action": "Evaluate whether to develop, reuse, or archive."
+        }
+      ],
+      "automation_policy": "The eight paused automations remain paused. Their associated projects are available as fallback tasks, but scheduling is a separate action requiring user approval."
     }
   }
 }
