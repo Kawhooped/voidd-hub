@@ -2,7 +2,7 @@
   "schema_version": 1,
   "database": "VOID Operations Ledger",
   "purpose": "Authoritative working record of projects, public addresses, repositories, infrastructure, deployments, and operational history.",
-  "updated_at": "2026-11-24",
+  "updated_at": "2026-11-24T07:38:00-05:00",
   "operating_rule": "Read this ledger before investigating. Trust recent verified records. Recheck only stale, missing, or explicitly questioned facts. Record every material change and verification here.",
   "projects": [
     {
@@ -113,11 +113,227 @@
       "subject": "VOID Operations Ledger",
       "result": "Created this initial operational database in Kawhooped/voidd-hub.",
       "evidence": "github_commit"
+    },
+    {
+      "date": "2026-11-24",
+      "event": "expanded_context",
+      "subject": "VOID Operations Ledger",
+      "result": "Expanded the ledger with durable project objectives, operating protocol, communication preferences, infrastructure/cost constraints, known resources, research principles, bottlenecks, current state, and verification cautions based on available prior conversation context.",
+      "evidence": "current_ledger_readback_and_prior_conversation_context"
     }
   ],
   "unknowns": [
     "Which previously recorded sites are currently live and reachable.",
     "Which public sites currently have analytics or traffic measurement installed.",
     "Whether ShipCheck works in Firefox private browsing."
-  ]
+  ],
+  "context": {
+    "purpose": "Persistent operating context for the user's digital environment and the assistant's project work. This file supplements project records; it is not a transcript archive.",
+    "primary_objective": "Build a personal digital environment that is programmable and controllable, integrating public websites, pages, tools, applications, AI/intelligence, automation, infrastructure (hosting, APIs, databases, GitHub), and Android device control through a central dashboard and connectivity layer.",
+    "near_term_outcomes": [
+      "Traffic first, monetization second.",
+      "Get five public websites live as soon as practical and establish traffic measurement, even if initial counts are zero.",
+      "Prioritize working, publicly accessible deliverables over extensive preparation or documentation.",
+      "Build the shared central dashboard after establishing a reliable record of the existing network."
+    ],
+    "operating_protocol": [
+      "For every relevant project task, consult ops-ledger.json before asking the user to repeat information or investigating known facts.",
+      "Use the most recent verified record; check again only when stale, missing, contradicted, or explicitly requested.",
+      "Do not claim to have consulted, changed, published, tested, or verified anything unless the corresponding action actually occurred.",
+      "Perform the smallest useful set of actions; avoid redundant repository listings, repeated deployment/domain/protection checks, and unnecessary web searches.",
+      "Prefer one simple existing address or artifact over introducing another service, layer, product name, database, or abstraction.",
+      "Execute and verify the requested result. Report concise outcomes, evidence, and unresolved blockers.",
+      "Update this ledger after meaningful changes: include date/time, exact resource/address, action, result, evidence, and any remaining uncertainty.",
+      "Keep user-stated facts, tool-observed facts, inferences, hypotheses, and unknowns distinguishable.",
+      "If the ledger is inaccessible, state that plainly; never imply it was consulted."
+    ],
+    "communication_preferences": [
+      "Direct, concise, minimum-sufficient responses; minimize preambles, recaps, explanations, headings, and progress narration.",
+      "Execution over planning; deliver working artifacts instead of proposing elaborate plans.",
+      "Ask only essential questions and make reasonable decisions independently.",
+      "Do not repeatedly paraphrase the user's correction or claim understanding without changing behavior.",
+      "Avoid unnecessary frameworks, invented terminology, extra layers, and performative agreement.",
+      "Be evidence-driven; clearly distinguish verified results from assumptions.",
+      "The user's traffic-first/outcome-first mode is marked with ◎."
+    ],
+    "project_structure": {
+      "areas": [
+        "Websites",
+        "Tools & Apps",
+        "Infrastructure",
+        "Research & Experiments"
+      ],
+      "first_priority": "Central Dashboard",
+      "design_goal": "Independent public projects connected through a shared operational view of status, hosting, security, connectivity, activity, and traffic.",
+      "visual_direction": "VOID/VOIDD: digital-art feel, minimal, low cognitive load, generous empty space, ambient motion, midnight blue/violet/cyan palette. Prefer clear, simple entry points."
+    },
+    "platform_and_cost_constraints": [
+      "Prefer free or very low-cost infrastructure; user strongly prefers avoiding recurring charges and has indicated roughly $5/month as a possible ceiling, not a target.",
+      "Move away from Replit because of cost.",
+      "Supabase was abandoned because of concern about charges after usage thresholds; do not reintroduce it casually.",
+      "Prefer portable, simple implementations using existing GitHub, Cloudflare, Netlify, and Vercel resources where evidence supports them.",
+      "Fly.io onboarding was blocked by a Stripe phone-code issue.",
+      "Do not create extra services or infrastructure unless the task requires them and the benefit is clear."
+    ],
+    "known_resources": {
+      "github_account": {
+        "username": "Kawhooped",
+        "access": "User previously reported all-repository access, including private repositories, with push permissions.",
+        "note": "Treat permission as previously reported, not a fresh permission check."
+      },
+      "repositories_mentioned": [
+        {
+          "name": "Kawhooped/voidd-hub",
+          "role": "Primary ongoing hub and shared static tools",
+          "branch": "dd-main"
+        },
+        {
+          "name": "Kawhooped/GitHub-Garage",
+          "role": "Repository workshop/viewer",
+          "branch": "dd-main"
+        },
+        {
+          "name": "Kawhooped/voidd",
+          "role": "Related project repository; current status unknown"
+        },
+        {
+          "name": "Kawhooped/voidd-shelf",
+          "role": "Related project repository; current status unknown"
+        },
+        {
+          "name": "Kawhooped/workshop-gateway",
+          "role": "Potential GitHub-Garage integration target; current status unknown"
+        },
+        {
+          "name": "Kawhooped/collective-intelligence",
+          "role": "Related project repository; current status unknown"
+        },
+        {
+          "name": "Kawhooped/ai-agent-workspace",
+          "role": "Related project repository; current status unknown"
+        },
+        {
+          "name": "Kawhooped/AppFactory",
+          "role": "Related project repository; current status unknown"
+        },
+        {
+          "name": "Kawhooped/SignalSquad",
+          "role": "Related project repository; current status unknown"
+        },
+        {
+          "name": "Kawhooped/GPT-Roomba-Software",
+          "role": "Related project repository; current status unknown"
+        }
+      ],
+      "other_addresses": [
+        {
+          "url": "https://void.life",
+          "role": "Intended VOID.LIFE hub/domain",
+          "status": "Unverified; prior inspection found Afternic nameservers and an Internal Error. Recheck only when needed."
+        },
+        {
+          "url": "https://kawhooped.github.io/voidd-hub/create.html",
+          "role": "Previously reported VOIDD Hub page",
+          "status": "Previously recorded; current reachability unknown."
+        },
+        {
+          "url": "https://kwa-batido-5a58.kawhooped.workers.dev",
+          "role": "Cloudflare Worker",
+          "status": "Previously recorded; current status unknown."
+        }
+      ],
+      "other_platform_notes": [
+        "A Netlify team was previously reported to contain 16 projects; do not assume this count is current.",
+        "Cloudflare Pages hostname voidd-command-center.pages.dev was previously reported.",
+        "Cloudflare Access policy for the command center was changed from wildcard access; incognito then showed a Cloudflare login. Current policy is not freshly verified."
+      ]
+    },
+    "research_and_improvement_principles": {
+      "research_priority": "Improve the research process itself: find promising opportunities, narrow/evaluate them repeatably, and improve the method continuously.",
+      "method": "COALESCE → COMPRESS → QUEST: objective, next action, measurable result.",
+      "evidence_labels": [
+        "observed",
+        "user-stated",
+        "inferred",
+        "hypothesis",
+        "unknown"
+      ],
+      "evaluation_standard": [
+        "objective verification",
+        "evidence-supported findings",
+        "inspectable deliverable",
+        "testing",
+        "limitations",
+        "final evaluation"
+      ],
+      "research_culture": [
+        "Invent first",
+        "Compress intelligently",
+        "Preserve depth",
+        "Remain flexible",
+        "Build to understand",
+        "Refine continuously"
+      ],
+      "core_test": "Whether an idea works matters more than whether it has the correct name.",
+      "artifact_library_goal": "Maintain searchable, versioned, reusable, testable technical artifacts: agent specifications, decision procedures, research workflows, reasoning/evaluation protocols, context schemas, and procedural files.",
+      "current_research_focus": "Diagnose why desired assistant behavior does not persist before adding agent capabilities. Current hypotheses include instruction-access decay, memory-induced steering, and abstraction feedback; treat these as hypotheses, not established causes."
+    },
+    "known_bottlenecks": [
+      {
+        "issue": "Publishing friction",
+        "impact": "Ideas do not become public, testable projects quickly enough.",
+        "priority": "High"
+      },
+      {
+        "issue": "Fragmented project/infrastructure knowledge",
+        "impact": "Repeated searches and duplicated work.",
+        "priority": "High",
+        "mitigation": "Use this ledger as the first reference."
+      },
+      {
+        "issue": "Research-to-execution gap",
+        "impact": "Too much preparation can delay public tests.",
+        "priority": "High",
+        "mitigation": "Build, publish, test, measure, improve."
+      },
+      {
+        "issue": "Infrastructure complexity and cost",
+        "impact": "Extra platforms and setup create friction.",
+        "priority": "High",
+        "mitigation": "Prefer simple, portable, low-cost solutions."
+      },
+      {
+        "issue": "Assistant continuity and behavior drift",
+        "impact": "Repeatedly ignoring established preferences and rechecking known facts.",
+        "priority": "High",
+        "mitigation": "Consult this ledger at the start of relevant work and follow the operating protocol."
+      }
+    ],
+    "current_working_state": {
+      "primary_repository": "Kawhooped/voidd-hub",
+      "primary_branch": "dd-main",
+      "operational_database": "ops-ledger.json",
+      "recent_artifact": "tools/shipcheck/index.html",
+      "recent_artifact_url": "https://void-shipcheck.vercel.app/",
+      "recent_artifact_test": "User confirmed it is published. Firefox private-browsing behavior has not been reported.",
+      "analytics_state": "No analytics installation or traffic counts have been verified for the network. ShipCheck itself has no analytics/tracking backend; its saved checklist data is browser-local.",
+      "next_useful_focus": "Inventory public sites and establish lightweight traffic measurement, while using this ledger to avoid repeating already-known checks."
+    },
+    "known_history": [
+      {
+        "date": "2026-11-23",
+        "event": "A test HTML page was uploaded to Kawhooped/voidd-hub at experiments/github-test-lab/index.html on dd-main; commit 6d67a91 was reported and file readback matched. Deployment/browser testing was not confirmed."
+      },
+      {
+        "date": "2026-11-24",
+        "event": "ShipCheck was added to Kawhooped/voidd-hub at tools/shipcheck/index.html and independently deployed directly to Vercel. Vercel project is not Git-connected; GitHub source and Vercel deployment are separate."
+      }
+    ],
+    "exclusions_and_cautions": [
+      "Do not store sensitive personal information in this operational ledger.",
+      "Do not treat prior assistant claims as verified evidence unless a tool result or user confirmation supports them.",
+      "Do not assume all listed sites, repositories, deployments, DNS records, or security settings remain current without a relevant timestamp/evidence.",
+      "Do not disable SSL/TLS when changing deployment access controls. In the ShipCheck deployment, SSO/password protection were disabled; SSL/TLS was not disabled."
+    ]
+  }
 }
