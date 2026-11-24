@@ -141,6 +141,13 @@
       "subject": "Fallback task pool",
       "result": "Selected six high-leverage fallback tracks aligned with the user's stated goals. All 42 entries remain preserved; the remaining items are parked, not deleted or active commitments.",
       "evidence": "Current operations ledger priorities, backlog descriptions, and user instruction to select the most useful."
+    },
+    {
+      "date": "2026-11-24",
+      "event": "conversation_logging_enabled",
+      "subject": "VOID Conversation Log",
+      "result": "Created conversation-log.json and recorded the latest exchange about conversational friction and the user's request to track messages and replies. Future project-related exchanges are to be appended chronologically.",
+      "evidence": "GitHub commit 1b484f26a1501b02ebe29197b4df67fc26c7736c"
     }
   ],
   "unknowns": [
@@ -1174,5 +1181,13 @@
       "active_count": 6,
       "total_preserved_count": 42
     }
+  },
+  "conversation_log": {
+    "path": "conversation-log.json",
+    "repository": "Kawhooped/voidd-hub",
+    "branch": "dd-main",
+    "url": "https://github.com/Kawhooped/voidd-hub/blob/dd-main/conversation-log.json",
+    "status": "created",
+    "policy": "Append project-related user messages and assistant replies chronologically, preserving exact text where available; label summaries and observations; exclude sensitive information."
   }
 }
