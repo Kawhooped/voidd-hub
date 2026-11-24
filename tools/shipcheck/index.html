@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090a12"><meta name="description" content="A tiny launch verification and experiment log.">
+<title>ShipCheck — VOID.LIFE</title>
+<style>
+:root{color-scheme:dark;--bg:#090a12;--panel:#121625;--line:#292f45;--ink:#f2f0fb;--muted:#a4a5ba;--violet:#bba5ff;--cyan:#83e5eb;--green:#8be0b0}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% 0%,#292044 0,transparent 38%),var(--bg);color:var(--ink);font:15px/1.6 system-ui,sans-serif}.wrap{max-width:760px;margin:48px auto;padding:0 20px}.brand{letter-spacing:.28em;color:var(--violet);font-size:12px;font-weight:800}.eyebrow{color:var(--cyan);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-top:36px}h1{font-size:clamp(36px,8vw,58px);line-height:1.02;margin:10px 0}p{color:var(--muted)}.panel{background:#121625e8;border:1px solid var(--line);border-radius:18px;padding:22px;margin:18px 0}.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.row>*{flex:1}label{display:block;color:var(--muted);font-size:12px;margin:14px 0 6px}input,textarea{width:100%;background:#090d18;border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:12px;font:inherit}textarea{min-height:76px;resize:vertical}.check{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #ffffff12}.check:last-child{border:0}.check input{width:18px;height:18px;accent-color:#bba5ff}.check span{flex:1}.tag{font-size:11px;color:var(--cyan)}button{border:1px solid #71649d;background:#211d36;color:var(--ink);border-radius:10px;padding:11px 16px;font:inherit;cursor:pointer}button.primary{background:var(--violet);color:#100d19;border-color:var(--violet);font-weight:750}button:hover{filter:brightness(1.12)}#result{font-weight:700;color:var(--green)}.foot{font-size:12px;margin:28px 0;color:#777b91}a{color:var(--cyan)}
+</style>
+</head>
+<body><main class="wrap">
+<div class="brand">VOID.LIFE / FIELD TOOLS</div><div class="eyebrow">01 — publish, then learn</div>
+<h1>ShipCheck<span style="color:var(--violet)">.</span></h1>
+<p>A tiny launch gate for real experiments. Check the essentials, publish, verify from a clean browser, and record what happened.</p>
+<section class="panel">
+<div class="row"><div><label for="project">PROJECT</label><input id="project" placeholder="e.g. VOID Sales"></div><div><label for="url">PUBLIC URL</label><input id="url" type="url" placeholder="https://…"></div></div>
+<label>LAUNCH CHECKS</label>
+<div id="checks">
+<label class="check"><input type="checkbox"><span>Page loads at its public URL</span><small class="tag">LIVE</small></label>
+<label class="check"><input type="checkbox"><span>Incognito / private window works without login</span><small class="tag">PUBLIC</small></label>
+<label class="check"><input type="checkbox"><span>Primary action or link works</span><small class="tag">FUNCTION</small></label>
+<label class="check"><input type="checkbox"><span>Mobile layout is usable</span><small class="tag">MOBILE</small></label>
+<label class="check"><input type="checkbox"><span>Result or failure is recorded</span><small class="tag">LEARN</small></label>
+</div>
+<label for="notes">OBSERVATION / WHAT HAPPENED?</label><textarea id="notes" placeholder="Record the result, error, traffic, or next fix…"></textarea>
+<div class="row" style="margin-top:18px"><button class="primary" id="copy">Copy launch record</button><button id="save">Save on this device</button><button id="reset">Reset</button></div>
+<p id="result" aria-live="polite">0 / 5 checks complete</p>
+</section>
+<p class="foot">No account. No tracking. Your saved record stays in this browser only. <a href="../../">Back to VOID.LIFE</a></p>
+</main>
+<script>
+const $=s=>document.querySelector(s), checks=[...document.querySelectorAll('#checks input')];
+function update(){const n=checks.filter(x=>x.checked).length;$('#result').textContent=n+' / 5 checks complete'+(n===5?' — launch verified.':'');}
+function record(){return ['SHIPCHECK LAUNCH RECORD','Project: '+$('#project').value,'URL: '+$('#url').value,'Checks: '+checks.map((x,i)=>(x.checked?'[x] ':'[ ] ')+['Public URL loads','Incognito access','Primary action works','Mobile usable','Result recorded'][i]).join('\n'),'Observation: '+$('#notes').value,'Recorded: '+new Date().toLocaleString()].join('\n');}
+checks.forEach(x=>x.addEventListener('change',update));
+$('#copy').onclick=async()=>{try{await navigator.clipboard.writeText(record());$('#result').textContent='Launch record copied.'}catch(e){$('#result').textContent='Clipboard unavailable — use Save on this device.'}};
+$('#save').onclick=()=>{localStorage.setItem('shipcheck-v1',JSON.stringify({project:$('#project').value,url:$('#url').value,notes:$('#notes').value,checks:checks.map(x=>x.checked)}));$('#result').textContent='Saved on this device.'};
+$('#reset').onclick=()=>{if(!confirm('Clear this launch record?'))return;$('#project').value='';$('#url').value='';$('#notes').value='';checks.forEach(x=>x.checked=false);localStorage.removeItem('shipcheck-v1');update()};
+try{const d=JSON.parse(localStorage.getItem('shipcheck-v1')||'null');if(d){$('#project').value=d.project||'';$('#url').value=d.url||'';$('#notes').value=d.notes||'';checks.forEach((x,i)=>x.checked=!!d.checks?.[i]);}}catch(e){}update();
+</script></body></html>
