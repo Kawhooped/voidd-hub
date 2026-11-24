@@ -53,5 +53,15 @@
     "After meaningful work, update this compact state with status and next action; update the detailed ledger with evidence and resource changes.",
     "Append project-related exchanges to conversation-log.json when appropriate; never imply background capture."
   ],
-  "evidence_note": "Current repository ledger records ShipCheck as user-confirmed published. Other network sites and the Command Center have older, unverified status records. The prior assistant's claim that a 17-project Command Center prototype existed is recorded in recent conversation context, but its current artifact location and integration status still require inspection."
+  "evidence_note": "Current repository ledger records ShipCheck as user-confirmed published. Other network sites and the Command Center have older, unverified status records. The prior assistant's claim that a 17-project Command Center prototype existed is recorded in recent conversation context, but its current artifact location and integration status still require inspection.",
+  "incoming_projects": [
+    {
+      "id": "genes-one",
+      "name": "GENES ONE",
+      "status": "registered_source_incomplete",
+      "repository_path": "apps/genes-one/index.html",
+      "ledger_path": "ops-ledger.json",
+      "next_action": "Obtain the missing tail of the supplied HTML, then validate, publish, and verify the public route."
+    }
+  ]
 }
