@@ -50,6 +50,18 @@
       "status": "previously_recorded",
       "evidence": "prior_conversation_record",
       "last_verified_at": null
+    },
+    {
+      "id": "void-voice-network",
+      "name": "VOID Voice Network",
+      "description": "Voice interface to the VOID Network using an ElevenLabs conversational agent and the shared project registry.",
+      "public_url": "https://kawhooped.github.io/voidd-hub/apps/voice-network/",
+      "source_repository": "Kawhooped/voidd-hub",
+      "source_path": "apps/voice-network/index.html",
+      "status": "committed_deployment_pending",
+      "evidence": "github_commit_and_readback",
+      "last_verified_at": "2026-11-24",
+      "notes": "Agent ID agent_9501m86ta8h8fp690x9w3q47n1b3. Agent can answer from the attached public project registry but has no execution tools yet. Privacy configured with record_voice=false and zero_retention_mode=true."
     }
   ],
   "repositories": [
@@ -155,6 +167,13 @@
       "subject": "VOID project context",
       "result": "Created PROJECT-STATE.json as compact canonical resume entrypoint. Set protocol to load compact state first, consult only relevant operations-ledger sections, and use conversation-log.json only for exact history. Detailed records remain preserved.",
       "evidence": "GitHub create_file and subsequent ledger update"
+    },
+    {
+      "date": "2026-11-24",
+      "event": "voice_network_foundation",
+      "subject": "VOID Voice Network",
+      "result": "Created ElevenLabs agent VOID Network Operator; added auto-synced public project-registry knowledge source and enabled RAG; configured record_voice=false and zero_retention_mode=true; committed apps/voice-network/index.html and added Voice link to apps/command-center/index.html. GitHub Pages deployment is pending verification; agent has no execution tools yet.",
+      "evidence": "ElevenLabs agent and knowledge-base tool results; GitHub commits 590e30fc5fba6dfa4f40761d3c7971a29f9a3fb4 and 9d5f73cb326b1719f48b3e73bfa87f0e77b9aaeb; readback SHAs 6976a2c4d79d0c245d6d8bc07e10470eecf592db and 26a0b0f0b6f598b8164a16509cfe65161cd80d07"
     }
   ],
   "unknowns": [
@@ -1202,5 +1221,19 @@
     "purpose": "Compact canonical resume state; read this first.",
     "rule": "Do not load the full operations ledger or conversation log by default. Read only relevant ledger sections; consult transcript only when exact history is needed.",
     "updated_at": "2026-11-24"
-  }
+  },
+  "voice_agents": [
+    {
+      "name": "VOID Network Operator",
+      "provider": "ElevenLabs",
+      "agent_id": "agent_9501m86ta8h8fp690x9w3q47n1b3",
+      "branch_id": "agtbrch_6201m86ta9href1sjdv009t34kh6",
+      "knowledge_base_id": "XqQ2u6ReDU51rnFB9RpZ",
+      "execution_tools": [],
+      "privacy": {
+        "record_voice": false,
+        "zero_retention_mode": true
+      }
+    }
+  ]
 }
