@@ -7,7 +7,7 @@
     "name": "VOID Network / Voice Network",
     "objective": "Build and connect the central command layer to the existing network; voice agents are a connected capability, not a separate disconnected project.",
     "status": "GitHub-managed Pages build and deployment succeeded for commit 5b436d80e9f7b4fc08bc4a0674cb0f66367ec813 (run 45399495216). The separate custom .github/workflows/pages.yml workflow repeatedly failed with no exposed steps/logs and was removed in commit e2881aa92d77f0425dfaf0f2333071b01caabcdd. Public URL and embedded widget still require independent reachability/browser verification.",
-    "next_action": "Verify https://kawhooped.github.io/voidd-hub/apps/voice-network/ from a browser and test the ElevenLabs widget. Then connect narrowly scoped authenticated execution tools through Workshop Gateway.",
+    "next_action": "Implement the first speech-observation slice in the existing voice-network client: capture inbound and outbound text callbacks, normalize events, display both streams, and deliver finalized events to one read-only Observer. Follow docs/speech-agent-observation-architecture.md.",
     "architecture": {
       "control": "ChatGPT as conversational control surface",
       "dashboard": "VOID Command Center as shared operational UI",
@@ -25,6 +25,11 @@
       "knowledge_base_id": "XqQ2u6ReDU51rnFB9RpZ",
       "execution_tools": [],
       "privacy": "record_voice=false; zero_retention_mode=true"
+    },
+    "speech_agent_observation": {
+      "status": "architecture_committed_not_implemented",
+      "document": "docs/speech-agent-observation-architecture.md",
+      "first_slice": "Capture inbound/outbound text callbacks and publish normalized transcript events to one read-only Observer."
     }
   },
   "priorities": [
