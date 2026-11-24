@@ -1262,5 +1262,18 @@
         "zero_retention_mode": true
       }
     }
+  ],
+  "architectures": [
+    {
+      "id": "speech-agent-observation",
+      "name": "Speech-to-Agent Observation Architecture",
+      "document": "docs/speech-agent-observation-architecture.md",
+      "status": "specified_not_implemented",
+      "objective": "Capture inbound and outbound speech transcripts, normalize them into a shared conversation event stream, distribute events to agents, and enable safe authorized actions.",
+      "implementation_target": "Existing VOID Network Operator and voice-network client",
+      "first_slice": "Capture inbound and outbound text callbacks, normalize events, show session timeline, deliver finalized events to one read-only Observer.",
+      "evidence": "Architecture document committed to dd-main; no runtime implementation or tests performed yet.",
+      "updated_at": "2026-11-24"
+    }
   ]
 }
