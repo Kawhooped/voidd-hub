@@ -68,5 +68,14 @@
       "ledger_path": "ops-ledger.json",
       "next_action": "Obtain the missing tail of the supplied HTML, then validate, publish, and verify the public route."
     }
-  ]
+  ],
+  "agent_system": {
+    "status": "foundation_committed",
+    "root": "agent-system/README.md",
+    "constitution": "agent-system/CONSTITUTION.md",
+    "first_module": "agent-system/modules/website-standards-quality-authority.md",
+    "first_procedure": "agent-system/procedures/website-assessment.md",
+    "agent_template": "agent-system/templates/AGENT.md",
+    "note": "GitHub architecture files committed; no live agent has yet been instantiated or granted website access."
+  }
 }
