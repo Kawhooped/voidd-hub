@@ -16,7 +16,7 @@ export default {
       "access-control-allow-headers": "Content-Type", "access-control-max-age": "86400", "vary": "Origin"
     }});
     const url = new URL(request.url);
-    if (url.pathname === "/health" && request.method === "GET") return json({ ok: true, provider: "elevenlabs" }, 200, corsOrigin);
+    if (url.pathname === "/health" && request.method === "GET") return json({ ok: true, configured: !!env.ELEVENLABS_API_KEY, provider: "elevenlabs" }, 200, corsOrigin);
     if (!env.ELEVENLABS_API_KEY) return json({ error: "Worker secret ELEVENLABS_API_KEY is not configured." }, 503, corsOrigin);
     if (url.pathname === "/voices" && request.method === "GET") {
       const upstream = await fetch("https://api.elevenlabs.io/v1/voices", { headers: { "xi-api-key": env.ELEVENLABS_API_KEY } });
