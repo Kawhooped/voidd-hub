@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090a12">
+<meta name="description" content="Voice interface for the VOID Network.">
+<title>Voice Network — VOID.LIFE</title>
+<style>
+:root{color-scheme:dark;--bg:#090a12;--panel:#14182a;--line:#303650;--ink:#f4f1ff;--muted:#aaa9bf;--violet:#bba5ff;--cyan:#83e5eb}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 75% -10%,#30234c,transparent 42%),var(--bg);color:var(--ink);font:15px/1.6 system-ui,sans-serif}
+.wrap{width:min(920px,calc(100% - 32px));margin:auto}header{height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff18}a{color:inherit;text-decoration:none}a:hover{color:var(--cyan)}.brand{font-size:12px;font-weight:900;letter-spacing:.28em;color:#ded4ff}nav{display:flex;gap:18px;color:#c8c5d9;font-size:12px}
+main{padding:clamp(42px,8vw,90px) 0}.eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan)}h1{font-size:clamp(42px,8vw,76px);line-height:.98;letter-spacing:-.07em;margin:14px 0 18px}h1 em{font-family:Georgia,serif;font-weight:400;color:var(--violet)}.intro{max-width:650px;color:var(--muted);font-size:16px}
+.panel{margin-top:34px;padding:22px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#191d31,#101421)}.panel h2{font-size:17px;margin:0 0 8px}.panel p{color:var(--muted);font-size:13px;margin:0}.status{display:flex;gap:8px;align-items:center;margin:16px 0 0;color:#bfe9dc;font-size:11px}.dot{width:7px;height:7px;border-radius:50%;background:#76dfb4;box-shadow:0 0 12px #76dfb477}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}.item{padding:15px;border:1px solid var(--line);border-radius:12px;background:#ffffff05}.item b{display:block;font-size:12px;margin-bottom:4px}.item span{color:var(--muted);font-size:11px}
+.note{margin-top:18px;color:#88889f;font-size:11px;max-width:720px}footer{border-top:1px solid #ffffff18;padding:18px 0 28px;color:var(--muted);font-size:11px}
+@media(max-width:560px){header{height:auto;padding:15px 0;gap:12px}nav{gap:10px;flex-wrap:wrap;justify-content:flex-end}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body><div class="wrap">
+<header><a class="brand" href="../../">V O I D . L I F E</a><nav><a href="../../">Home</a><a href="../command-center/">Command Center</a><a href="../../foundry/">Foundry</a></nav></header>
+<main>
+<div class="eyebrow">VOID / VOICE INTERFACE</div>
+<h1>Talk to the <em>Network.</em></h1>
+<p class="intro">Your voice entry point into the VOID environment. Ask about projects in the shared registry, explore ideas, and direct the next piece of work.</p>
+<section class="panel">
+<h2>VOID Network Operator</h2>
+<p>Connected to the public project registry. This first version can converse and answer from project reference data; it cannot yet execute GitHub changes, deployments, or infrastructure actions.</p>
+<div class="status"><span class="dot"></span> Agent created · project registry connected</div>
+<div class="grid">
+<div class="item"><b>Knowledge</b><span>VOID Public Project Registry · auto-sync enabled</span></div>
+<div class="item"><b>Privacy</b><span>Voice recording disabled · zero-retention mode enabled</span></div>
+</div>
+</section>
+<p class="note">Start a conversation using the voice orb in the lower corner. Voice conversations are processed by ElevenLabs. Do not speak passwords, API keys, or other secrets.</p>
+</main>
+<footer><a href="../command-center/">← Command Center</a> · VOID Network</footer>
+</div>
+<elevenlabs-convai agent-id="agent_9501m86ta8h8fp690x9w3q47n1b3"></elevenlabs-convai>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+</body></html>
