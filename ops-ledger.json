@@ -148,6 +148,13 @@
       "subject": "VOID Conversation Log",
       "result": "Created conversation-log.json and recorded the latest exchange about conversational friction and the user's request to track messages and replies. Future project-related exchanges are to be appended chronologically.",
       "evidence": "GitHub commit 1b484f26a1501b02ebe29197b4df67fc26c7736c"
+    },
+    {
+      "date": "2026-11-24",
+      "event": "context_compression",
+      "subject": "VOID project context",
+      "result": "Created PROJECT-STATE.json as compact canonical resume entrypoint. Set protocol to load compact state first, consult only relevant operations-ledger sections, and use conversation-log.json only for exact history. Detailed records remain preserved.",
+      "evidence": "GitHub create_file and subsequent ledger update"
     }
   ],
   "unknowns": [
@@ -1189,5 +1196,11 @@
     "url": "https://github.com/Kawhooped/voidd-hub/blob/dd-main/conversation-log.json",
     "status": "created",
     "policy": "Append project-related user messages and assistant replies chronologically, preserving exact text where available; label summaries and observations; exclude sensitive information."
+  },
+  "context_entrypoint": {
+    "file": "PROJECT-STATE.json",
+    "purpose": "Compact canonical resume state; read this first.",
+    "rule": "Do not load the full operations ledger or conversation log by default. Read only relevant ledger sections; consult transcript only when exact history is needed.",
+    "updated_at": "2026-11-24"
   }
 }
