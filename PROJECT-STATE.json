@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-24",
+  "purpose": "Compact entry point for resuming VOID Network work. Read first; consult ops-ledger.json only for the relevant project/resource and conversation-log.json only when exact history is needed.",
+  "objective": "Build a programmable, controllable digital environment connecting public websites, tools, AI/voice agents, automation, infrastructure, and Android through a central command layer.",
+  "active_work": {
+    "name": "VOID Network / Voice Network",
+    "objective": "Build and connect the central command layer to the existing network; voice agents are a connected capability, not a separate disconnected project.",
+    "status": "User explicitly approved proceeding. Prior discussion repeatedly proposed the first step instead of executing. No integrated implementation has been verified in this turn.",
+    "next_action": "Continue implementation from existing GitHub assets and current architecture; do not ask for approval again. Inspect/reuse existing Command Center/GitHub Garage work, connect real project records from ops-ledger.json, then verify a live working result.",
+    "architecture": {
+      "control": "ChatGPT as conversational control surface",
+      "dashboard": "VOID Command Center as shared operational UI",
+      "gateway": "Workshop Gateway for controlled execution/integration",
+      "source_of_truth": "GitHub repositories and ops-ledger.json",
+      "history": "conversation-log.json",
+      "voice": "Voice agents integrated into the same network and dashboard"
+    }
+  },
+  "priorities": [
+    "Execute and verify; do not repeat planning.",
+    "Reuse existing assets; avoid rebuilding or adding services unnecessarily.",
+    "Keep infrastructure free/low-cost and portable.",
+    "Maintain a compact state file; preserve detailed inventory and history in their dedicated files."
+  ],
+  "constraints": [
+    "Avoid Replit due cost.",
+    "Do not casually reintroduce Supabase due billing concerns.",
+    "Never claim an implementation or verification that did not occur."
+  ],
+  "canonical_records": {
+    "repository": "Kawhooped/voidd-hub",
+    "branch": "dd-main",
+    "state_file": "PROJECT-STATE.json",
+    "operations_ledger": "ops-ledger.json",
+    "conversation_history": "conversation-log.json",
+    "github_garage": "Kawhooped/GitHub-Garage"
+  },
+  "resume_protocol": [
+    "Read PROJECT-STATE.json first.",
+    "Read only the relevant portion of ops-ledger.json for the current task; do not load the entire backlog by default.",
+    "Consult conversation-log.json only when exact wording, decisions, or interaction history are needed.",
+    "After meaningful work, update this compact state with status and next action; update the detailed ledger with evidence and resource changes.",
+    "Append project-related exchanges to conversation-log.json when appropriate; never imply background capture."
+  ],
+  "evidence_note": "Current repository ledger records ShipCheck as user-confirmed published. Other network sites and the Command Center have older, unverified status records. The prior assistant's claim that a 17-project Command Center prototype existed is recorded in recent conversation context, but its current artifact location and integration status still require inspection."
+}
