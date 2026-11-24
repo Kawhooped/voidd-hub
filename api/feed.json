@@ -2,8 +2,23 @@
   "hub": "VOIDD Web Experiments",
   "author": "VOIDD Labs",
   "home": "https://kawhooped.github.io/voidd-hub/",
-  "updated_at": "2026-11-23",
+  "updated_at": "2026-11-24",
   "projects": [
+    {
+      "id": "void-podcast-studio",
+      "title": "VOID Podcast Studio",
+      "type": "tool",
+      "tags": [
+        "podcast",
+        "audio",
+        "text-to-speech",
+        "elevenlabs",
+        "mp3",
+        "multi-speaker"
+      ],
+      "url": "https://kawhooped.github.io/voidd-hub/apps/void-podcast-studio/",
+      "description": "Turn written dialogue into multi-voice podcast episodes. Save scripts locally, generate speech through a secure ElevenLabs Worker, assemble the dialogue, and export a finished MP3."
+    },
     {
       "id": "void-publish-console",
       "title": "VOID Publish",
