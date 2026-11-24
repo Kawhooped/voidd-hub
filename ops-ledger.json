@@ -120,6 +120,13 @@
       "subject": "VOID Operations Ledger",
       "result": "Expanded the ledger with durable project objectives, operating protocol, communication preferences, infrastructure/cost constraints, known resources, research principles, bottlenecks, current state, and verification cautions based on available prior conversation context.",
       "evidence": "current_ledger_readback_and_prior_conversation_context"
+    },
+    {
+      "date": "2026-11-24",
+      "event": "backlog_recovery",
+      "subject": "Recovered unfinished and deferred work inventory",
+      "result": "Reviewed accessible prior context, 442 Library entries, key project handoffs/research reports, and all 9 current automations. Added 34 backlog entries with status, evidence, artifact names, and next unfinished work. No paused automation was restarted.",
+      "evidence": "Library inventory, project attachments, personal conversation context, Automations registry"
     }
   ],
   "unknowns": [
@@ -335,5 +342,599 @@
       "Do not assume all listed sites, repositories, deployments, DNS records, or security settings remain current without a relevant timestamp/evidence.",
       "Do not disable SSL/TLS when changing deployment access controls. In the ShipCheck deployment, SSO/password protection were disabled; SSL/TLS was not disabled."
     ]
+  },
+  "backlog_review": {
+    "reviewed_at": "2026-11-24",
+    "scope": "Prior conversation context returned by personal-context search, persistent Library attachments, saved project handoffs/reports, and current task-automation registry. This is a recovered backlog, not proof that every item remains desired.",
+    "coverage_note": "442 Library entries were inventoried across five pages. The inventory contains many visual assets and prototypes; only items with evidence of a project, task, or potentially unfinished work are listed below. Current-conversation attachments: none. Earlier chats may contain material not retained in the Library or available summaries, so this is the fullest recoverable list from accessible sources, not a guarantee of every historical idea.",
+    "priority_candidates": [
+      {
+        "id": "B-001",
+        "title": "Public website network: reach five live sites and add traffic measurement",
+        "status": "active_priority",
+        "evidence": "User-stated ongoing objective and current operations ledger.",
+        "unfinished_work": [
+          "Confirm which previously recorded sites are currently public and reachable.",
+          "Count distinct published sites without counting aliases or duplicate deployments.",
+          "Install lightweight traffic measurement on the chosen public sites.",
+          "Record baseline traffic, including zero where applicable."
+        ],
+        "known_sites": [
+          "VOIDD Sales — https://voidd-sales.netlify.app/",
+          "SignalWorks — https://signalworks-dd.netlify.app/",
+          "VOIDD Command Center — https://voidd-command-center.pages.dev/",
+          "VOIDD Hub — https://kawhooped.github.io/voidd-hub/",
+          "ShipCheck — https://void-shipcheck.vercel.app/"
+        ],
+        "unknowns": [
+          "Current reachability of older sites.",
+          "Which sites have analytics installed.",
+          "Whether five distinct public sites are already achieved."
+        ]
+      },
+      {
+        "id": "B-002",
+        "title": "Central dashboard / VOID Network Command Center",
+        "status": "prototype_exists_implementation_incomplete",
+        "artifacts": [
+          "void-network-command-center.html",
+          "void_digital_ecosystem.html",
+          "modern_digital_ecosystem.html",
+          "ddaguiar_control_room_dashboard...png"
+        ],
+        "unfinished_work": [
+          "Connect a real project registry and current project/task state.",
+          "Show accurate status, dependencies, blockers, activity, and last verification.",
+          "Avoid localStorage-only or seeded/mock data being presented as live shared state.",
+          "Connect the canonical Garage rather than create a competing dashboard."
+        ],
+        "evidence": "Library prototype includes seeded tasks and localStorage persistence; its own UI labels GitHub data read-only and local workspace active."
+      },
+      {
+        "id": "B-003",
+        "title": "GitHub Garage / VOID Network Core",
+        "status": "implementation_handoff_not_applied",
+        "artifacts": [
+          "VOID-Network-Core-1.0-Implementation-Handoff.md",
+          "VOID-Network-Core-1.1-Project-Coordinator-Addition.md",
+          "VOID-Project-Coordinator-Garage-Integration.zip",
+          "void-project-coordinator-tool-page.html",
+          "Outcome-First-Execution-Skill.md"
+        ],
+        "unfinished_work": [
+          "Apply the handoff to the existing Kawhooped/GitHub-Garage canonical front door.",
+          "Baseline/smoke-test current public App Library, search, category filters, repository explorer, and file preview.",
+          "Preserve public/private boundaries and record rollback point.",
+          "Add planned navigation areas only when functional: Overview, App Library, AI Rooms, Knowledge, Workbench, Activity, Launch Bay.",
+          "Do not create a second Garage or duplicate identity/backend."
+        ],
+        "known_blocker": "Handoff records a prior GitHub write attempt returning 403 and says not to retry through that same blocked path; use an authorized writer path.",
+        "evidence": "VOID Network Core handoff explicitly says it is execution-ready but not applied."
+      },
+      {
+        "id": "B-004",
+        "title": "Project Coordinator service inside GitHub Garage",
+        "status": "design_and_tool_page_prototype_exist",
+        "unfinished_work": [
+          "Add the coordinator as a Garage tool-directory entry.",
+          "Start with source-backed read-only dashboard and project summaries.",
+          "Integrate existing project/task records rather than creating a parallel board.",
+          "Later add approval-gated task updates, audit trail, and bounded automation."
+        ],
+        "evidence": "Stage A-D rollout is specified in the Network Core 1.1 handoff."
+      },
+      {
+        "id": "B-005",
+        "title": "Shared persistence / backend for Garage and network tools",
+        "status": "architecture_proposed_not_implemented",
+        "unfinished_work": [
+          "Choose one low-cost backend only if needed; prior plan includes identity, database, server-side functions, storage, project registry, audit events.",
+          "Enforce server-side authorization and public/private separation.",
+          "Keep provider/GitHub secrets out of browser assets.",
+          "Add budgets, rate limits, and kill switch if AI provider calls are introduced."
+        ],
+        "constraint": "User previously abandoned Supabase over cost concerns; do not assume it is acceptable or introduce a paid backend without a clear reason and approval.",
+        "evidence": "Network Core 1.0 handoff."
+      },
+      {
+        "id": "B-006",
+        "title": "Persistent Light Chat / AI Rooms / Council",
+        "status": "planned_not_implemented",
+        "unfinished_work": [
+          "Persistent one-to-one chat using shared storage.",
+          "Server-side provider gateway with one inexpensive explicit model/provider.",
+          "Conversation persistence across refresh/devices.",
+          "AI Rooms as configurations; explicit one-at-a-time routing.",
+          "Only add opt-in bounded multi-agent Council after single-agent chat is stable.",
+          "Cost estimates, usage limits, concurrency limits, kill switch, transparent failures."
+        ],
+        "evidence": "Network Core 1.0 handoff; later expansion gated on Core 1.0."
+      },
+      {
+        "id": "B-007",
+        "title": "Knowledge Library / project-linked knowledge",
+        "status": "planned_not_implemented",
+        "unfinished_work": [
+          "Store notes and uploaded documents with title, type, source, tags, visibility, timestamps, project association.",
+          "Search and project filters with authorization enforcement.",
+          "Link knowledge explicitly to projects and conversations; audit edits/visibility changes."
+        ],
+        "evidence": "Network Core 1.0 handoff."
+      },
+      {
+        "id": "B-008",
+        "title": "Workbench and Launch Bay",
+        "status": "planned_not_implemented",
+        "unfinished_work": [
+          "Project-linked files, previews, and task history.",
+          "Read-only repository browsing first; approved writes only through a server-side gateway.",
+          "Deployment targets, provider-sourced build/deploy history, health checks, error reporting, usage/cost views.",
+          "Require confirmation and audit for writes, publish, rollback, and production config changes."
+        ],
+        "evidence": "Network Core 1.0 handoff."
+      },
+      {
+        "id": "B-009",
+        "title": "Dignity Coin Rush game release",
+        "status": "owner_priority_in_handoff_publishing_unverified",
+        "unfinished_work": [
+          "Confirm whether the itch.io release is published and playable; prior board snapshot said publication awaited owner action.",
+          "Keep this release isolated from Garage changes until owner changes priority."
+        ],
+        "evidence": "Network Core handoff preserves Dignity Coin Rush as active plot; prior dashboard task says publishing status blocked pending public itch URL and browser playback."
+      },
+      {
+        "id": "B-010",
+        "title": "Farm-board / project registry reconciliation",
+        "status": "stale_snapshot_needs_reconciliation",
+        "unfinished_work": [
+          "Reconcile old farm-board snapshot (2026-09-20) against current GitHub/VOID Hub project records.",
+          "Connect registry to VOID Hub catalog/API feed if still needed.",
+          "Establish task evidence and completion checks.",
+          "Define safe shared persistence and agent write permissions."
+        ],
+        "evidence": "Seeded tasks in void-network-command-center.html: T-001, T-003, T-004, T-005."
+      },
+      {
+        "id": "B-011",
+        "title": "Research & Technology Studio / DD Tech Research",
+        "status": "map_and_research_artifacts_exist_active_direction_needs_execution",
+        "artifacts": [
+          "dd_tech_research_map.html",
+          "void-tech-research.html",
+          "AI_RnD_Conversation_Report.md",
+          "AI_RnD_Research_Artifacts_2026-11-21.zip",
+          "DD_Tech_Research_Skill_Pack_2026-11-21.zip"
+        ],
+        "unfinished_work": [
+          "Make the research process itself more effective and repeatable.",
+          "Maintain the five knowledge dimensions: Meaning, Being, Order, Reality, Knowing.",
+          "Operationalize research divisions: AI Evolution, ChatGPT Capability, Intelligence Architecture, Experimental Research, Technology Discovery.",
+          "Build the research artifact library as versioned, searchable, testable assets.",
+          "Implement benchmark/evaluation pipeline; research map explicitly recorded zero benchmarks implemented as of 2026-11-20.",
+          "Promote only verified research into reviewed publications."
+        ]
+      },
+      {
+        "id": "B-012",
+        "title": "Crash-safe agent execution / transactional outbox integration",
+        "status": "local_reference_experiment_reported_pass_integration_unfinished",
+        "unfinished_work": [
+          "Keep the tested SQLite transactional-outbox reference implementation and its report.",
+          "Fix test harness process strategy: prior run emitted a fork() DeprecationWarning in a multithreaded host.",
+          "Test durable agent workflow integration using scripted model and fake tool; kill/restart at boundaries.",
+          "Compare DBOS/Temporal/Restate/Dapr or alternatives with the same recovery/idempotency tests; do not choose by marketing claims.",
+          "Test receiver idempotency and explicit UNKNOWN/RECONCILE state for ambiguous external effects.",
+          "Re-run Guarded Agent Execution v4 against crash-safety cases."
+        ],
+        "reported_result": "2026-11-21 report says 125/125 local crash/normal scenarios passed; this is a local model result, not proof of arbitrary API exactly-once behavior.",
+        "open_questions": [
+          "SDK compatibility in target environment.",
+          "Remote receiver idempotency/reconciliation.",
+          "Power-loss/filesystem resilience and multiprocess contention.",
+          "Cost and fit on constrained environment."
+        ],
+        "evidence": "AI_RnD_Conversation_Report.md and companion artifact ZIP."
+      },
+      {
+        "id": "B-013",
+        "title": "World-state intelligence / evidence and temporal memory",
+        "status": "historical_versions_reported_tested_next_integration_unclear",
+        "unfinished_work": [
+          "Preserve and locate Integrated World State, Conditioned World State v2, temporal admission, trust memory, and dependency invalidation artifacts.",
+          "Reconcile historical test reports with source files and rerun current tests if this line is resumed.",
+          "Integrate provenance, timestamps, trust, validity windows, dependencies, and revocation into a usable assistant/project context store."
+        ],
+        "reported_history": [
+          "Nov 16: 52/52 component tests and 30/30 synthetic scenarios reported.",
+          "Nov 17: 69/69 tests and 130/130 scenarios reported."
+        ],
+        "evidence": "AI_RnD_Conversation_Report.md; historical test claims were not independently rerun during this review."
+      },
+      {
+        "id": "B-014",
+        "title": "Guarded Agent Execution / Action Gate",
+        "status": "historical_versions_reported_tested_integration_unclear",
+        "unfinished_work": [
+          "Preserve v3 evidence-bound invocation authorization and v4 atomic audit-chain writes/one-time lease consumption.",
+          "Reconcile code and rerun tests before reusing as a production capability.",
+          "Connect invocation-bound authorization to real tool adapters only after end-to-end tests."
+        ],
+        "reported_history": [
+          "Nov 18: v3 121/121 tests and 50 cross-adapter scenarios reported.",
+          "Nov 19: v4 125/125 tests plus concurrency/replay tests reported."
+        ],
+        "evidence": "AI_RnD_Conversation_Report.md; historical claims are not current production verification."
+      },
+      {
+        "id": "B-015",
+        "title": "Recursive Creation Engine v0.2",
+        "status": "detailed_design_no_implementation_confirmed",
+        "artifact": "RCE_v0.2_Project_Context.md",
+        "unfinished_work": [
+          "Build smallest end-to-end vertical slice: bounded objective and acceptance criteria; generate baseline; run deterministic tests; create modified candidate; compare; detect injected regression; preserve versions/results; compile lesson; rollback.",
+          "Implement orchestrator/data contracts, artifact storage, experiment ledger/version archive, benchmark runner/regression detection, knowledge compiler/capability ledger, and recovery.",
+          "Confirm actual development environment and dependencies before selecting stack."
+        ],
+        "evidence": "Project context explicitly states no RCE v0.2 codebase/orchestrator/database/runner/artifact store/regression detector/knowledge compiler/capability ledger had been implemented or tested."
+      },
+      {
+        "id": "B-016",
+        "title": "Neural Architecture Research Lab",
+        "status": "automation_paused_prototype_artifacts_exist",
+        "unfinished_work": [
+          "Research RMI, neural memory, adaptive networks, learning efficiency, generalization, prediction accuracy, memory retrieval, compute cost, repeated improvement.",
+          "Start with an RMI working simulation and compare against baselines.",
+          "Review neural architecture gallery and neural net arcade prototypes; identify what is reusable."
+        ],
+        "evidence": "Nov 6 conversation proposed RMI/Neural Memory/Adaptive Network; daily research automation is currently disabled."
+      },
+      {
+        "id": "B-017",
+        "title": "VOID.UI Extraction Lab and component library",
+        "status": "prototype_exists_automations_paused",
+        "artifacts": [
+          "VOID_UI_Extraction_Lab.html",
+          "VOID_UI_Extraction_Lab(1).html",
+          "VOID_UI_README.md",
+          "VOID_UI_Extraction_Lab_v0_1.zip"
+        ],
+        "unfinished_work": [
+          "Extract shared tokens and reusable components from four modules: Dashboard/Overview, Creative Studio, Analytics/Intelligence, AI Assistant/Tools.",
+          "Build React component library and/or working VOID.UI Studio with navigable shell, component gallery, live preview, theme controls, interactive components.",
+          "Verify build, navigation, responsive behavior, and interactions before marking complete."
+        ],
+        "evidence": "README describes four modules and interactions; two related automations currently disabled."
+      },
+      {
+        "id": "B-018",
+        "title": "VOID.UI Studio",
+        "status": "prototype_and_spec_exist_automation_paused",
+        "unfinished_work": [
+          "Complete component gallery, live preview, theme/color controls, responsive interactive modules.",
+          "Maintain shared design language while allowing different app personalities.",
+          "Keep backend out of first prototype."
+        ],
+        "evidence": "Develop VOID.UI Studio automation is disabled; VOID UI artifacts exist in Library."
+      },
+      {
+        "id": "B-019",
+        "title": "Little Thinker Lab / small language model",
+        "status": "datasets_and_build_artifacts_exist_status_unknown",
+        "artifacts": [
+          "littlethinker_lab_assets.html",
+          "littlethinker_laughing_overflow_v0_2(1).zip",
+          "littlethinker_laughing_overflow_v0_2.zip",
+          "littlethinker_v1.zip",
+          "dataset.jsonl",
+          "training_data.jsonl",
+          "vocabulary.json",
+          "vocabulary(1).json",
+          "world.json",
+          "training_report.json",
+          "training_report(1).json",
+          "little_mind_planet.html",
+          "little_mind_world.html",
+          "mind_living_universe.html",
+          "mind_playgrounds.html"
+        ],
+        "unfinished_work": [
+          "Inspect training reports and dataset plan; determine actual training/evaluation state.",
+          "Continue small-model experiments with simple words/emoji vocabulary only if still useful.",
+          "Measure behavior against explicit baseline rather than infer capability from the visual demo."
+        ],
+        "evidence": "Library contains dataset, vocabulary, world-state and training report files dated 2026-11-20; no verified completion state found."
+      },
+      {
+        "id": "B-020",
+        "title": "Double-agent research / AI research agent prototypes",
+        "status": "prototype_artifacts_exist_status_unknown",
+        "artifacts": [
+          "double_agent_research_lab.html",
+          "agent_decision_tree_lab.html",
+          "ai_research_agent_prototype.html",
+          "ai_council_agent_foundry.html",
+          "continuous_intelligence_prototype.html",
+          "continuous_intelligence_debug_report.md"
+        ],
+        "unfinished_work": [
+          "Test planner-agent plus improvement-agent loop with explicit A/B comparisons and measured progress.",
+          "Review continuous intelligence prototype/debug report; determine whether event/context extraction works reliably.",
+          "Avoid adding multiple agents until one end-to-end loop is demonstrated."
+        ],
+        "evidence": "Artifacts present in Library; no completion/production integration evidence found."
+      },
+      {
+        "id": "B-021",
+        "title": "Babylon Observatory / economic simulation",
+        "status": "automation_paused_public_url_and_validation_unknown",
+        "unfinished_work": [
+          "Recover canonical public URL and API endpoint; automation explicitly says URL is missing/undiscoverable and must not be invented.",
+          "Verify data timestamps advance.",
+          "Validate market dashboard, prices, transactions, production/consumption, inventory, routes, shipments, indices, settlements, and reconciliations.",
+          "Keep simulated values distinct from real market data."
+        ],
+        "evidence": "Monitor Babylon Observatory automation is disabled; no public URL recorded in its prompt."
+      },
+      {
+        "id": "B-022",
+        "title": "Babylon economic bottleneck research",
+        "status": "weekly_automation_paused",
+        "unfinished_work": [
+          "Resume sector-by-sector research beginning with housing/construction, then healthcare, then food/agriculture.",
+          "Map value chains, providers/concentration, fees, dependencies, switching costs, regulation, barriers to entry.",
+          "Distinguish necessary coordination/risk reduction from redundancy, excessive costs, scarcity, rent extraction, and avoidable dependency.",
+          "Use primary sources, quantify impact where possible, include competing explanations and confidence."
+        ],
+        "evidence": "Weekly research automation exists but is disabled."
+      },
+      {
+        "id": "B-023",
+        "title": "Production Loop Review",
+        "status": "weekly_automation_paused",
+        "unfinished_work": [
+          "Review active production pipeline and choose one high-value product.",
+          "Move one concrete task toward a tested public release.",
+          "Track public links, traffic/sales evidence, blockers, and ways to make workflow faster, simpler, cheaper, and more reliable."
+        ],
+        "evidence": "Weekly automation exists but is disabled."
+      },
+      {
+        "id": "B-024",
+        "title": "Daily Market Pulse",
+        "status": "automation_paused",
+        "unfinished_work": [
+          "Daily concise market report comparing U.S. and global indices, Treasury yields/rates, dollar, gold, oil, crypto, day-over-day changes, drivers, and next watch items.",
+          "Prior reports ran through Oct 18, 2026; automation is currently disabled."
+        ],
+        "evidence": "Automation registry shows disabled; prior conversation summary records pause on Oct 18."
+      },
+      {
+        "id": "B-025",
+        "title": "Major AI capability upgrade alerts",
+        "status": "automation_paused",
+        "unfinished_work": [
+          "Monitor for materially verified AI capability advances only; compare against prior reports; notify only for meaningful new capabilities, price/access changes, agent/computer-use, coding/reasoning, multimodal/scientific/robotics advances.",
+          "Assess whether a new capability reopens previously blocked workflows."
+        ],
+        "evidence": "Daily automation exists but is disabled."
+      },
+      {
+        "id": "B-026",
+        "title": "Replit project cleanup / legacy inventory",
+        "status": "historical_inventory_not_rechecked",
+        "unfinished_work": [
+          "Online Character Database: PIN setup still expected.",
+          "Miami website automation: placeholders remain.",
+          "profound-crumble: page not found.",
+          "dainty-peony: unpublished.",
+          "best-projects: empty.",
+          "AI Lab v1: duplicate apps.",
+          "React Artifact: heavy/complex.",
+          "Weather chat and HTML Seed Factory: minimal prototypes needing a decision."
+        ],
+        "evidence": "Nov 19 conversation summary reports 16 Replit projects assessed; these were flagged for attention. Do not revisit Replit unless useful, given user's cost preference."
+      },
+      {
+        "id": "B-027",
+        "title": "GitHub Garage repository workshop integration",
+        "status": "repository_exists_integration_target_unverified",
+        "unfinished_work": [
+          "Repository Kawhooped/GitHub-Garage exists; previously reported files index.html, README.md, _headers on dd-main.",
+          "workshop-gateway was noted as next integration target; actual current status unknown.",
+          "Connect Garage to the existing repository catalog without creating a second Garage."
+        ],
+        "evidence": "Prior project context and Network Core handoff."
+      },
+      {
+        "id": "B-028",
+        "title": "Void Signal Router / tool and project routing",
+        "status": "prototype_exists_status_unknown",
+        "artifacts": [
+          "void_signal_router.html",
+          "Living Tool Architecture skill"
+        ],
+        "unfinished_work": [
+          "Review routing rules and test whether it materially improves tool/project selection.",
+          "Integrate only if it solves a demonstrated workflow bottleneck."
+        ],
+        "evidence": "Prototype file and reusable Living Tool Architecture skill exist in Library."
+      },
+      {
+        "id": "B-029",
+        "title": "VOID tools and creative prototypes shelf",
+        "status": "prototype_collection_untriaged",
+        "artifacts": [
+          "FLOATY — pocket notes bubble.html",
+          "Murmuration.html",
+          "SAVAGE GENES · LAB.html",
+          "Lumenfold.html",
+          "One Self · A World · Carbon Memory.html",
+          "Ocean Waves - Standalone HTML.html",
+          "cyberpunk_frontier_city_builder.html",
+          "funneristics_bond_lab.html",
+          "void_video_studio_v0_1.html",
+          "html-studio-fixed.html",
+          "void-html-workshop.html",
+          "radio_forge_builder.html",
+          "aetherchord_3d.html",
+          "orbital_citadel_3d.html",
+          "PROJECT_REALMS_Universal_Simulator.html",
+          "seven_second_sound_garden.html",
+          "synth-simple.html",
+          "SKETCHPAD.html",
+          "faceforge3d.html",
+          "signal-journey.html",
+          "citylab_simulation.html",
+          "evolution_arena.html",
+          "evolution_arena_combat.html",
+          "emoji_bounce_survival.html",
+          "neural_forms_world_engine_v0_1.html",
+          "RGAT All in HTML.html",
+          "branch_engine.html"
+        ],
+        "unfinished_work": [
+          "These are existing prototype artifacts, not assumed active projects.",
+          "Classify each as keep/build/publish/archive; identify duplicates and shared components.",
+          "Promote only selected experiments into public sites or reusable tools; do not publish the entire shelf indiscriminately."
+        ]
+      },
+      {
+        "id": "B-030",
+        "title": "VOID.LIFE domain and hub",
+        "status": "domain_unverified",
+        "unfinished_work": [
+          "Resolve domain/DNS/hosting status and decide whether to restore as canonical hub.",
+          "Earlier inspection found Afternic nameservers and Internal Error; no analytics or traffic evidence found.",
+          "Avoid assuming domain is currently connected to a working site."
+        ],
+        "evidence": "Prior conversation context and earlier domain scan."
+      },
+      {
+        "id": "B-031",
+        "title": "Daily intelligence coordinator task architecture",
+        "status": "automation_enabled_continuity_state_to_review",
+        "unfinished_work": [
+          "The currently enabled daily coordinator has exactly three branches: Intelligence Architecture, AI Technology & Capabilities, Evolution & Strategic Direction.",
+          "It should choose one highest-value objective, create temporary task instances, preserve evidence/decisions, and avoid separate recurring subtask automations.",
+          "Check coordinator continuity state and ensure it is not generating reports without advancing a real deliverable."
+        ],
+        "evidence": "Current automation registry shows Daily Intelligence Coordinator enabled; its last run was Nov 23."
+      },
+      {
+        "id": "B-032",
+        "title": "Research publication pipeline / Prompt Kitchen",
+        "status": "proposed_in_void_tech_research_not_built",
+        "unfinished_work": [
+          "Research notes with sources; experiment reports with methods/results/limitations/reproducibility; versioned dataset releases; working tools/demos.",
+          "Prompt Kitchen proposed to version and evaluate prompts against shared test cases.",
+          "Do not present proposed tools as implemented."
+        ],
+        "evidence": "void-tech-research.html labels Prompt Kitchen PROPOSED and experiment reports IN PREPARATION, datasets PENDING, tools ongoing."
+      },
+      {
+        "id": "B-033",
+        "title": "Character and world simulation research",
+        "status": "multiple_prototypes_and_data_modules_exist_status_unknown",
+        "artifacts": [
+          "character_lab.html",
+          "little_character_studio.html",
+          "afterimage_character_foundry.html",
+          "afterimage_tiny_character_maker.html",
+          "PROJECT_REALMS_Universal_Simulator.html",
+          "freedom_maya_sandbox.html",
+          "conversation_evolution_lab.html",
+          "frostwild-v1.0.0.1.zip through frostwild-v1.0.0.4.zip",
+          "frostwild_language.zip",
+          "divine_templar_ai.html",
+          "HOLY_TEMPLAR_SPELLBOOK.md",
+          "EVIL_CHARACTERS_MODULE.md",
+          "VIRTUOUS_CHARACTER_MODULE.md",
+          "CHARACTER_MEMORY_DIARY.md",
+          "character_memory_diary.jsonl",
+          "virtuous_character_training.jsonl",
+          "evil_characters_in_literature.jsonl"
+        ],
+        "unfinished_work": [
+          "Decide which line is a real continuing research project versus archived creative exploration.",
+          "For Frostwild, review Executive Summary recommendations: richer knowledge representation, smarter rule generation, robust evaluation, safe self-editing, scalability, human oversight; measure rule acceptance, multi-objective score trends, safety incidents.",
+          "For Divine Templar AI, review project log/source inventory and decide whether character memory/training modules need integration or are complete artifacts."
+        ],
+        "evidence": "Multiple Library prototypes, versioned ZIPs, module docs and project logs."
+      },
+      {
+        "id": "B-034",
+        "title": "VOID public site reliability / analytics and security audit",
+        "status": "partially_documented_not_completed",
+        "unfinished_work": [
+          "Inventory domains, DNS, hosting, GitHub repos, databases, access/security, costs, deployments.",
+          "Verify public/private access and HTTPS independently; do not confuse disabling SSO/password gates with disabling TLS.",
+          "Add traffic analytics only after public site inventory and choose a simple, privacy-conscious measurement approach."
+        ],
+        "evidence": "Prior infrastructure audit request and current project goals."
+      }
+    ],
+    "automation_snapshot": {
+      "checked_at": "2026-11-24",
+      "total_found": 9,
+      "enabled": [
+        {
+          "title": "Daily Intelligence Coordinator",
+          "id": "6aedebba80608191a6259724daf426d9",
+          "last_run": "2026-11-23",
+          "next_run": "2026-11-24 09:00 America/New_York"
+        }
+      ],
+      "paused": [
+        {
+          "title": "Build the React component library",
+          "id": "6af6097afa2481918969cd2d96c538b3"
+        },
+        {
+          "title": "Develop VOID.UI Studio",
+          "id": "6af6068bc9f88191bd3c257ac1cd0a78"
+        },
+        {
+          "title": "Daily neural architecture research",
+          "id": "6aedebbb5a308191898565e2c436cbab"
+        },
+        {
+          "title": "Major AI capability upgrade alerts",
+          "id": "6aedef7870ec81918d19ee703fe170d8"
+        },
+        {
+          "title": "Production Loop Review",
+          "id": "6aeb3d96f5748191950e0dbc15f3536d"
+        },
+        {
+          "title": "Monitor Babylon Observatory daily",
+          "id": "Automation_603bc116362881919d73f7e373112cb1"
+        },
+        {
+          "title": "Publish weekly economic bottleneck research",
+          "id": "Automation_09c14beb2a84819197f9698f6ffc6de5"
+        },
+        {
+          "title": "Daily Market Pulse",
+          "id": "6ac6de51a0b88191837a10a69ce94a28"
+        }
+      ],
+      "note": "Paused automations are not necessarily unwanted; user has not requested that any be restarted in this turn."
+    },
+    "attachment_inventory_summary": {
+      "library_entries_reviewed": 442,
+      "notable_artifact_groups": [
+        "Website architecture and VOID Network handoffs",
+        "AI R&D reports and test artifact bundles",
+        "Recursive Creation Engine project context",
+        "VOID.UI extraction lab and component specifications",
+        "Little Thinker Lab datasets/training files",
+        "Neural architecture and double-agent prototypes",
+        "Babylon/market/economic research automation context",
+        "creative interactive HTML prototypes and game/simulation builds",
+        "Divine Templar AI character-memory/training modules"
+      ],
+      "note": "Image-only visual references and duplicate exports are not individually enumerated here unless attached to a concrete project."
+    }
   }
 }
