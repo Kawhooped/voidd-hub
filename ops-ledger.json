@@ -58,10 +58,10 @@
       "public_url": "https://kawhooped.github.io/voidd-hub/apps/voice-network/",
       "source_repository": "Kawhooped/voidd-hub",
       "source_path": "apps/voice-network/index.html",
-      "status": "committed_deployment_pending",
+      "status": "committed_publish_unverified",
       "evidence": "github_commit_and_readback",
       "last_verified_at": "2026-11-24",
-      "notes": "Agent ID agent_9501m86ta8h8fp690x9w3q47n1b3. Agent can answer from the attached public project registry but has no execution tools yet. Privacy configured with record_voice=false and zero_retention_mode=true."
+      "notes": "Source committed and read back. GitHub Actions custom Pages workflow failed for latest commits with no job steps/logs; dynamic Pages build was still in progress at last check. Public URL and embedded widget are not yet verified."
     }
   ],
   "repositories": [
@@ -174,6 +174,13 @@
       "subject": "VOID Voice Network",
       "result": "Created ElevenLabs agent VOID Network Operator; added auto-synced public project-registry knowledge source and enabled RAG; configured record_voice=false and zero_retention_mode=true; committed apps/voice-network/index.html and added Voice link to apps/command-center/index.html. GitHub Pages deployment is pending verification; agent has no execution tools yet.",
       "evidence": "ElevenLabs agent and knowledge-base tool results; GitHub commits 590e30fc5fba6dfa4f40761d3c7971a29f9a3fb4 and 9d5f73cb326b1719f48b3e73bfa87f0e77b9aaeb; readback SHAs 6976a2c4d79d0c245d6d8bc07e10470eecf592db and 26a0b0f0b6f598b8164a16509cfe65161cd80d07"
+    },
+    {
+      "date": "2026-11-24",
+      "event": "deployment_verification_blocked",
+      "subject": "VOID Voice Network",
+      "result": "GitHub source files and project records verified. The Pages workflow run for commit b1d03959526902efd17fc77412574b84951b9aef failed; job returned no steps or logs. Dynamic Pages build for latest commit remained in progress. Public URL and widget not yet verified.",
+      "evidence": "GitHub Actions run 45399365785 and dynamic run 45399376560; repository readback"
     }
   ],
   "unknowns": [
