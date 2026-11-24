@@ -5,6 +5,7 @@ A portable, Git-managed operating foundation for every agent in the VOID network
 ## Structure
 
 - `CONSTITUTION.md` — shared rules, citizenship, authority boundaries and operating principles.
+- `NETWORK-PROTOCOL.md` — agent discovery, messaging, task lifecycle, delegation, coordination and conflict resolution.
 - `modules/website-standards-quality-authority.md` — specialized mandate and knowledge for website stewardship.
 - `procedures/website-assessment.md` — repeatable inspection, scoring, remediation and verification procedure.
 - `templates/AGENT.md` — individual agent identity and configuration template.
