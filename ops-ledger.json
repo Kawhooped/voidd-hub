@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "database": "VOID Operations Ledger",
+  "purpose": "Authoritative working record of projects, public addresses, repositories, infrastructure, deployments, and operational history.",
+  "updated_at": "2026-11-24",
+  "operating_rule": "Read this ledger before investigating. Trust recent verified records. Recheck only stale, missing, or explicitly questioned facts. Record every material change and verification here.",
+  "projects": [
+    {
+      "id": "shipcheck",
+      "name": "ShipCheck",
+      "description": "Minimal launch checklist for testing a public website.",
+      "public_url": "https://void-shipcheck.vercel.app/",
+      "source_repository": "Kawhooped/voidd-hub",
+      "source_path": "tools/shipcheck/index.html",
+      "status": "published",
+      "evidence": "user_verified",
+      "last_verified_at": "2026-11-24",
+      "notes": "User confirmed the public site is published. Firefox incognito behavior and analytics have not been confirmed."
+    },
+    {
+      "id": "voidd-sales",
+      "name": "VOIDD Sales",
+      "public_url": "https://voidd-sales.netlify.app/",
+      "status": "previously_recorded_live",
+      "evidence": "prior_conversation_record",
+      "last_verified_at": null
+    },
+    {
+      "id": "signalworks",
+      "name": "SignalWorks",
+      "public_url": "https://signalworks-dd.netlify.app/",
+      "status": "previously_recorded_live",
+      "evidence": "prior_conversation_record",
+      "last_verified_at": null,
+      "notes": "Previously described as a South Florida business website chat and lead-capture offer."
+    },
+    {
+      "id": "command-center",
+      "name": "VOIDD Command Center",
+      "public_url": "https://voidd-command-center.pages.dev/",
+      "status": "previously_recorded",
+      "evidence": "prior_conversation_record",
+      "last_verified_at": null
+    },
+    {
+      "id": "voidd-hub",
+      "name": "VOIDD Hub",
+      "public_url": "https://kawhooped.github.io/voidd-hub/",
+      "repository": "Kawhooped/voidd-hub",
+      "status": "previously_recorded",
+      "evidence": "prior_conversation_record",
+      "last_verified_at": null
+    }
+  ],
+  "repositories": [
+    {
+      "id": "voidd-hub-repo",
+      "full_name": "Kawhooped/voidd-hub",
+      "branch": "dd-main",
+      "purpose": "VOIDD hub and shared static tools",
+      "evidence": "prior_conversation_record",
+      "last_verified_at": null
+    },
+    {
+      "id": "github-garage-repo",
+      "full_name": "Kawhooped/GitHub-Garage",
+      "branch": "dd-main",
+      "purpose": "Repository workshop / viewer",
+      "evidence": "prior_conversation_record",
+      "last_verified_at": null
+    }
+  ],
+  "infrastructure": [
+    {
+      "id": "vercel-shipcheck",
+      "provider": "Vercel",
+      "resource": "void-shipcheck",
+      "type": "static deployment",
+      "project_url": "https://void-shipcheck.vercel.app/",
+      "deployment_id": "dpl_9VU2P7BFVST3CP93hsrqqXB7Kx8K",
+      "status": "ready",
+      "source_connection": "not_git_connected",
+      "protection": {
+        "sso": "disabled",
+        "password": "disabled",
+        "ssl_tls": "not_disabled"
+      },
+      "evidence": "tool_verified_at_deployment",
+      "last_verified_at": "2026-11-24",
+      "notes": "The HTML was deployed directly to Vercel; a separate copy was committed to GitHub. No automatic Git deployment connection was established."
+    },
+    {
+      "id": "cloudflare-worker",
+      "provider": "Cloudflare",
+      "resource": "kwa-batido-5a58.kawhooped.workers.dev",
+      "type": "Worker",
+      "status": "previously_recorded",
+      "evidence": "prior_conversation_record",
+      "last_verified_at": null
+    }
+  ],
+  "activity_log": [
+    {
+      "date": "2026-11-24",
+      "event": "created",
+      "subject": "ShipCheck",
+      "result": "Static launch checklist committed to Kawhooped/voidd-hub and deployed directly to Vercel. User confirmed the public URL is published.",
+      "evidence": "tool_deployment_record_and_user_confirmation"
+    },
+    {
+      "date": "2026-11-24",
+      "event": "created",
+      "subject": "VOID Operations Ledger",
+      "result": "Created this initial operational database in Kawhooped/voidd-hub.",
+      "evidence": "github_commit"
+    }
+  ],
+  "unknowns": [
+    "Which previously recorded sites are currently live and reachable.",
+    "Which public sites currently have analytics or traffic measurement installed.",
+    "Whether ShipCheck works in Firefox private browsing."
+  ]
+}
