@@ -70,12 +70,13 @@
     }
   ],
   "agent_system": {
-    "status": "foundation_committed",
+    "status": "foundation_and_network_protocol_committed",
     "root": "agent-system/README.md",
     "constitution": "agent-system/CONSTITUTION.md",
     "first_module": "agent-system/modules/website-standards-quality-authority.md",
     "first_procedure": "agent-system/procedures/website-assessment.md",
     "agent_template": "agent-system/templates/AGENT.md",
-    "note": "GitHub architecture files committed; no live agent has yet been instantiated or granted website access."
+    "note": "Constitution, individual charter template, website stewardship module, assessment procedure and network protocol are committed. No live agent has yet been instantiated or granted website access.",
+    "network_protocol": "agent-system/NETWORK-PROTOCOL.md"
   }
 }
