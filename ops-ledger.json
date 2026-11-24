@@ -62,6 +62,19 @@
       "evidence": "github_managed_pages_build_and_deploy_success; source_commit_readback",
       "last_verified_at": "2026-11-24",
       "notes": "GitHub-managed Pages build/deploy succeeded on run 45399495216 for commit 5b436d80e9f7b4fc08bc4a0674cb0f66367ec813. Redundant custom workflow .github/workflows/pages.yml removed in commit e2881aa92d77f0425dfaf0f2333071b01caabcdd after repeated failed runs with no steps/logs. External public URL and widget interaction still not independently verified."
+    },
+    {
+      "id": "genes-one",
+      "name": "GENES ONE",
+      "description": "Canvas-based artificial-life simulation: feeding, hunting, hiding, mating, mutation, genetic inheritance, self-check behavior, and a learning supervisor.",
+      "planned_public_url": "https://kawhooped.github.io/voidd-hub/apps/genes-one/",
+      "source_repository": "Kawhooped/voidd-hub",
+      "source_path": "apps/genes-one/index.html",
+      "intake_path": "apps/genes-one/README.md",
+      "status": "intake_registered_source_incomplete",
+      "evidence": "user_supplied_html_truncated_mid_pointer_input_handler",
+      "last_verified_at": "2026-11-24",
+      "notes": "Project registered, but executable source is incomplete in the received message. Do not mark published or claim runtime verification until complete source is received, committed, and tested."
     }
   ],
   "repositories": [
