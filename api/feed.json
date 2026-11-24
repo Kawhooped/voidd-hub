@@ -30,8 +30,8 @@
         "github-pages",
         "deployment"
       ],
-      "url": "https://kawhooped.github.io/voidd-hub/create.html",
-      "description": "Import a standalone HTML file, preview it, publish it directly to the VOID Hub repository, and automatically register the new page in the public catalog."
+      "url": "https://kawhooped.github.io/voidd-hub/apps/html-workshop/",
+      "description": "Create and edit HTML, import files, preview changes, save local drafts, export pages, and publish directly to the VOID Hub catalog."
     },
     {
       "id": "void-command-center",
