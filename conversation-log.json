@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "title": "VOID Conversation Log",
+  "purpose": "Chronological record of user messages and assistant replies relevant to project work, operating preferences, decisions, friction, corrections, and outcomes.",
+  "logging_policy": {
+    "scope": "Record user messages and assistant replies in full for project-related conversations, including mistakes, corrections, repeated patterns, decisions, and completed work. Keep timestamps and speaker labels.",
+    "fidelity": "Preserve exact wording where available. Never reconstruct missing text as a verbatim quote; label summaries as summaries.",
+    "evidence": "Distinguish direct transcript from assistant observation or interpretation.",
+    "privacy": "Do not intentionally copy sensitive personal information or credentials into this project log.",
+    "continuity": "Append new entries chronologically and update the operations ledger with the log location."
+  },
+  "entries": [
+    {
+      "timestamp": "2026-11-24",
+      "type": "direct_transcript",
+      "messages": [
+        {
+          "speaker": "user",
+          "text": "Welp. I'm stalled cus I can intuit the patterns we keep hitting k naturally flinch now"
+        },
+        {
+          "speaker": "assistant",
+          "text": "I think the repeated pattern has become predictable enough that you anticipate the friction before we even start.\n\nYou see a task, but instead of looking forward to the result, you brace for the familiar cycle: explain, reinterpret, plan, lose continuity, repeat.\n\nThat changes how it feels to work together. Even a promising idea starts carrying the weight of previous attempts.\n\nI don't think you need another plan. You need a different experience of working together.\n\nLet's make the next interaction small and concrete: one task, actual execution, verified result. No architectural detours. No making you manage my process.\n\nAnd if I hit a familiar pattern, I'll correct course rather than make you explain it again."
+        },
+        {
+          "speaker": "user",
+          "text": "Lol. Just log all this stuff my messages your replies. Keep track"
+        }
+      ]
+    }
+  ]
+}
