@@ -58,10 +58,10 @@
       "public_url": "https://kawhooped.github.io/voidd-hub/apps/voice-network/",
       "source_repository": "Kawhooped/voidd-hub",
       "source_path": "apps/voice-network/index.html",
-      "status": "committed_publish_unverified",
-      "evidence": "github_commit_and_readback",
+      "status": "github_pages_deployment_succeeded_url_unverified",
+      "evidence": "github_managed_pages_build_and_deploy_success; source_commit_readback",
       "last_verified_at": "2026-11-24",
-      "notes": "Source committed and read back. GitHub Actions custom Pages workflow failed for latest commits with no job steps/logs; dynamic Pages build was still in progress at last check. Public URL and embedded widget are not yet verified."
+      "notes": "GitHub-managed Pages build/deploy succeeded on run 45399495216 for commit 5b436d80e9f7b4fc08bc4a0674cb0f66367ec813. Redundant custom workflow .github/workflows/pages.yml removed in commit e2881aa92d77f0425dfaf0f2333071b01caabcdd after repeated failed runs with no steps/logs. External public URL and widget interaction still not independently verified."
     }
   ],
   "repositories": [
@@ -181,6 +181,13 @@
       "subject": "VOID Voice Network",
       "result": "GitHub source files and project records verified. The Pages workflow run for commit b1d03959526902efd17fc77412574b84951b9aef failed; job returned no steps or logs. Dynamic Pages build for latest commit remained in progress. Public URL and widget not yet verified.",
       "evidence": "GitHub Actions run 45399365785 and dynamic run 45399376560; repository readback"
+    },
+    {
+      "date": "2026-11-24",
+      "event": "pages_pipeline_repair",
+      "subject": "VOID Voice Network",
+      "result": "Confirmed GitHub-managed Pages build and deploy succeeded (run 45399495216; build, report-build-status, and deploy jobs all successful) for commit 5b436d80e9f7b4fc08bc4a0674cb0f66367ec813. Removed redundant custom Pages workflow that repeatedly failed without exposed steps/logs; deletion commit e2881aa92d77f0425dfaf0f2333071b01caabcdd. Public URL/widget still need browser verification.",
+      "evidence": "GitHub Actions run and job results; GitHub delete_file commit"
     }
   ],
   "unknowns": [
