@@ -78,8 +78,85 @@ const button=document.getElementById('menu'),nav=document.getElementById('nav');
 button.addEventListener('click',()=>{const open=nav.classList.toggle('open');button.setAttribute('aria-expanded',String(open))});
 </script>
 
-<!-- VOID NETWORK OPERATOR: VEYA -->
-<elevenlabs-convai agent-id="agent_9501m86ta8h8fp690x9w3q47n1b3"></elevenlabs-convai>
-<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+<!-- VOID NATIVE ASSISTANT: VEYA -->
+<style>
+#veya-launch{position:fixed;right:22px;bottom:22px;z-index:10000;width:66px;height:66px;border:1px solid #ffffff55;border-radius:50%;cursor:pointer;color:#171222;background:radial-gradient(circle at 32% 25%,#fff 0,#f5b9e8 17%,#a995ff 57%,#6255a5 100%);box-shadow:0 0 0 7px #bba5ff13,0 8px 40px #0009,0 0 34px #c49cff88;display:grid;place-items:center;font-size:27px;transition:transform .25s}
+#veya-launch:hover{transform:translateY(-3px) scale(1.04)}
+#veya-launch:after{content:"";position:absolute;inset:-7px;border:1px solid #c9a8ff55;border-radius:50%;animation:veya-ring 3s ease-out infinite}
+@keyframes veya-ring{0%{transform:scale(.9);opacity:.8}100%{transform:scale(1.35);opacity:0}}
+#veya-panel{position:fixed;right:22px;bottom:102px;z-index:10000;width:min(380px,calc(100vw - 28px));height:min(590px,calc(100dvh - 125px));display:none;flex-direction:column;overflow:hidden;border:1px solid #514568;border-radius:22px;background:linear-gradient(155deg,#1c1930f7,#0e111cf7 65%);box-shadow:0 22px 80px #000b,0 0 40px #bba5ff1c;backdrop-filter:blur(22px);color:#f4f0ff;font:14px/1.45 system-ui,sans-serif}
+#veya-panel.open{display:flex;animation:veya-in .2s ease-out}
+@keyframes veya-in{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+#veya-head{padding:16px 17px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #ffffff18}
+#veya-avatar{width:42px;height:42px;border-radius:50%;background:radial-gradient(circle at 35% 25%,#fff,#f1aee4 25%,#9885ff 70%,#51417d);box-shadow:0 0 22px #ba9cff66;flex:none}
+#veya-head strong{display:block;font-size:14px;letter-spacing:.02em}#veya-head small{color:#b7afce;font-size:11px}
+#veya-close{margin-left:auto;background:none;border:0;color:#cfc6e6;font-size:22px;cursor:pointer}
+#veya-log{flex:1;overflow:auto;padding:17px;display:flex;flex-direction:column;gap:11px;scroll-behavior:smooth}
+.veya-msg{max-width:88%;padding:11px 13px;border-radius:15px;white-space:pre-wrap;overflow-wrap:anywhere}
+.veya-msg.agent{align-self:flex-start;background:#ffffff0d;border:1px solid #ffffff12;border-top-left-radius:5px}
+.veya-msg.user{align-self:flex-end;background:#bba5ff;color:#171222;border-top-right-radius:5px}
+#veya-controls{padding:13px;border-top:1px solid #ffffff18;background:#0c0d18aa}
+#veya-status{font-size:11px;color:#b9add4;min-height:17px;margin:0 3px 9px}
+#veya-form{display:flex;gap:7px}
+#veya-input{min-width:0;flex:1;border:1px solid #49415f;border-radius:12px;padding:11px 12px;background:#090b14;color:#fff;font:inherit;outline:none}
+#veya-input:focus{border-color:#bba5ff}
+#veya-send,#veya-mic{border:0;border-radius:12px;padding:0 13px;background:#bba5ff;color:#171222;font-weight:800;cursor:pointer}
+#veya-actions{display:flex;gap:8px;margin-top:9px}
+#veya-actions button{flex:1;padding:9px;border:1px solid #514568;border-radius:10px;background:#ffffff09;color:#eee8ff;font:inherit;font-size:12px;cursor:pointer}
+#veya-actions button.primary{background:linear-gradient(100deg,#e9a0df,#a995ff);color:#171222;border:0;font-weight:800}
+#veya-actions button:disabled{opacity:.45;cursor:default}
+@media(max-width:520px){#veya-launch{right:16px;bottom:16px;width:60px;height:60px}#veya-panel{right:10px;bottom:86px;width:calc(100vw - 20px);height:min(650px,calc(100dvh - 105px))}}
+@media(prefers-reduced-motion:reduce){#veya-launch:after{animation:none}#veya-panel.open{animation:none}}
+</style>
+<button id="veya-launch" aria-label="Talk to Veya" aria-expanded="false" aria-controls="veya-panel">✧</button>
+<section id="veya-panel" role="dialog" aria-label="Chat with Veya" aria-modal="false">
+ <div id="veya-head"><div id="veya-avatar"></div><div><strong>Veya <span style="color:#e9a0df">✦</span></strong><small>VOID Network Guide</small></div><button id="veya-close" aria-label="Close assistant">×</button></div>
+ <div id="veya-log" aria-live="polite"><div class="veya-msg agent">Hi, I'm Veya 💗 Welcome to VOID. What would you like to explore?</div></div>
+ <div id="veya-controls"><div id="veya-status">Here whenever you need me.</div>
+  <form id="veya-form"><input id="veya-input" placeholder="Write a message…" autocomplete="off" aria-label="Message Veya"><button id="veya-send" type="submit" aria-label="Send message">➤</button></form>
+  <div id="veya-actions"><button id="veya-mic" type="button">🎙 Start voice</button><button id="veya-end" type="button" disabled>End session</button></div>
+ </div>
+</section>
+<script type="module">
+import { Conversation } from "https://esm.sh/@elevenlabs/client@1.38.0";
+(()=>{
+ const agentId="agent_9501m86ta8h8fp690x9w3q47n1b3";
+ const $=id=>document.getElementById(id);
+ const panel=$("veya-panel"),launch=$("veya-launch"),log=$("veya-log"),status=$("veya-status");
+ let conversation=null,mode="voice";
+ const add=(text,who="agent")=>{if(!text)return;const el=document.createElement("div");el.className="veya-msg "+who;el.textContent=text;log.appendChild(el);log.scrollTop=log.scrollHeight};
+ const setStatus=s=>status.textContent=s;
+ const open=()=>{panel.classList.add("open");launch.setAttribute("aria-expanded","true");$("veya-input").focus()};
+ const close=()=>{panel.classList.remove("open");launch.setAttribute("aria-expanded","false")};
+ launch.addEventListener("click",()=>panel.classList.contains("open")?close():open());
+ $("veya-close").addEventListener("click",close);
+ const end=async()=>{if(conversation){try{await conversation.endSession()}catch(e){}conversation=null} $("veya-mic").disabled=false;$("veya-end").disabled=true;setStatus("Session ended. I'm here whenever you need me.")};
+ const start=async(textOnly=false)=>{
+  if(conversation)return;
+  mode=textOnly?"text":"voice";
+  setStatus(textOnly?"Connecting text chat…":"Requesting microphone and connecting…");
+  $("veya-mic").disabled=true;
+  try{
+   conversation=await Conversation.startSession({
+    agentId,
+    ...(textOnly?{overrides:{conversation:{textOnly:true}}}:{}),
+    onConnect:()=>{setStatus(textOnly?"Connected · text chat":"Connected · voice active");$("veya-end").disabled=false;$("veya-mic").textContent="🎙 Voice connected"},
+    onDisconnect:()=>{conversation=null;$("veya-mic").disabled=false;$("veya-end").disabled=true;$("veya-mic").textContent="🎙 Start voice";setStatus("Disconnected.")},
+    onMessage:m=>{const text=m.message||m.text||m.transcript;if(text)add(text,m.source==="user"||m.role==="user"?"user":"agent")},
+    onError:e=>setStatus("Connection issue: "+(typeof e==="string"?e:"Please try again."))
+   });
+   $("veya-end").disabled=false;
+  }catch(e){conversation=null;$("veya-mic").disabled=false;setStatus(e?.message||"Could not connect. Please try again.") ;}
+ };
+ $("veya-mic").addEventListener("click",()=>start(false));
+ $("veya-end").addEventListener("click",end);
+ $("veya-form").addEventListener("submit",async e=>{
+  e.preventDefault();const input=$("veya-input"),text=input.value.trim();if(!text)return;
+  input.value="";add(text,"user");
+  try{if(!conversation)await start(true);if(conversation){conversation.sendUserMessage(text);setStatus("Veya is thinking…")}}
+  catch(e){setStatus("Message couldn't be sent. Please try again.")}
+ });
+})();
+</script>
 </body>
 </html>
