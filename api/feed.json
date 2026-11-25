@@ -5,6 +5,21 @@
   "updated_at": "2026-11-24",
   "projects": [
     {
+      "id": "sonora-music-to-art",
+      "title": "SONORA — Music to Art",
+      "type": "tool",
+      "tags": [
+        "music",
+        "audio",
+        "generative-art",
+        "visualizer",
+        "creative",
+        "png"
+      ],
+      "url": "https://kawhooped.github.io/voidd-hub/apps/sonora/",
+      "description": "Turn a song into original generative artwork. Analyze audio locally, explore visual moods and color palettes, and export high-resolution PNG artwork. Your audio stays in your browser."
+    },
+    {
       "id": "void-podcast-studio",
       "title": "VOID Podcast Studio",
       "type": "tool",
